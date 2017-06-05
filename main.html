@@ -139,7 +139,12 @@
 <?
 					if($_SESSION['name']){
 ?>
-						<p><?=$_SESSION['name']?></p>
+						<p style = "color : black;"><?=$_SESSION['name']?>
+							<a href="logout.php">
+								<input type=button value="로그아웃" id="logout">
+							</a>
+						</p>
+
 <?
 					}
 					else{
