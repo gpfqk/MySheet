@@ -1,5 +1,8 @@
+<?  if (!isset($_SESSION)) { session_start(); } 
+	include("db.php");
+	ensure_logged_in();
+?>
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <title>스터디 예약 시스템 [내자리야]</title>
@@ -119,6 +122,13 @@
 								<li><a class=" link link--yaku" href="short-codes.html"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="destination.html"><span>D</span><span>e</span><span>s</span><span>t</span><span>i</span><span>n</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="contact.html"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
+<?
+								if($_SESSION['name']){
+?>
+								<li><a class=" link link--yaku" href="logout.php"><span>L</span><span>o</span><span>g</span><span>o</span><span>u</span><span>t</span></a></li>
+<?
+								}
+?>
 							</div>
 				
 
@@ -135,7 +145,9 @@
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
 				<div class="Profile-right">
-					<a href="#small-dialog" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a> 
+					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
+						<i class="fa fa-user"></i> <?=$_SESSION['name']?>
+					</div>
 				</div>
 				<div class="clearfix"></div>
 			</div> 

@@ -119,6 +119,13 @@
 								<li><a class=" link link--yaku" href="short-codes.html"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="destination.html"><span>D</span><span>e</span><span>s</span><span>t</span><span>i</span><span>n</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="contact.html"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
+								<?
+								if($_SESSION['name']){
+?>
+								<li><a class=" link link--yaku" href="logout.php"><span>L</span><span>o</span><span>g</span><span>o</span><span>u</span><span>t</span></a></li>
+<?
+								}
+?>
 							</div>
 				
 
@@ -141,9 +148,6 @@
 
 						<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
 							<i class="fa fa-user"></i> <?=$_SESSION['name']?>
-							<a href="logout.php">
-								<input type=button value="로그아웃" id="logout">
-							</a>
 						</div>
 
 <?

@@ -24,10 +24,10 @@
 
 	function ensure_logged_in()
 	{
-		if(!isset($_SESSION['id']))
+		if(!isset($_SESSION['name']))
 		{
 			$_SESSION['flash']="게시판은 로그인 후, 사용가능 합니다.";
-			header("Location: login.html");
+			header("Location: main.html");
 		}
 	}
 
