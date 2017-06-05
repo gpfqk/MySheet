@@ -119,7 +119,7 @@
 								<li><a class=" link link--yaku" href="short-codes.html"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="destination.html"><span>D</span><span>e</span><span>s</span><span>t</span><span>i</span><span>n</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="contact.html"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
-								<?
+<?
 								if($_SESSION['name']){
 ?>
 								<li><a class=" link link--yaku" href="logout.php"><span>L</span><span>o</span><span>g</span><span>o</span><span>u</span><span>t</span></a></li>
@@ -195,7 +195,7 @@
 							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 회원가입 </h1>
 							</div>
 							<div class="login-form signup-form">
-								<form action="#" method="post">
+								<form action="join.php" method="post">
 									<p>아이디 </p>
 									<input type="text" name="id"  required="true"/>
 									<p>비밀번호</p>
@@ -207,7 +207,7 @@
 									<p>학번 </p>
 									<input type="text" name="number"  required="true"/>
 									<p>연락처 </p>
-									<input type="text" name="phone"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone"  required="true" length="5" style="width:30% !important;"/>
+									<input type="text" name="phone1"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone2"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone3"  required="true" length="5" style="width:30% !important;"/>
 									<div class="wthree-text"> 
 										<input type="checkbox" id="brand1" value="">
 										<label for="brand1"><span></span>I accept the terms of use</label> 
