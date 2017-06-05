@@ -31,6 +31,44 @@
 		}
 	}
 
+
+	function join_($_POST)
+	{
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		$id=$_POST["id"];
+		$password=$_POST["password"];
+		$name=$_POST["name"];
+		$major=$_POST["major"];
+		$number=$_POST["number"];
+		$phone1=$_POST["phone1"];
+		$phone2=$_POST["phone2"];
+		$phone3=$_POST["phone3"];
+		$phone="$phone1"."$phone2"."$phone3";
+		if($db)
+		{
+			$query = "select * from userinfo where id='".$id."' or number ='".$number."'";
+			$rows = mysql_query($query);
+			if (mysql_num_rows($rows))
+			{
+				return false;
+			}
+			else
+			{
+				$sql = "insert into userinfo (id,password,name,major,number,phone)";
+				$sql.= "values('".$id."','".$password."','".$name."','".$major."','".$number."','".$phone."')";
+				$result = mysql_query($sql);
+				
+				if($result)
+					return true;
+				else
+					return false;
+			}
+		}
+	}
+
+
+
 	function board_list()
 	{
 		$connect = mysql_connect("localhost", "root", "apmsetup");
