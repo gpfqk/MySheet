@@ -128,22 +128,23 @@
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left">
+				<div class="profile-left" style="margin-top:5px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
 				<div class="Profile-right">
-					
 <?
 					if($_SESSION['name']){
 ?>
-						<p style = "color : black;"><?=$_SESSION['name']?>
+
+						<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
+							<i class="fa fa-user"></i> <?=$_SESSION['name']?>
 							<a href="logout.php">
 								<input type=button value="로그아웃" id="logout">
 							</a>
-						</p>
+						</div>
 
 <?
 					}
@@ -153,7 +154,6 @@
 <?
 					}
 ?>
-					
 						<!-- modal -->
 					<div id="small-dialog" class="mfp-hide">
 						<div class="login-modal"> 	
