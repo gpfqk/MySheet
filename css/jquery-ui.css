@@ -599,5 +599,20 @@ body .ui-tooltip { border-width: 2px; }
 	cursor:pointer;
 }
 .ui-datepicker td {
-	height: 60px;
+	height: 80px;
+	line-height: 80px;
+	font-size: 12px;
+	width: 14.28%;
+}
+.ui-datepicker th {
+	height: 50px;
+	line-height: 50px;
+	font-size: 15px;
+	width: 14.28%;
+}
+.ui-datepicker td a{
+	height: 80px;
+	line-height: 80px;
+	font-size: 12px;
+	width: 100%;
 }
