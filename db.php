@@ -230,4 +230,25 @@
 			}
 		}
 	}
+
+	function query_test()
+	{
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		$query = "select * from studylist A, userinfo B ";
+		$query.= "where A.host = B.id ";
+		$query.= "and (host = '".$_SESSION['id']."' or member1 = '".$_SESSION['id']."' or member2 = '".$_SESSION['id']."' or member3 = '".$_SESSION['id']."');";
+		$result = mysql_query($query);
+
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+
+		      	echo $row['name'];
+				
+			}
+
+		}
+	}
 ?>
