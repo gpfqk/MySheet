@@ -1,19 +1,24 @@
 <?	if (!isset($_SESSION)) 	{ session_start(); }
 	include("db.php");
 	ensure_logged_in();
-	
-	echo $_POST["phone"];
+	$_SESSION['join'] = -1;
+
 	if (join_($_POST))
 	{
+		$_SESSION['join'] = 0;
 ?>
-		<script language="javascript">window.alert("회원가입 성공!");</script> 
+		<script language="javascript"> 
+			location.href="main.html";
+		</script>
 <?
-		header("Location: main.html");
 	}
 	else
 	{
+		$_SESSION['join'] = 1
 ?>
-		<script language="javascript">window.alert("아이디 혹은 학번이 이미 존재합니다.");</script> 
+		<script language="javascript"> 
+			location.href="main.html";
+		</script>
 <?
 	}
 ?>

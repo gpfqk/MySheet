@@ -154,8 +154,44 @@
 					}
 					else{
 ?>
-						<a href="#small-dialog" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
+						<a href="#small-dialog" id="login-modal" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
 <?
+						if($_SESSION['login'] == 1){
+							$_SESSION['login'] = -1;
+?>
+							<script type="text/javascript">
+								$(document).ready(function(){
+									alert("Login fail!!");
+									$('#login-modal').trigger('click');
+					    		});
+							</script>
+<?
+						}
+						if($_SESSION['join'] == 0){
+							$_SESSION['join'] = -1;
+?>
+							<script type="text/javascript">
+								$(document).ready(function(){
+									alert("Join success!!");
+									$('#login-modal').trigger('click');
+					    		});
+							</script>
+
+<?
+						}
+						if($_SESSION['join'] == 1){
+							$_SESSION['join'] = -1;
+?>
+							<script type="text/javascript">
+								$(document).ready(function(){
+									alert("Check ID or NUMBER !!");
+									$('#join-modal').trigger('click');
+					    		});
+							</script>
+<?
+						}
+
+
 					}
 ?>
 						<!-- modal -->
@@ -183,7 +219,7 @@
 									<input type="submit" value="LOGIN">
 								</form>
 								<br>
-								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
+								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" id="join-modal" class="sign-in popup-top-anim"> JOIN </a></p>
 							</div> 
 						</div>
 					</div>
