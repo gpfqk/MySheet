@@ -187,4 +187,30 @@
 			}
 		}
 	}
+
+	function show_studylist()
+	{
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		if($db)
+		{
+			$query = "select * from studylist where id='".$_SESSION['id']."' or number ='".$number."'";
+			$rows = mysql_query($query);
+			if (mysql_num_rows($rows))
+			{
+				return false;
+			}
+			else
+			{
+				$sql = "insert into userinfo (id,password,name,major,number,phone)";
+				$sql.= "values('".$id."','".$password."','".$name."','".$major."','".$number."','".$phone."')";
+				$result = mysql_query($sql);
+				
+				if($result)
+					return true;
+				else
+					return false;
+			}
+		}
+	}
 ?>
