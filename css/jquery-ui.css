@@ -600,7 +600,7 @@ body .ui-tooltip { border-width: 2px; }
 }
 .ui-datepicker td {
 	height: 80px;
-	line-height: 70px;
+	line-height: 80px;
 	font-size: 12px;
 	width: 14.28%;
 }
@@ -612,7 +612,7 @@ body .ui-tooltip { border-width: 2px; }
 }
 .ui-datepicker td a{
 	height: 80px;
-	line-height: 70px;
+	line-height: 80px;
 	font-size: 12px;
 	width: 100%;
 }
