@@ -69,32 +69,49 @@
 
 
 
-	function board_list()
+	function study_list()
 	{
-		$connect = mysql_connect("localhost", "root", "apmsetup");
-		$db = mysql_select_db("db_ip", $connect);
-		$query = "select * from board";
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		$query = "select * from studylist A, userinfo B ";
+		$query.= "where A.host = B.id ";
+		$query.= "and (host = '".$_SESSION['id']."' or member1 = '".$_SESSION['id']."' or member2 = '".$_SESSION['id']."' or member3 = '".$_SESSION['id']."');";
 		$result = mysql_query($query);
+
 		if($result)
-	   {
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
 ?>
-	    <table border="1"  cellspacing="0" style="text-align:center">
-<?
-		for($i=0;$i<mysql_num_rows($result);$i++)
-		{
-	      	$row = mysql_fetch_array($result); 
+				<div class="hotel-rooms">
+					<div class="hotel-left">
+						<a href="#" data-toggle="modal" data-target="#myModalbook" style="font-size:20px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span><?=$row['title']?></a> 
+<?						if($row['host'] == $_SESSION['id']){
 ?>
-			<tr>
-				<td><?=$row['num']?></td>
-				<td><a href="board_show.php?num=<?=$row['num']?>"><?=$row['subject']?></a></td>
-				<td><?=$row['writer']?></td>
-				<td><?=$row['content']?></td>
-			<tr>
+						<span class="glyphicon glyphicon-tower" style="color:#ffcc33; border-color:black; font-size:25px;" aria-hidden="false"></span>
 <?
-		}
+						}
 ?>
-		</table>
+						<p>스터디장 : <?=$row['name']?></p>
+					</div>
+					<div class="hotel-right text-right">
 <?
+						if($row['reservation'] != NULL ){
+?>
+							<a href="#"><h4>예약있음</h4></a>
+<?
+						}else{
+?>
+							<a href="#"><h4 style="color : black">예약없음</h4></a>
+<?
+						}
+?>
+					</div>
+				</div>
+<?
+				
+			}
+
 		}
 	}
 
