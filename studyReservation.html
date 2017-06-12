@@ -226,12 +226,36 @@ td{height: 21px; width:51px;}
 <!-- banner -->
    <div class="details-grids">
 				<div class="details-shade">
-					<div class="details-right">
-						<h1>선택예약</h1>
-							
+						<div class="details-right">
+						<h1>일정 추가</h1>
+							<form method="post">
+								이름:<input type="text" name="class" id="class"><br>
+								요일:<input type="text" name="day" list="dayofweek"
+								>		
+								<datalist id="dayofweek">
+									<!-- <select name="day"> -->
+										<option value="월요일">
+										<option value="화요일">
+										<option value="수요일">
+										<option value="목요일">
+										<option value="금요일">
+										<option value="토요일">
+										<option value="일요일">
+									<!-- </select> -->
+								</datalist><br>
+								시간<input type="time" name="">~<input type="time" name=""></br>
+								<input type="submit" name="" value="일정추가하기" >
+							</form>			
+						
 					</div>	
 				</div>
 			
+		<!--/footer-->
+    <div class="w3agile footer">
+			<div class="col-md-3 w3agile_footer_grid">
+				
+			</div>
+		</div>
 </div>
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
@@ -257,7 +281,6 @@ td{height: 21px; width:51px;}
 						<div class="tooltip"><span>Instagram</span></div>
 						</a></li>
 				</ul>
-				<a href="studyReservation.html"><img src="images/plus.png" style="position: absolute;right: 10px;bottom: 10px;"></a>
 			</div>
 			<div class="clearfix"> </div>
 	</div>

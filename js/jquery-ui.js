@@ -7750,6 +7750,7 @@ $.extend(Datepicker.prototype, {
 
 								// trigger custom callback
 								onSelect.apply((inst.input ? inst.input[0] : null), [dateStr, inst]);
+								
 							}
 						else
 							$.datepicker._hideDatepicker();
@@ -8797,9 +8798,10 @@ $.extend(Datepicker.prototype, {
 							(printDate.getTime() == today.getTime() ? ' ui-state-highlight' : '') +
 							(printDate.getTime() == currentDate.getTime() ? ' ui-state-active' : '') + // highlight selected day
 							(otherMonth ? ' ui-priority-secondary' : '') + // distinguish dates from other months
-							'" href=#">' + printDate.getDate() + '</a>')) + '</td>'; // display selectable date
+							' "href=#">' + printDate.getDate() + '</a>')) + '</td>'; // display selectable date
 						printDate.setDate(printDate.getDate() + 1);
 						printDate = this._daylightSavingAdjust(printDate);
+						
 					}
 					calender += tbody + '</tr>';
 				}
@@ -14908,5 +14910,7 @@ $.widget( "ui.tooltip", {
 		});
 	}
 });
-
+function click(){
+		Location.href="date.html";
+}
 }( jQuery ) );
