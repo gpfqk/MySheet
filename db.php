@@ -1,13 +1,12 @@
-<<<<<<< HEAD
-<? if (!isset($_SESSION)) { session_start(); }
-?>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<?
+<? 
 	header("Content-type: text/html;charset=utf-8");
 
-	function is_passwd_correct($id, $password, &$name, &$major, &$nunber, &$phone)
+	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+	$db = mysql_select_db("mysheet", $connect);
+	mysql_query("SET NAMES utf8");
+
+	if (!isset($_SESSION)) { session_start(); }function is_passwd_correct($id, $password, &$name, &$major, &$nunber, &$phone)
 	{
-		
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
 		mysql_query("SET NAMES utf8");
@@ -241,6 +240,7 @@
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
 		      	$arr[$i] = $row['sd_time'];
+		      	echo $row['sd_time'];
 			}
 		}
 
@@ -248,8 +248,8 @@
 			$result_array[$i] = explode(',',$arr[$i]);
 			echo "<br>".$result_array[$i][0]."//".$result_array[$i][1]."//".$result_array[$i][2]."//".$result_array[$i][3];
 		}
-		print_r($result_array);
-		// $query = "select num from schedule where sd_time not in 'tue%';";
-		// echo "<br>".$result_array[0][0]."//".$result_array[0][1]."//".$result_array[0][2];
+		// print_r($result_array);
+		$query = "select num from schedule where sd_time not in 'tue%';";
+		echo "<br>".$result_array[0][0]."//".$result_array[0][1]."//".$result_array[0][2];
 	}
 ?>
