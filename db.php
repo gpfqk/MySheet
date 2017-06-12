@@ -1,10 +1,17 @@
 <? if (!isset($_SESSION)) { session_start(); }
+?>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?
+	header("Content-type: text/html;charset=utf-8");
+
+	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+	$db = mysql_select_db("mysheet", $connect);
+	mysql_query("SET NAMES utf8");
+
+	if (!isset($_SESSION)) { session_start(); }
 	function is_passwd_correct($id, $password, &$name, &$major, &$nunber, &$phone)
 	{
-		//echo "$id";
-		//echo "$password";
-		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-		$db = mysql_select_db("mysheet", $connect);
+
 		$query = "select * from userinfo where id='".$id."'and password='".$password."'";
 		$rows = mysql_query($query);
 		if (mysql_num_rows($rows))
@@ -34,8 +41,7 @@
 
 	function join_($_POST)
 	{
-		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-		$db = mysql_select_db("mysheet", $connect);
+
 		$id=$_POST["id"];
 		$password=$_POST["password"];
 		$name=$_POST["name"];
@@ -71,8 +77,7 @@
 
 	function study_list()
 	{
-		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-		$db = mysql_select_db("mysheet", $connect);
+
 		$query = "select * from studylist A, userinfo B ";
 		$query.= "where A.host = B.id ";
 		$query.= "and (host = '".$_SESSION['id']."' or member1 = '".$_SESSION['id']."' or member2 = '".$_SESSION['id']."' or member3 = '".$_SESSION['id']."');";
@@ -117,8 +122,6 @@
 
 	function insert_data($a)
 	{
-		$connect = mysql_connect("localhost","root","apmsetup");
-		$db = mysql_select_db("db_ip", $connect);
 		if($db)
 		{
 			$sql = "insert into board (num,subject,writer,passwd,date,content)";
@@ -135,8 +138,6 @@
 
 	function show_content($num)
 	{
-		$connect = mysql_connect("localhost", "root", "apmsetup");
-		$db = mysql_select_db("db_ip", $connect);
 		$query = "select * from board where num='".$num."'";
 		$result = mysql_query($query);
 		if($result)
@@ -184,8 +185,6 @@
 
 	function delete_record($num,$passwd)
 	{
-		$connect = mysql_connect("localhost", "root", "apmsetup");
-		$db = mysql_select_db("db_ip", $connect);
 		$query = "select passwd from board where num='".$num."'";
 		$result = mysql_query($query);
 		if (mysql_num_rows($result))
@@ -207,8 +206,6 @@
 
 	function show_studylist()
 	{
-		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-		$db = mysql_select_db("mysheet", $connect);
 		if($db)
 		{
 			$query = "select * from studylist where id='".$_SESSION['id']."' or number ='".$number."'";
@@ -244,11 +241,16 @@
 	    {
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
-
-		      	echo $row['name'];
-				
+		      	$arr[$i] = $row['sd_time'];
 			}
-
 		}
+
+		for($i=0; $i<count($arr); $i++){
+			$result_array[$i] = explode(',',$arr[$i]);
+			echo "<br>".$result_array[$i][0]."//".$result_array[$i][1]."//".$result_array[$i][2]."//".$result_array[$i][3];
+		}
+		print_r($result_array);
+		// $query = "select num from schedule where sd_time not in 'tue%';";
+		// echo "<br>".$result_array[0][0]."//".$result_array[0][1]."//".$result_array[0][2];
 	}
 ?>
