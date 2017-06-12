@@ -1,11 +1,8 @@
-<?  if (!isset($_SESSION)) { session_start(); } 
-	include("db.php");
-	ensure_logged_in();
-?>
+<? if (!isset($_SESSION)) { session_start(); } ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Query Test</title>
+<title>스터디 예약 시스템 [내자리야]</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Travel Hunt App Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android  Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
@@ -68,6 +65,7 @@
 <!--//pop-up-box -->
 <style type="text/css">
 * {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
+td{height: 21px; width:51px;}
 </style>
     </head>
 <body>
@@ -138,37 +136,127 @@
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left">
+				<div class="profile-left" style="margin-top:5px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
 				<div class="Profile-right">
-					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
-						<i class="fa fa-user"></i> <?=$_SESSION['name']?>
+<?
+					if($_SESSION['name']){
+?>
+
+						<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
+							<i class="fa fa-user"></i> <?=$_SESSION['name']?>
+						</div>
+
+<?
+					}
+					else{
+?>
+						<a href="#small-dialog" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
+<?
+					}
+?>
+						<!-- modal -->
+					<div id="small-dialog" class="mfp-hide">
+						<div class="login-modal"> 	
+							<div class="booking-info">
+							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 로그인 </h1>
+							</div>
+							<div class="login-form">
+								<form action="login.php" method="post">
+									<p>아이디</p>
+									<input type="text" name="id" required=""/>
+									<p>비밀번호</p>
+									<input type="password" name="password" required=""/>
+									<br><br><br>	 
+<!-- 									<div class="wthree-text"> 
+										<ul> 
+											<li>
+												<input type="checkbox" id="brand" value="">
+												<label for="brand"><span></span> Remember me ?</label>  
+											</li>
+										</ul>
+										<div class="clear"> </div>
+									</div>  -->
+									<input type="submit" value="LOGIN">
+								</form>
+								<br>
+								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
+							</div> 
+						</div>
 					</div>
+					<!-- //modal --> 
+					<!-- modal-two -->
+					<div id="small-dialog1" class="mfp-hide">
+						<div class="login-modal">  
+							<div class="booking-info">
+							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 회원가입 </h1>
+							</div>
+							<div class="login-form signup-form">
+								<form action="join.php" method="post">
+									<p>아이디 </p>
+									<input type="text" name="id"  required="true"/>
+									<p>비밀번호</p>
+									<input type="password" name="password" placeholder="" required="true"/>	
+									<p>이름 </p>
+									<input type="text" name="name"  required="true"/>
+									<p>소속학과 </p>
+									<input type="text" name="major"  required="true"/>
+									<p>학번 </p>
+									<input type="text" name="number"  required="true"/>
+									<p>연락처 </p>
+									<input type="text" name="phone1"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone2"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone3"  required="true" length="5" style="width:30% !important;"/>
+									<div class="wthree-text"> 
+										<input type="checkbox" id="brand1" value="">
+										<label for="brand1"><span></span>I accept the terms of use</label> 
+									</div>
+									<input type="submit" value="Sign Up">		
+								</form> 
+							</div> 
+						</div>
+					</div>
+					<!-- //modal-two --> 
+					
 				</div>
 				<div class="clearfix"></div>
 			</div> 
-		</div>
-		<div class="w3agile single-hotel">
-		  	<div style="height:50px; line-height:45px; background:#ddd; margin:0 auto; margin-bottom:20px; border-style:double; border-color:gray; width:40%; font-size:30px; text-align:center;"> 추천예약 </div>
-		  <!--/rooms-->
-		  	<!--/room1-->
-
-	  	<div class="recommendform">
-			<form action="querytest.php" method="post">
-				<p>스터디명</p>
-				<input type="text" name="title" required=""/>
-				<p>시간</p>
-				<input type="text" name="time" required=""/>
-				<br><br><br>
-				<input type="submit" value="검색">
-			</form>
-		</div>
-			<? query_test($title, $time,'mon') ?>
+<!-- banner -->
+   <div class="details-grids">
+				<div class="details-shade">
+						<div class="details-right">
+						<h1>일정 추가</h1>
+							<form method="post">
+								이름:<input type="text" name="class" id="class"><br>
+								요일:<input type="text" name="day" list="dayofweek"
+								>		
+								<datalist id="dayofweek">
+									<!-- <select name="day"> -->
+										<option value="월요일">
+										<option value="화요일">
+										<option value="수요일">
+										<option value="목요일">
+										<option value="금요일">
+										<option value="토요일">
+										<option value="일요일">
+									<!-- </select> -->
+								</datalist><br>
+								시간<input type="time" name="">~<input type="time" name=""></br>
+								<input type="submit" name="" value="일정추가하기" >
+							</form>			
+						
+					</div>	
+				</div>
 			
+		<!--/footer-->
+    <div class="w3agile footer">
+			<div class="col-md-3 w3agile_footer_grid">
+				
+			</div>
+		</div>
+</div>
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">
@@ -194,9 +282,9 @@
 						</a></li>
 				</ul>
 			</div>
-		</div>
+			<div class="clearfix"> </div>
+	</div>
 	<!--/footer-->
-	
 </div>
 </div>
 <script src="js/jquery.nicescroll.js"></script>

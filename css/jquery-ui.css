@@ -581,6 +581,29 @@ body .ui-tooltip { border-width: 2px; }
 .ui-datepicker table {
 	margin: 0 0;
 }
+
+.text-box-light{
+	background: url(../images/calender.png) #394264 no-repeat 95% 50%;
+	cursor:pointer;
+}
+.ui-datepicker td {
+	height: 80px;
+	line-height: 80px;
+	font-size: 12px;
+	width: 14.28%;
+}
+.ui-datepicker th {
+	height: 50px;
+	line-height: 50px;
+	font-size: 15px;
+	width: 14.28%;
+}
+.ui-datepicker td a{
+	height: 80px;
+	line-height: 80px;
+	font-size: 12px;
+	width: 100%;
+}
 }
 @media only screen and (max-width: 320px) and (min-width: 240px) {
 	.ui-datepicker {

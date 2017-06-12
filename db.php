@@ -5,10 +5,11 @@
 	$db = mysql_select_db("mysheet", $connect);
 	mysql_query("SET NAMES utf8");
 
-	if (!isset($_SESSION)) { session_start(); }
-	function is_passwd_correct($id, $password, &$name, &$major, &$nunber, &$phone)
+	if (!isset($_SESSION)) { session_start(); }function is_passwd_correct($id, $password, &$name, &$major, &$nunber, &$phone)
 	{
-
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		mysql_query("SET NAMES utf8");
 		$query = "select * from userinfo where id='".$id."'and password='".$password."'";
 		$rows = mysql_query($query);
 		if (mysql_num_rows($rows))
@@ -326,22 +327,59 @@
 		}
 	}
 
-	function query_test()
+	function query_test($title, $time, $day)
 	{
-		$query = "select * from studylist A, userinfo B ";
-		$query.= "where A.host = B.id ";
-		$query.= "and (host = '".$_SESSION['id']."' or member1 = '".$_SESSION['id']."' or member2 = '".$_SESSION['id']."' or member3 = '".$_SESSION['id']."');";
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		$query = "select sd_time from schedule where sd_name = ".$title." and sd_time Like '".$day."%'";
 		$result = mysql_query($query);
 
 		if($result)
 	    {
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
-
-		      	echo $row['name'];
-				
+		      	$arr[$i] = $row['sd_time'];
 			}
-
 		}
+
+		for($i=0; $i<count($arr); $i++){
+			$result_array[$i] = explode(',',$arr[$i]);
+		}
+/////////////////////여기까지 일정 스플릿해서 배열에 저장
+
+		$query = "select * from checklist where num not in (";
+		for($i=0;$i<count($result_array);$i++)
+			{
+				$query.= $result_array[$i][1].",".$result_array[$i][2].",".$result_array[$i][3];
+				if($i<count($result_array)-1)
+					$query.=",";
+			};
+			$query.=");";
+		$result = mysql_query($query);
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+		      	$check_arr[$i] = $row['num'];
+		      	// echo $check_arr[$i]."<br>";
+			}
+		}
+		while(1){
+			$recommend = rand(1,24);
+			// echo "recommend: ".$recommend."<br>";
+			$k = 0;
+			for($j=$recommend; $j<$recommend+$time; $j++)
+			{
+				// echo "j: ".$j;
+				for($i=0; $i<count($check_arr); $i++)
+				{
+					if($j == $check_arr[$i])
+						$k++;
+				}
+			}
+			if($k == $time)
+				break;
+		}
+		echo $day."요일 : ".$recommend."시~".$recommend+$time."시";
 	}
 ?>
