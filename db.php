@@ -1,17 +1,16 @@
+<<<<<<< HEAD
 <? if (!isset($_SESSION)) { session_start(); }
 ?>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <?
 	header("Content-type: text/html;charset=utf-8");
 
-	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-	$db = mysql_select_db("mysheet", $connect);
-	mysql_query("SET NAMES utf8");
-
-	if (!isset($_SESSION)) { session_start(); }
 	function is_passwd_correct($id, $password, &$name, &$major, &$nunber, &$phone)
 	{
-
+		
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		mysql_query("SET NAMES utf8");
 		$query = "select * from userinfo where id='".$id."'and password='".$password."'";
 		$rows = mysql_query($query);
 		if (mysql_num_rows($rows))
