@@ -226,11 +226,11 @@
 		}
 	}
 
-	function query_test()
+	function query_test($title, $time, $day)
 	{
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
-		$query = "select sd_time from schedule where sd_time Like 'tue%';";
+		$query = "select sd_time from schedule where sd_name = ".$title." and sd_time Like '".$day."%'";
 		$result = mysql_query($query);
 
 		if($result)
@@ -260,8 +260,25 @@
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
 		      	$check_arr[$i] = $row['num'];
-		      	echo $check_arr[$i]."<br>";
+		      	// echo $check_arr[$i]."<br>";
 			}
 		}
+		while(1){
+			$recommend = rand(1,24);
+			// echo "recommend: ".$recommend."<br>";
+			$k = 0;
+			for($j=$recommend; $j<$recommend+$time; $j++)
+			{
+				// echo "j: ".$j;
+				for($i=0; $i<count($check_arr); $i++)
+				{
+					if($j == $check_arr[$i])
+						$k++;
+				}
+			}
+			if($k == $time)
+				break;
+		}
+		echo $day."요일 : ".$recommend."시~".$recommend+$time."시";
 	}
 ?>
