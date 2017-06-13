@@ -401,7 +401,6 @@
 		}
 	}
 
-<<<<<<< HEAD
 	function query_test($title, $time, $day)
 	{
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
@@ -466,9 +465,6 @@
 		$sql = "insert into reservationlist (id,password,name,major,number,phone)";
 		$sql.= "values('".$study."','".$password."','".$name."','".$major."','".$number."','".$phone."')";
 		$result = mysql_query($sql);
-				
 		
 	}
-=======
->>>>>>> 9865b602a70f6a36d492e9fd1ee7c131c966fec7
 ?>
