@@ -193,42 +193,47 @@ td{height: 21px; width:51px;}
 				<div class="details-shade">
 						<div class="details-right">
 						<h1>선택 예약</h1>
-							<form action="" method="post" >
+							<form action="executeStudyReservation.php" method="post" >
 								스터디:<input type="text" name="study" id="study"><br>
 								날짜:<input type="text" name="day" list="dayofweek"><br>
 								시간
 								<select name="starttime" style="width:88px;height:35px;">	
 									<?
+										$k=1;
 										for($i=10;$i<21;$i++){
 											for($j=0; $j<=30;$j+=30){
 												if(strlen($j)==1){
 													$j="0".$j;
 												}
-											?><option value=""><? echo $i.":".$j ?></option>
+											?><option value="<?=$k?>"><? echo $i.":".$j ?></option>
 											<?
+											$k++;
 											}
 										}
 									?>
 								</select>시~
 								<select name="endtime" style="width:88px;height:35px;">	
 									<?
+										$k=1;
 										for($i=10;$i<21;$i++){
 											for($j=0; $j<=30;$j+=30){
 												if(strlen($j)==1){
 													$j="0".$j;
 												}
-											?><option value=""><? echo $i.":".$j ?></option>
+											?><option value="<?=$k?>"><? echo $i.":".$j ?></option>
 											<?
+											$k++;
 											}
 										}
 									?>
 								</select>시
 								</br>
-								규모<input type="radio" name="소형">소형<input type="radio" name="">중형
-								<input type="radio" name="">대형</br>
-								옵션<input type="checkbox" name="">화이트보드</br>
-								<input type="checkbox" name="">프로젝터</br>
-								반복주기<input type="radio" name="week">1주<input type="radio" name="month">1달<input type="radio" name="norepeat">반복X</br>
+								규모<input type="radio" name="size" value="small">소형<input type="radio" name="size"
+								value ="medium">중형
+								<input type="radio" name="size" value="large">대형</br>
+								옵션<input type="checkbox" name="whiteboard">화이트보드</br>
+								<input type="checkbox" name="projecter">프로젝터</br>
+								반복주기<input type="radio" name="repeat" value="week">1주<input type="radio" name="repeat" value="month">1달<input type="radio" name="repeat" value="norepeat">반복X</br>
 
 								<input type="submit" name="" value="예약하기" >
 							</form>			

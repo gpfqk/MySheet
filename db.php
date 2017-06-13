@@ -382,4 +382,16 @@
 		}
 		echo $day."요일 : ".$recommend."시~".$recommend+$time."시";
 	}
+
+	function study_reservation($study,$day,$starttime,$endtime,$whiteboard,$projecter,$size,$repeat){
+
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+	
+		$sql = "insert into reservationlist (id,password,name,major,number,phone)";
+		$sql.= "values('".$study."','".$password."','".$name."','".$major."','".$number."','".$phone."')";
+		$result = mysql_query($sql);
+				
+		
+	}
 ?>
