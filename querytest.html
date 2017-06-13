@@ -158,7 +158,7 @@
 		  	<!--/room1-->
 
 	  	<div class="recommendform">
-			<form action="querytest.php" method="post">
+			<form action="querytest.php" method="GET">
 				<p>스터디명</p>
 				<input type="text" name="title" required=""/>
 				<p>시간</p>
@@ -167,7 +167,7 @@
 				<input type="submit" value="검색">
 			</form>
 		</div>
-			<? query_test($title, $time,'mon') ?>
+			<?=$_SESSION['result']?>
 			
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
