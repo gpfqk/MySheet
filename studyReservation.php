@@ -193,49 +193,76 @@ td{height: 21px; width:51px;}
 				<div class="details-shade">
 						<div class="details-right">
 						<h1>선택 예약</h1>
-							<form action="" method="post" >
-								스터디:<input type="text" name="study" id="study"><br>
-								날짜:<input type="text" name="day" list="dayofweek"><br>
-								시간
-								<select name="starttime" style="width:88px;height:35px;">	
-									<?
-										for($i=10;$i<21;$i++){
-											for($j=0; $j<=30;$j+=30){
-												if(strlen($j)==1){
-													$j="0".$j;
+						<form action="" method="post" >
+						<table border=2 style="width:80%; margin:0 auto;">
+							<tr style="height:60px; line-height: 60px;">
+								<td>스터디:</td>
+								<td colspan=2><input type="text" name="study" id="study" style="height:40px;"></td>
+							</tr>
+							<tr style="height:60px; line-height: 60px;">
+								<td>날짜:</td>
+								<td colspan=2><input type="text" name="day" list="dayofweek" style="height:40px;"></td>
+							</tr>
+							<tr style="height:60px; line-height: 60px;">
+								<td>시간:</td>
+								<td style="line-height:40px;">
+									<select name="starttime" style="width:100px; height:40px;">	
+									<!-- style="width:88px;height:35px;" -->
+										<?
+											for($i=10;$i<21;$i++){
+												for($j=0; $j<=30;$j+=30){
+													if(strlen($j)==1){
+														$j="0".$j;
+													}
+												?><option value=""><? echo $i.":".$j ?></option>
+												<?
 												}
-											?><option value=""><? echo $i.":".$j ?></option>
-											<?
 											}
-										}
-									?>
-								</select>시~
-								<select name="endtime" style="width:88px;height:35px;">	
-									<?
-										for($i=10;$i<21;$i++){
-											for($j=0; $j<=30;$j+=30){
-												if(strlen($j)==1){
-													$j="0".$j;
+										?>
+										<option value="ffff">hihi</option>
+									</select>시~
+								</td>
+								<td style="line-height:40px;">
+									<select name="endtime" style="width:100px; height:40px;">	
+										<?
+											for($i=10;$i<21;$i++){
+												for($j=0; $j<=30;$j+=30){
+													if(strlen($j)==1){
+														$j="0".$j;
+													}
+												?><option value=""><? echo $i.":".$j ?></option>
+												<?
 												}
-											?><option value=""><? echo $i.":".$j ?></option>
-											<?
 											}
-										}
-									?>
-								</select>시
-								</br>
-								규모<input type="radio" name="소형">소형<input type="radio" name="">중형
-								<input type="radio" name="">대형</br>
-								옵션<input type="checkbox" name="">화이트보드</br>
-								<input type="checkbox" name="">프로젝터</br>
-								반복주기<input type="radio" name="week">1주<input type="radio" name="month">1달<input type="radio" name="norepeat">반복X</br>
-
+										?>
+									</select>시
+								</td>
+								</tr>
+							<tr style="height:60px; line-height: 60px;">
+								<td>규모: </td>
+								<td colspan=2><input type="radio" name="소형"> 소형   
+								<input type="radio" name=""> 중형   
+								<input type="radio" name=""> 대형</td>
+							</tr>
+							<tr style="height:60px; line-height: 60px;">
+								<td>옵션 :</td>
+								<td colspan=2><input type="checkbox" name=""> 화이트보드   
+								<input type="checkbox" name=""> 프로젝터</td>
+							</tr>
+							<tr style="height:60px; line-height: 60px;">
+								<td>반복주기 :</td>
+								<td colspan=2><input type="radio" name="week">1주   
+								<input type="radio" name="month"> 1달   
+								<input type="radio" name="norepeat"> 반복X</td>
+							</tr>
+						</table>
 								<input type="submit" name="" value="예약하기" >
 							</form>			
 						
 					</div>	
 				</div>
-			
+		
+
 		<!--/footer-->
   
 		<div class="w3agile agileinfo_copy_right" >
