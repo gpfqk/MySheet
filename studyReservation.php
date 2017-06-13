@@ -40,6 +40,7 @@
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" />
+
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
 <!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -64,7 +65,8 @@
 		</script>
 <!--//pop-up-box -->
 <style type="text/css">
-* {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
+@import url('https://cdn.rawgit.com/singihae/Webfonts/master/style.css');
+body {font-family:'BM JUA','배달의민족 주아',sans-serif !important;}
 td{height: 21px; width:51px;}
 </style>
     </head>

@@ -131,7 +131,6 @@
 		$query.= "and A.host = B.host ";
 		$query.= "and B.title = '".$title."' and B.host = '".$host."';";
 		$result = mysql_query($query);
-
 		if($result)
 	    {
 			for($i=0;$i<mysql_num_rows($result);$i++){
