@@ -14,6 +14,7 @@
 		$_SESSION['number']=$number;
 		$_SESSION['phone']=$phone;
 		$_SESSION['login']=-1;
+		$_SESSION['comment_write']=-1;
 		$_SESSION['flash']="$name 님이 접속하셨습니다.";
 ?>
 	<script language="javascript"> 
