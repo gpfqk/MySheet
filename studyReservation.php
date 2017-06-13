@@ -124,89 +124,27 @@ td{height: 21px; width:51px;}
 <?
 					}
 ?>
-						<!-- modal -->
-					<div id="small-dialog" class="mfp-hide">
-						<div class="login-modal"> 	
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 로그인 </h1>
-							</div>
-							<div class="login-form">
-								<form action="login.php" method="post">
-									<p>아이디</p>
-									<input type="text" name="id" required=""/>
-									<p>비밀번호</p>
-									<input type="password" name="password" required=""/>
-									<br><br><br>	 
-<!-- 									<div class="wthree-text"> 
-										<ul> 
-											<li>
-												<input type="checkbox" id="brand" value="">
-												<label for="brand"><span></span> Remember me ?</label>  
-											</li>
-										</ul>
-										<div class="clear"> </div>
-									</div>  -->
-									<input type="submit" value="LOGIN">
-								</form>
-								<br>
-								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
-							</div> 
-						</div>
-					</div>
-					<!-- //modal --> 
-					<!-- modal-two -->
-					<div id="small-dialog1" class="mfp-hide">
-						<div class="login-modal">  
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 회원가입 </h1>
-							</div>
-							<div class="login-form signup-form">
-								<form action="join.php" method="post">
-									<p>아이디 </p>
-									<input type="text" name="id"  required="true"/>
-									<p>비밀번호</p>
-									<input type="password" name="password" placeholder="" required="true"/>	
-									<p>이름 </p>
-									<input type="text" name="name"  required="true"/>
-									<p>소속학과 </p>
-									<input type="text" name="major"  required="true"/>
-									<p>학번 </p>
-									<input type="text" name="number"  required="true"/>
-									<p>연락처 </p>
-									<input type="text" name="phone1"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone2"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone3"  required="true" length="5" style="width:30% !important;"/>
-									<div class="wthree-text"> 
-										<input type="checkbox" id="brand1" value="">
-										<label for="brand1"><span></span>I accept the terms of use</label> 
-									</div>
-									<input type="submit" value="Sign Up">		
-								</form> 
-							</div> 
-						</div>
-					</div>
-					<!-- //modal-two --> 
 					
 				</div>
 				<div class="clearfix"></div>
 			</div> 
 <!-- banner -->
-   <div class="details-grids">
-				<div class="details-shade">
-						<div class="details-right">
-						<h1>선택 예약</h1>
+  				 <div class="select-reservation" style="margin-top: 40px; margin-bottom: 50px;">
+						<h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1>
 						<form action="" method="post" >
-						<table border=2 style="width:80%; margin:0 auto;">
+						<table style="width:80%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
-								<td>스터디:</td>
+								<td style="width:20%;">스터디:</td>
 								<td colspan=2><input type="text" name="study" id="study" style="height:40px;"></td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>날짜:</td>
 								<td colspan=2><input type="text" name="day" list="dayofweek" style="height:40px;"></td>
 							</tr>
-							<tr style="height:60px; line-height: 60px;">
+							<tr">
 								<td>시간:</td>
-								<td style="line-height:40px;">
-									<select name="starttime" style="width:100px; height:40px;">	
+								<td style="height:60px;">
+									<select name="starttime" style="width:100px; height:40px; margin-top:10px;line-height:18px;">	
 									<!-- style="width:88px;height:35px;" -->
 										<?
 											for($i=10;$i<21;$i++){
@@ -219,11 +157,10 @@ td{height: 21px; width:51px;}
 												}
 											}
 										?>
-										<option value="ffff">hihi</option>
-									</select>시~
+									</select> <div style="line-height: 60px">&nbsp;시 ~</div>
 								</td>
-								<td style="line-height:40px;">
-									<select name="endtime" style="width:100px; height:40px;">	
+								<td style="height:60px; line-height: 60px;">
+									<select name="endtime" style="width:100px; height:40px; margin-top:10px;line-height:18px;">	
 										<?
 											for($i=10;$i<21;$i++){
 												for($j=0; $j<=30;$j+=30){
@@ -235,32 +172,35 @@ td{height: 21px; width:51px;}
 												}
 											}
 										?>
-									</select>시
+									</select> <div style="line-height: 60px">&nbsp;시</div>
 								</td>
 								</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>규모: </td>
-								<td colspan=2><input type="radio" name="소형"> 소형   
-								<input type="radio" name=""> 중형   
+								<td colspan=2><input type="radio" name="소형"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name=""> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 								<input type="radio" name=""> 대형</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>옵션 :</td>
-								<td colspan=2><input type="checkbox" name=""> 화이트보드   
+								<td colspan=2><input type="checkbox" name=""> 화이트보드 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 								<input type="checkbox" name=""> 프로젝터</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>반복주기 :</td>
-								<td colspan=2><input type="radio" name="week">1주   
-								<input type="radio" name="month"> 1달   
+								<td colspan=2><input type="radio" name="week"> 1주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="month"> 1달 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
 								<input type="radio" name="norepeat"> 반복X</td>
 							</tr>
+							<tr><td></td><td></td><td></td></tr>
+							<tr>
+								<td colspan="3" align=center><input type="submit" name="" value="예약하기"></td>
+							</tr>
 						</table>
-								<input type="submit" name="" value="예약하기" >
+								
 							</form>			
 						
 					</div>	
-				</div>
 		
 
 		<!--/footer-->
