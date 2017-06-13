@@ -134,7 +134,7 @@ td{height: 21px; width:51px;}
 						<form action="" method="post" >
 						<table style="width:80%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
-								<td style="width:20%;">스터디:</td>
+								<td style="width:30%;">스터디:</td>
 								<td colspan=2><input type="text" name="study" id="study" style="height:40px;"></td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
@@ -144,7 +144,7 @@ td{height: 21px; width:51px;}
 							<tr">
 								<td>시간:</td>
 								<td style="height:60px;">
-									<select name="starttime" style="width:100px; height:40px; margin-top:10px;line-height:18px;">	
+									<select name="starttime" style="width:85px; height:40px; margin-top:10px;line-height:18px;">	
 									<!-- style="width:88px;height:35px;" -->
 										<?
 											for($i=10;$i<21;$i++){
@@ -157,10 +157,10 @@ td{height: 21px; width:51px;}
 												}
 											}
 										?>
-									</select> <div style="line-height: 60px">&nbsp;시 ~</div>
+									</select> <div style="line-height: 60px">&nbsp;~ </div>
 								</td>
 								<td style="height:60px; line-height: 60px;">
-									<select name="endtime" style="width:100px; height:40px; margin-top:10px;line-height:18px;">	
+									<select name="endtime" style="width:85px; height:40px; margin-top:10px;line-height:18px;">	
 										<?
 											for($i=10;$i<21;$i++){
 												for($j=0; $j<=30;$j+=30){
@@ -172,24 +172,24 @@ td{height: 21px; width:51px;}
 												}
 											}
 										?>
-									</select> <div style="line-height: 60px">&nbsp;시</div>
+									</select>
 								</td>
 								</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>규모: </td>
-								<td colspan=2><input type="radio" name="소형"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name=""> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<td colspan=2><input type="radio" name="소형"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name=""> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 								<input type="radio" name=""> 대형</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>옵션 :</td>
-								<td colspan=2><input type="checkbox" name=""> 화이트보드 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<td colspan=2><input type="checkbox" name=""> 화이트보드 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="checkbox" name=""> 프로젝터</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
-								<td>반복주기 :</td>
+								<td>반복 :</td>
 								<td colspan=2><input type="radio" name="week"> 1주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="month"> 1달 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+								<input type="radio" name="month"> 1달 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="radio" name="norepeat"> 반복X</td>
 							</tr>
 							<tr><td></td><td></td><td></td></tr>
