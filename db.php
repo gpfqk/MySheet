@@ -39,7 +39,6 @@
 
 	function join_($_POST)
 	{
-
 		$id=$_POST["id"];
 		$password=$_POST["password"];
 		$name=$_POST["name"];
@@ -49,9 +48,13 @@
 		$phone2=$_POST["phone2"];
 		$phone3=$_POST["phone3"];
 		$phone="$phone1"."$phone2"."$phone3";
+		
+		global $db;
+
 		if($db)
 		{
 			$query = "select * from userinfo where id='".$id."' or number ='".$number."'";
+
 			$rows = mysql_query($query);
 			if (mysql_num_rows($rows))
 			{
@@ -247,14 +250,16 @@
 
 	function comment_write($_POST)
 	{
-
-		$sql = "insert into comment (writer,name,studyname,content,password) ";
-		$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."','".$_POST['password']."')";
-		$result = mysql_query($sql);
-		if($result)
-			return true;
-		else
-			return false;
+		global $db;
+		if($db){
+			$sql = "insert into comment (writer,name,studyname,content,password) ";
+			$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."','".$_POST['password']."')";
+			$result = mysql_query($sql);
+			if($result)
+				return true;
+			else
+				return false;
+		}
 
 	}
 

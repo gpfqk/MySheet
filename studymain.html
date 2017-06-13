@@ -157,26 +157,6 @@
 		  <!--/rooms-->
 		  	<!--/room1-->
 <?
-		if($_SESSION['comment_write'] == 1){
-			$_SESSION['comment_write'] = -1;
-?>
-			<script type="text/javascript">
-				$(document).ready(function(){
-					alert("Comment writing fail!!");
-	    		});
-			</script>
-<?
-		}
-		if($_SESSION['comment_write'] == 0){
-			$_SESSION['comment_write'] = -1;
-			?>
-			<script type="text/javascript">
-				$(document).ready(function(){
-					alert("Comment writing success!!");
-	    		});
-			</script>
-<?
-		}
 		    studymain($_GET);
 ?>
 		</div>
