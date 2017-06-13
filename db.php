@@ -39,7 +39,6 @@
 
 	function join_($_POST)
 	{
-
 		$id=$_POST["id"];
 		$password=$_POST["password"];
 		$name=$_POST["name"];
@@ -49,9 +48,13 @@
 		$phone2=$_POST["phone2"];
 		$phone3=$_POST["phone3"];
 		$phone="$phone1"."$phone2"."$phone3";
+		
+		global $db;
+
 		if($db)
 		{
 			$query = "select * from userinfo where id='".$id."' or number ='".$number."'";
+
 			$rows = mysql_query($query);
 			if (mysql_num_rows($rows))
 			{
@@ -247,14 +250,16 @@
 
 	function comment_write($_POST)
 	{
-
-		$sql = "insert into comment (writer,name,studyname,content,password) ";
-		$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."','".$_POST['password']."')";
-		$result = mysql_query($sql);
-		if($result)
-			return true;
-		else
-			return false;
+		global $db;
+		if($db){
+			$sql = "insert into comment (writer,name,studyname,content,password) ";
+			$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."','".$_POST['password']."')";
+			$result = mysql_query($sql);
+			if($result)
+				return true;
+			else
+				return false;
+		}
 
 	}
 
@@ -396,4 +401,74 @@
 		}
 	}
 
+<<<<<<< HEAD
+	function query_test($title, $time, $day)
+	{
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		$query = "select sd_time from schedule where sd_name = ".$title." and sd_time Like '".$day."%'";
+		$result = mysql_query($query);
+
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+		      	$arr[$i] = $row['sd_time'];
+			}
+		}
+
+		for($i=0; $i<count($arr); $i++){
+			$result_array[$i] = explode(',',$arr[$i]);
+		}
+/////////////////////여기까지 일정 스플릿해서 배열에 저장
+
+		$query = "select * from checklist where num not in (";
+		for($i=0;$i<count($result_array);$i++)
+			{
+				$query.= $result_array[$i][1].",".$result_array[$i][2].",".$result_array[$i][3];
+				if($i<count($result_array)-1)
+					$query.=",";
+			};
+			$query.=");";
+		$result = mysql_query($query);
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+		      	$check_arr[$i] = $row['num'];
+		      	// echo $check_arr[$i]."<br>";
+			}
+		}
+		while(1){
+			$recommend = rand(1,24);
+			// echo "recommend: ".$recommend."<br>";
+			$k = 0;
+			for($j=$recommend; $j<$recommend+$time; $j++)
+			{
+				// echo "j: ".$j;
+				for($i=0; $i<count($check_arr); $i++)
+				{
+					if($j == $check_arr[$i])
+						$k++;
+				}
+			}
+			if($k == $time)
+				break;
+		}
+		echo $day."요일 : ".$recommend."시~".$recommend+$time."시";
+	}
+
+	function study_reservation($study,$day,$starttime,$endtime,$whiteboard,$projecter,$size,$repeat){
+
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+	
+		$sql = "insert into reservationlist (id,password,name,major,number,phone)";
+		$sql.= "values('".$study."','".$password."','".$name."','".$major."','".$number."','".$phone."')";
+		$result = mysql_query($sql);
+				
+		
+	}
+=======
+>>>>>>> 9865b602a70f6a36d492e9fd1ee7c131c966fec7
 ?>

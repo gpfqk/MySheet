@@ -197,8 +197,7 @@ td{height: 21px; width:51px;}
 								<td colspan="3" align=center><input type="submit" name="" value="예약하기"></td>
 							</tr>
 						</table>
-								
-							</form>			
+						</form>			
 						
 					</div>	
 		

@@ -160,7 +160,7 @@ header("Content-type: text/html;charset=utf-8");
 						<a href="#small-dialog" id="login-modal" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
 <?
 						if($_SESSION['login'] == 1){
-							$_SESSION['login'] = -1;
+							$_SESSION['login'] = 0;
 ?>
 							<script type="text/javascript">
 								$(document).ready(function(){
@@ -170,8 +170,8 @@ header("Content-type: text/html;charset=utf-8");
 							</script>
 <?
 						}
-						if($_SESSION['join'] == 0){
-							$_SESSION['join'] = -1;
+						if($_SESSION['join'] == 2){
+							$_SESSION['join'] = 0;
 ?>
 							<script type="text/javascript">
 								$(document).ready(function(){
@@ -183,7 +183,7 @@ header("Content-type: text/html;charset=utf-8");
 <?
 						}
 						if($_SESSION['join'] == 1){
-							$_SESSION['join'] = -1;
+							$_SESSION['join'] = 0;
 ?>
 							<script type="text/javascript">
 								$(document).ready(function(){
@@ -193,8 +193,6 @@ header("Content-type: text/html;charset=utf-8");
 							</script>
 <?
 						}
-
-
 					}
 ?>
 						<!-- modal -->
