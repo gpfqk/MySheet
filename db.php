@@ -289,10 +289,19 @@
 		else if($num == 22) return "20:30";
 		else if($num == 23) return "21:00";
 		else if($num == 24) return "21:30";
-
-
+		else if($num == 25) return "22:00";
 	}
 
+	function conversion_day($num)
+	{
+		if($num == 'mon') return "월";
+		else if($num == 'tue') return "화";
+		else if($num == 'wed') return "수";
+		else if($num == 'thu') return "목";
+		else if($num == 'fri') return "금";
+		else if($num == 'sat') return "토";
+		else if($num == 'sun') return "일";
+	}
 	function insert_data($a)
 	{
 		if($db)
@@ -402,124 +411,66 @@
 	}
 	function query_test($title, $time, $day)
 	{
-		// echo "$title";
-		// echo "$time";
-		// echo "$day";
-		// exit();
 		global $db;
-		$query = "select sd_time from schedule where sd_name = '".$title."' and sd_time Like '".$day."%'";
+		$query = "select sd_time from schedule s, studylist l
+		where l.title Like '".$title."' and 
+		s.sd_time Like '".$day."%'
+		and s.id in (l.member1, l.member2, l.member3, l.host)";
 		$result = mysql_query($query);
-
+				// return $query;
 		if($result)
 	    {
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
 		      	$arr[$i] = $row['sd_time'];
 			}
-
-		}
-
-
-		for($i=0; $i<count($arr); $i++){
-			$result_array[$i] = explode(',',$arr[$i]);
-		}
+			for($i=0; $i<count($arr); $i++){
+				$result_array[$i] = explode(',',$arr[$i]);
+			}
 
 /////////////////////여기까지 일정 스플릿해서 배열에 저장
 
-		$query = "select * from checklist where num not in (";
-		for($i=0;$i<count($result_array);$i++)
-		{
-			$query.= $result_array[$i][1].",".$result_array[$i][2].",".$result_array[$i][3];
-			if($i<count($result_array)-1)
-				$query.=",";
-		};
-
-		$query.=");";
-		$result = mysql_query($query);
-		if($result)
-	    {
-			for($i=0;$i<mysql_num_rows($result);$i++){
-		      	$row = mysql_fetch_array($result); 
-		      	$check_arr[$i] = $row['num'];
-		      	// echo $check_arr[$i]."<br>";
-			}
-		}
-
-		while(1){
-			$recommend = rand(1,24);
-			// echo "recommend: ".$recommend."<br>";
-			$k = 0;
-			for($j=$recommend; $j<$recommend+$time; $j++)
+			$query = "select * from checklist where num not in (";
+			for($i=0;$i<count($result_array);$i++)
 			{
-				// echo "j: ".$j;
-				for($i=0; $i<count($check_arr); $i++)
-				{
-					if($j == $check_arr[$i])
-						$k++;
+				$query.= $result_array[$i][1].",".$result_array[$i][2].",".$result_array[$i][3];
+				if($i<count($result_array)-1)
+					$query.=",";
+			};
+
+			$query.=");";
+			// return $query;
+			$result = mysql_query($query);
+			if($result)
+		    {
+				for($i=0;$i<mysql_num_rows($result);$i++){
+			      	$row = mysql_fetch_array($result); 
+			      	$check_arr[$i] = $row['num'];
 				}
+
+			while(1){
+				$recommend = rand(1,24);
+				// echo "recommend: ".$recommend."<br>";
+				$k = 0;
+				for($j=$recommend; $j<($recommend+$time); $j++)
+				{
+					// echo "j: ".$j;
+					for($i=0; $i<count($check_arr); $i++)
+					{
+						if($j == $check_arr[$i])
+							$k++;
+					}
+				}
+				if($k == $time)
+					break;
+				}
+				return conversion_day($day)."요일 : ".conversion_time($recommend)."~".conversion_time(($recommend+$time))."<br>";
 			}
-			if($k == $time)
-				break;
+		 	else return conversion_day($day)."요일에는 가능한 예약시간이 없습니다.<br>";
+			
 		}
-
-		return $day."요일 : ".$recommend."시~".$recommend+$time."시";
+		else return "최초 query없음";
 	}
-
-// 	function query_test($title, $time, $day)
-// 	{
-// 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-// 		$db = mysql_select_db("mysheet", $connect);
-// 		$query = "select sd_time from schedule where sd_name = ".$title." and sd_time Like '".$day."%'";
-// 		$result = mysql_query($query);
-
-// 		if($result)
-// 	    {
-// 			for($i=0;$i<mysql_num_rows($result);$i++){
-// 		      	$row = mysql_fetch_array($result); 
-// 		      	$arr[$i] = $row['sd_time'];
-// 			}
-// 		}
-
-// 		for($i=0; $i<count($arr); $i++){
-// 			$result_array[$i] = explode(',',$arr[$i]);
-// 		}
-// /////////////////////여기까지 일정 스플릿해서 배열에 저장
-
-// 		$query = "select * from checklist where num not in (";
-// 		for($i=0;$i<count($result_array);$i++)
-// 			{
-// 				$query.= $result_array[$i][1].",".$result_array[$i][2].",".$result_array[$i][3];
-// 				if($i<count($result_array)-1)
-// 					$query.=",";
-// 			};
-// 			$query.=");";
-// 		$result = mysql_query($query);
-// 		if($result)
-// 	    {
-// 			for($i=0;$i<mysql_num_rows($result);$i++){
-// 		      	$row = mysql_fetch_array($result); 
-// 		      	$check_arr[$i] = $row['num'];
-// 		      	// echo $check_arr[$i]."<br>";
-// 			}
-// 		}
-// 		while(1){
-// 			$recommend = rand(1,24);
-// 			// echo "recommend: ".$recommend."<br>";
-// 			$k = 0;
-// 			for($j=$recommend; $j<$recommend+$time; $j++)
-// 			{
-// 				// echo "j: ".$j;
-// 				for($i=0; $i<count($check_arr); $i++)
-// 				{
-// 					if($j == $check_arr[$i])
-// 						$k++;
-// 				}
-// 			}
-// 			if($k == $time)
-// 				break;
-// 		}
-// 		echo $day."요일 : ".$recommend."시~".$recommend+$time."시";
-// 	}
 
 	function study_reservation($study,$day,$starttime,$endtime,$whiteboard,$projecter,$size,$repeat){
 
