@@ -1,6 +1,5 @@
 <?  if (!isset($_SESSION)) { session_start(); } 
 	include("db.php");
-	ensure_logged_in();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -167,13 +166,9 @@
 				<input type="submit" value="검색">
 			</form>
 		</div>
-<<<<<<< HEAD
-			<?=$_SESSION['result']?>
-			
-=======
-			<? query_test($title, $time,'mon'); ?>
 
->>>>>>> 8fe3596cb20f3c9c2e1abdf9b9c464f867b733a0
+		<?=$GLOBALS['querytest']?>
+
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">
