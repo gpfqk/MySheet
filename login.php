@@ -6,6 +6,7 @@
 	$major=NULL;
 	$number=NULL;
 	$phone=NULL;
+	$_SESSION['login']=0;
 	if (is_passwd_correct($id,$password,$name,$major,$number,$phone))
 	{
 		$_SESSION['id']=$id;
@@ -13,7 +14,7 @@
 		$_SESSION['major']=$major;
 		$_SESSION['number']=$number;
 		$_SESSION['phone']=$phone;
-		$_SESSION['login']=-1;
+		$_SESSION['login']=2;
 		$_SESSION['flash']="$name 님이 접속하셨습니다.";
 ?>
 	<script language="javascript"> 

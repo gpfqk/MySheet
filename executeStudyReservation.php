@@ -3,8 +3,12 @@
 	$study=$_POST["study"];
 	$day=$_POST["day"];
 	$starttime=$_POST["starttime"];
-	$option=$_POST["size"];
+	$endtime=$_POST["endtime"];
+	$whiteboard=$_POST["whiteboard"];
+	$projecter=$_POST["projecter"];
+	$size=$_POST["size"];
+	$repeat=$_POST["repeat"];
 	echo $study;
 	echo $starttime;
-	echo $option;
+	echo $size;
 ?>

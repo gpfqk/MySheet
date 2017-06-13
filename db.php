@@ -39,7 +39,6 @@
 
 	function join_($_POST)
 	{
-
 		$id=$_POST["id"];
 		$password=$_POST["password"];
 		$name=$_POST["name"];
@@ -49,9 +48,13 @@
 		$phone2=$_POST["phone2"];
 		$phone3=$_POST["phone3"];
 		$phone="$phone1"."$phone2"."$phone3";
+		
+		global $db;
+
 		if($db)
 		{
 			$query = "select * from userinfo where id='".$id."' or number ='".$number."'";
+
 			$rows = mysql_query($query);
 			if (mysql_num_rows($rows))
 			{
@@ -186,7 +189,78 @@
 		<div style="font-size : 20px; padding-left : 10px;">
 			스터디원 : <?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
 		</div>
+
+		<script>
+			$(document).ready(function(){
+				$("#comment_write").hide();
+			    $("#comment_write_button").click(function(){
+			        $("#comment_write").toggle();
+			    });
+			});
+		</script>
+		<br><br>
+
+		<center><div><h3>스터디 게시판</h3></div></center>
+		<div  style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
+		<div id="comment_write">
+			<form method=post action="comment.php">
+				<table>
+					<tr>
+						<td> 내용 </td>
+						<td> <textarea name="content" rows="3" cols="50"></textarea>
+					</tr>
+					<tr>
+						<td> 비밀번호 </td>
+						<td> <input type=password name="password" size=20></td>
+						<td><input type=hidden name="studyname" value="<?=$title?>">
+						<td><input type=hidden name="host" value="<?=$host?>"">
+						<input type=submit value="저장"></td>
+					</tr>
+				</table>
+			</form>
+			<br>
+		</div>
 <?
+
+		$query = "select * from comment ";
+		$query.= "where studyname = '".$title."' ";
+		$query.= "order by time desc;";
+		$result = mysql_query($query);
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++)
+			{
+		      	$row = mysql_fetch_array($result); 
+?>
+				<div>
+				    <table>
+						<tr>
+							<td><?=$row['content']?></td>
+						<tr>
+						<tr align="right">
+							<td align="right"><?=$row['name']?>(<?=$row['writer']?>) <?=$row['time']?></td>
+						</tr>
+					</table>
+				</div>	
+				<hr>
+<?
+			}
+		}
+	}
+
+	function comment_write($_POST)
+	{
+		global $db;
+		if($db){
+			$sql = "insert into comment (writer,name,studyname,content,password) ";
+			$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."','".$_POST['password']."')";
+			$result = mysql_query($sql);
+			if($result)
+				return true;
+			else
+				return false;
+		}
+
 	}
 
 	function conversion_time($num)
@@ -327,6 +401,7 @@
 		}
 	}
 
+<<<<<<< HEAD
 	function query_test($title, $time, $day)
 	{
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
@@ -394,4 +469,6 @@
 				
 		
 	}
+=======
+>>>>>>> 9865b602a70f6a36d492e9fd1ee7c131c966fec7
 ?>

@@ -1,6 +1,3 @@
-<?php
-header("Content-type: text/html;charset=utf-8");
-?>
 <? if (!isset($_SESSION)) { session_start(); } ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +27,7 @@ header("Content-type: text/html;charset=utf-8");
      </script>
 
      <!-- metro ui 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-     <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <link href="css/metro.css" rel="stylesheet">
         <link href="css/metro-icons.css" rel="stylesheet">
         <link href="css/metro-responsive.css" rel="stylesheet">
@@ -42,7 +39,7 @@ header("Content-type: text/html;charset=utf-8");
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" /> -->
+    <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" />
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
 <!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -68,6 +65,7 @@ header("Content-type: text/html;charset=utf-8");
 <!--//pop-up-box -->
 <style type="text/css">
 * {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
+td{height: 21px; width:51px;}
 </style>
     </head>
 <body>
@@ -118,7 +116,7 @@ header("Content-type: text/html;charset=utf-8");
 						<div class="pro-menu">
 							<div class="logo">
 								<li><a class=" link link--yaku  active" href="main.html"><span>H</span><span>o</span><span>m</span><span>e</span></a></li>
-								<li><a class=" link link--yaku" href="timemark.html"><span>시</span><span>간</span><span>표</span><span>조</span><span>회</span></a></li>
+								<li><a class=" link link--yaku" href="about.html"><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span></a></li>
 								<li><a class=" link link--yaku" href="short-codes.html"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="destination.html"><span>D</span><span>e</span><span>s</span><span>t</span><span>i</span><span>n</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span></a></li>
 								<li><a class=" link link--yaku" href="contact.html"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
@@ -157,42 +155,8 @@ header("Content-type: text/html;charset=utf-8");
 					}
 					else{
 ?>
-						<a href="#small-dialog" id="login-modal" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
+						<a href="#small-dialog" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
 <?
-						if($_SESSION['login'] == 1){
-							$_SESSION['login'] = 0;
-?>
-							<script type="text/javascript">
-								$(document).ready(function(){
-									alert("Login fail!!");
-									$('#login-modal').trigger('click');
-					    		});
-							</script>
-<?
-						}
-						if($_SESSION['join'] == 2){
-							$_SESSION['join'] = 0;
-?>
-							<script type="text/javascript">
-								$(document).ready(function(){
-									alert("Join success!!");
-									$('#login-modal').trigger('click');
-					    		});
-							</script>
-
-<?
-						}
-						if($_SESSION['join'] == 1){
-							$_SESSION['join'] = 0;
-?>
-							<script type="text/javascript">
-								$(document).ready(function(){
-									alert("Check ID or NUMBER !!");
-									$('#join-modal').trigger('click');
-					    		});
-							</script>
-<?
-						}
 					}
 ?>
 						<!-- modal -->
@@ -220,7 +184,7 @@ header("Content-type: text/html;charset=utf-8");
 									<input type="submit" value="LOGIN">
 								</form>
 								<br>
-								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" id="join-modal" class="sign-in popup-top-anim"> JOIN </a></p>
+								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
 							</div> 
 						</div>
 					</div>
@@ -260,14 +224,154 @@ header("Content-type: text/html;charset=utf-8");
 				<div class="clearfix"></div>
 			</div> 
 <!-- banner -->
-   <div class="details-grid">
+   <div class="details-grids">
 				<div class="details-shade">
-						<div class="details-right"><br>
-							<img src="images/mysheet.png" width="50px" height="50px" alt=" " style="margin-bottom: 20px;">
-							<h1>내자리야</h1>
-							<br><h4>편리한 스터디 예약을 이용하세요.</h4>
-
+						<div class="details-right">
+						<h1>시간표 조회</h1>
+						<div>
+							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+								<tr>
+									<td></td>
+									<td>일</td>
+									<td>월</td>
+									<td>화</td>
+									<td>수</td>
+									<td>목</td>
+									<td>금</td>
+									<td>토</td>
+								</tr>
+								<tr>
+									<td>9시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>10시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>11시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>12시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>1시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>2시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>3시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>4시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>5시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>6시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>7시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>8시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>9시</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
 						</div>
+					</div>	
 <!-- 						<div class="banner_search">
 								<form action="#" method="post">
 									<input type="search" name="search" value="Where to go ?" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where to go ?';}" required="">
@@ -277,15 +381,7 @@ header("Content-type: text/html;charset=utf-8");
 
 				
 				</div>
-			</div>
-		<div class="w3agile banner-bottom">
-				<ul>
-				    <li><a href="selectReservation.html" class="hvr-radial-out" style="margin-bottom: 10px;"><i class="glyphicon glyphicon-plus-sign" aria-hidden="true"></i></a><h5>선택예약</h5></li>
-					<li><a href="query" class="hvr-radial-out" style="margin-bottom: 10px;"><i class="glyphicon glyphicon-search" aria-hidden="true"></i></a><h5>추천예약</h5></li>
-					<li><a href="mystudy.html" class="hvr-radial-out" style="margin-bottom: 10px;"><i class="glyphicon glyphicon-list-alt" aria-hidden="true"></i></a><h5>내스터디</h5></li>
-					<li><a href="timemark.html" class="hvr-radial-out" style="margin-bottom: 10px;"><i class="glyphicon glyphicon-th" aria-hidden="true"></i></a><h5>내시간표</h5></li>
-				</ul>
-			</div>
+			
    <!-- //banner -->
    <!--/welcome-->
 <!-- 		        <div class="w3agile welcome"> 
@@ -375,18 +471,7 @@ header("Content-type: text/html;charset=utf-8");
 		<!--/footer-->
     <div class="w3agile footer">
 			<div class="col-md-3 w3agile_footer_grid">
-				<h3>About Us</h3>
-				<p>편리한 스터디 예약을 위한 '내자리야'는 여러분의 스터디 개설 및 가입과, 예약을 보다 편리하게 제공해 줄 것입니다.</p>
-				<!-- <h3 class="logo"><a href="main.html">T<span>r</span>a<span>v</span>e<span>l</span> <span>H</span>u<span>n</span>t</a></h3>
-			</div>
-			<div class="col-md-2 w3agile_footer_grid">	
-				<h3>Links</h3>
-				<ul>
-					<li><a href="main.html">Home</a></li>
-					<li><a href="short-codes.html">Services</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contact.html">Mail Us</a></li>
-				</ul> -->
+				
 			</div>
 			<!-- <div class="col-md-4 w3agile_footer_grid">
 				<h3>Twitter Posts</h3>
@@ -410,10 +495,8 @@ header("Content-type: text/html;charset=utf-8");
 				</ul>
 			</div> -->
 		</div>
+</div>
 		<div class="w3agile agileinfo_copy_right">
-<!-- 			<div class="agileinfo_copy_right_left">
-				<p>© 2016 Travel Hunt. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
-			</div> -->
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">
 					<li><a class="social-linkedin" href="#">
@@ -441,7 +524,6 @@ header("Content-type: text/html;charset=utf-8");
 			<div class="clearfix"> </div>
 	</div>
 	<!--/footer-->
-	
 </div>
 </div>
 <script src="js/jquery.nicescroll.js"></script>
