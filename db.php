@@ -88,7 +88,7 @@
 ?>
 				<div class="hotel-rooms">
 					<div class="hotel-left">
-						<a href="#" data-toggle="modal" data-target="#myModalbook" style="font-size:20px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span><?=$row['title']?></a> 
+						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style="font-size:20px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span><?=$row['title']?></a> 
 <?						if($row['host'] == $_SESSION['id']){
 ?>
 						<span class="glyphicon glyphicon-tower" style="color:#ffcc33; border-color:black; font-size:25px;" aria-hidden="false"></span>
@@ -116,6 +116,107 @@
 			}
 
 		}
+	}
+
+	function studymain($_GET)
+	{
+		$title = $_GET['title'];
+		$host = $_GET['host'];
+
+		$query = "select * from studylist A, reservationlist B ";
+		$query.= "where A.title = B.title ";
+		$query.= "and A.host = B.host ";
+		$query.= "and B.title = '".$title."' and B.host = '".$host."';";
+		$result = mysql_query($query);
+
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+?>
+				<div class="hotel-rooms">
+					<div class="hotel-left">
+						<div style="font-size : 20px">
+							[<?=$row['day']?>] <?=conversion_time($row['start'])?> ~ <?=conversion_time($row['end'])?>
+						</div> 
+						<div style="font-size : 20px">
+							<?=$row['room']?>
+						</div> 
+					</div>
+					<div class="hotel-right text-right">
+<?
+						if($row['completion'] == 1 ){
+?>
+							<div><h4>예약완료</h4></div>
+<?
+						}else{
+?>
+							<div><h4 style="color : black">예약대기</h4></div>
+<?
+						}
+?>
+					</div>
+				</div>
+<?
+			}
+		}
+
+		$query = "select name from userinfo ";
+		$query.= "where id = '".$host."';";
+		$result = mysql_query($query);
+		$row0 = mysql_fetch_array($result);
+?>
+		<div style="font-size : 20px; padding-left : 10px;">
+			스터디장 : <?=$row0['name']?>
+		</div>
+<?
+		$query = "select name from userinfo ";
+		$query.= "where id = '".$row['member1']."';";
+		$result = mysql_query($query);
+		$row1 = mysql_fetch_array($result);
+		$query = "select name from userinfo ";
+		$query.= "where id = '".$row['member2']."';";
+		$result = mysql_query($query);
+		$row2 = mysql_fetch_array($result);
+		$query = "select name from userinfo ";
+		$query.= "where id = '".$row['member3']."';";
+		$result = mysql_query($query);
+		$row3 = mysql_fetch_array($result);
+?>
+		<div style="font-size : 20px; padding-left : 10px;">
+			스터디원 : <?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
+		</div>
+<?
+	}
+
+	function conversion_time($num)
+	{
+		if($num == 1) return "10:00";
+		else if($num == 2) return "10:30";
+		else if($num == 3) return "11:00";
+		else if($num == 4) return "11:30";
+		else if($num == 5) return "12:00";
+		else if($num == 6) return "12:30";
+		else if($num == 7) return "13:00";
+		else if($num == 8) return "13:30";
+		else if($num == 9) return "14:00";
+		else if($num == 10) return "14:30";
+		else if($num == 11) return "15:00";
+		else if($num == 12) return "15:30";
+		else if($num == 13) return "16:00";
+		else if($num == 14) return "16:30";
+		else if($num == 15) return "17:00";
+		else if($num == 16) return "17:30";
+		else if($num == 17) return "18:00";
+		else if($num == 18) return "18:30";
+		else if($num == 19) return "19:00";
+		else if($num == 20) return "19:30";
+		else if($num == 21) return "20:00";
+		else if($num == 22) return "20:30";
+		else if($num == 23) return "21:00";
+		else if($num == 24) return "21:30";
+
+
 	}
 
 	function insert_data($a)
