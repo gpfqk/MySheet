@@ -134,7 +134,7 @@ td{height: 21px; width:51px;}
 						<form action="" method="post" >
 						<table style="width:80%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
-								<td style="width:30%;">스터디:</td>
+								<td>이름:</td>
 								<td colspan=2><input type="text" name="study" id="study" style="height:40px;"></td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
@@ -144,7 +144,7 @@ td{height: 21px; width:51px;}
 							<tr">
 								<td>시간:</td>
 								<td style="height:60px;">
-									<select name="starttime" style="width:85px; height:40px; margin-top:10px;line-height:18px;">	
+									<select name="starttime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
 									<!-- style="width:88px;height:35px;" -->
 										<?
 											for($i=10;$i<21;$i++){
@@ -160,7 +160,7 @@ td{height: 21px; width:51px;}
 									</select> <div style="line-height: 60px">&nbsp;~ </div>
 								</td>
 								<td style="height:60px; line-height: 60px;">
-									<select name="endtime" style="width:85px; height:40px; margin-top:10px;line-height:18px;">	
+									<select name="endtime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
 										<?
 											for($i=10;$i<21;$i++){
 												for($j=0; $j<=30;$j+=30){
@@ -182,12 +182,12 @@ td{height: 21px; width:51px;}
 								<input type="radio" name=""> 대형</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
-								<td>옵션 :</td>
+								<td>옵션: </td>
 								<td colspan=2><input type="checkbox" name=""> 화이트보드 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="checkbox" name=""> 프로젝터</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
-								<td>반복 :</td>
+								<td>반복: </td>
 								<td colspan=2><input type="radio" name="week"> 1주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="radio" name="month"> 1달 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<input type="radio" name="norepeat"> 반복X</td>
@@ -205,31 +205,9 @@ td{height: 21px; width:51px;}
 		<!--/footer-->
   
 		<div class="w3agile agileinfo_copy_right" >
-			<div class="agileinfo_copy_right_right">
-				<ul class="social">
-					<li><a class="social-linkedin" href="#">
-						<i></i>
-						<div class="tooltip"><span>Facebook</span></div>
-						</a></li>
-					<li><a class="social-twitter" href="#">
-						<i></i>
-						<div class="tooltip"><span>Twitter</span></div>
-						</a></li>
-					<li><a class="social-google" href="#">
-						<i></i>
-						<div class="tooltip"><span>Google+</span></div>
-						</a></li>
-					<li><a class="social-facebook" href="#">
-						<i></i>
-						<div class="tooltip"><span>Pinterest</span></div>
-						</a></li>
-					<li><a class="social-instagram" href="#">
-						<i></i>
-						<div class="tooltip"><span>Instagram</span></div>
-						</a></li>
-				</ul>
+			<div class="agileinfo_copy_right_right" style="color:white;">
+				ⓒ 2017. 내자리야 all rights reserved.
 			</div>
-			<div class="clearfix"> </div>
 	</div>
 	<!--/footer-->
 </div>
