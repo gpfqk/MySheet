@@ -77,42 +77,7 @@ td{height: 21px; width:51px;}
 				<div class="profile-menu text-center">
 					<img class="border-effect" src="images/mysheet.png" alt=" ">
 						<h3>MENU</h3>
-						<!-- 앱바시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-						<!-- <link href="http://cdn.metroui.org.ua/css/metro.min.css" rel="stylesheet">
-						<link href="http://cdn.metroui.org.ua/css/metro.min.css" rel="stylesheet">
-						<link href="http://cdn.metroui.org.ua/css/metro-schemes.min.css" rel="stylesheet">
-						<link href="http://cdn.metroui.org.ua/css/metro-responsive.min.css" rel="stylesheet">
-						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-						<script src="http://cdn.metroui.org.ua/js/metro.min.js"></script> -->
-
-							<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<div class="app-bar darcula" data-role="appbar">
-							    <a class="app-bar-element" href="javascript:void(0);">Home</a>
-							    <span class="app-bar-divider"></span>
-							    <ul class="app-bar-menu">
-							        <li data-flexorderorigin="0" data-flexorder="1"><a href="javascript:void(0);">Home</a></li>
-							        <li data-flexorderorigin="1" data-flexorder="2">
-							            <a href="javascript:void(0);" class="dropdown-toggle">Products</a>
-							            <ul class="d-menu" data-role="dropdown">
-							                <li><a href="javascript:void(0);">Windows 10</a></li>
-							                <li><a href="javascript:void(0);">Spartan</a></li>
-							                <li><a href="javascript:void(0);">Outlook</a></li>
-							                <li><a href="javascript:void(0);">Office 2015</a></li>
-							                <li class="divider"></li>
-							                <li><a href="" class="dropdown-toggle">Other Products</a>
-							                    <ul class="d-menu" data-role="dropdown">
-							                        <li><a href="javascript:void(0);">Internet Explorer 10</a></li>
-							                        <li><a href="javascript:void(0);">Skype</a></li>
-							                        <li><a href="javascript:void(0);">Surface</a></li>
-							                    </ul>
-							                </li>
-							            </ul>
-							        </li>
-							        <li data-flexorderorigin="2" data-flexorder="3"><a href="javascript:void(0);">Support</a></li>
-							        <li data-flexorderorigin="3" data-flexorder="4"><a href="javascript:void(0);">Help</a></li>
-							    </ul>
-							<div class="app-bar-pullbutton automatic" style="display: none;"></div><div class="clearfix" style="width: 0;"></div><nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" style="display: none;"><ul class="app-bar-pullmenubar hidden app-bar-menu"></ul></nav></div> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-							<!-- 앱바끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				
 						<div class="pro-menu">
 							<div class="logo">
 								<li><a class=" link link--yaku  active" href="main.html"><span>H</span><span>o</span><span>m</span><span>e</span></a></li>
@@ -226,14 +191,54 @@ td{height: 21px; width:51px;}
 <!-- banner -->
    <div class="details-grids">
 				<div class="details-shade">
-					<div class="details-right">
-						<h1>선택예약</h1>
-							
+						<div class="details-right">
+						<h1>선택 예약</h1>
+							<form action="" method="post" >
+								스터디:<input type="text" name="study" id="study"><br>
+								날짜:<input type="text" name="day" list="dayofweek"><br>
+								시간
+								<select name="starttime" style="width:88px;height:35px;">	
+									<?
+										for($i=10;$i<21;$i++){
+											for($j=0; $j<=30;$j+=30){
+												if(strlen($j)==1){
+													$j="0".$j;
+												}
+											?><option value=""><? echo $i.":".$j ?></option>
+											<?
+											}
+										}
+									?>
+								</select>시~
+								<select name="endtime" style="width:88px;height:35px;">	
+									<?
+										for($i=10;$i<21;$i++){
+											for($j=0; $j<=30;$j+=30){
+												if(strlen($j)==1){
+													$j="0".$j;
+												}
+											?><option value=""><? echo $i.":".$j ?></option>
+											<?
+											}
+										}
+									?>
+								</select>시
+								</br>
+								규모<input type="radio" name="소형">소형<input type="radio" name="">중형
+								<input type="radio" name="">대형</br>
+								옵션<input type="checkbox" name="">화이트보드</br>
+								<input type="checkbox" name="">프로젝터</br>
+								반복주기<input type="radio" name="week">1주<input type="radio" name="month">1달<input type="radio" name="norepeat">반복X</br>
+
+								<input type="submit" name="" value="예약하기" >
+							</form>			
+						
 					</div>	
 				</div>
 			
-</div>
-		<div class="w3agile agileinfo_copy_right">
+		<!--/footer-->
+  
+		<div class="w3agile agileinfo_copy_right" >
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">
 					<li><a class="social-linkedin" href="#">
@@ -257,7 +262,6 @@ td{height: 21px; width:51px;}
 						<div class="tooltip"><span>Instagram</span></div>
 						</a></li>
 				</ul>
-				<a href="studyReservation.php"><img src="images/plus.png" style="position: absolute;right: 10px;bottom: 10px;"></a>
 			</div>
 			<div class="clearfix"> </div>
 	</div>
