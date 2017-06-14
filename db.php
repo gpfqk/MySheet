@@ -504,8 +504,6 @@
 		$sql = "insert into schedule (id,sd_name,sd_time)";
 		$sql.= "values('".$id."','".$sd_name."','".$sd_time."')";
 		$result = mysql_query($sql);
-<<<<<<< HEAD
-=======
 	}
 
 	function timemark($id){
@@ -527,8 +525,6 @@
 			echo $i;	
 			echo $j;
 			echo $num;
-		
->>>>>>> 0007f1fcfa6436dde40e282d8992e6c9434ad4c6
 	}
 
 	function study_search()
