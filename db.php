@@ -186,7 +186,21 @@
 		$row3 = mysql_fetch_array($result);
 ?>
 		<div style="font-size : 20px; padding-left : 10px;">
-			스터디원 : <?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
+			스터디원 : a<?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
+<?
+		if($_SESSION['id'] == $host)
+		{
+?>
+			<center>
+				<div>
+					<a href="#small-dialog" class="sign-in popup-top-anim">초대</a>
+					<a href="">추방</a>
+				</div>
+			</center>
+<?
+		}
+?>
+			
 		</div>
 
 		<script>
@@ -203,17 +217,17 @@
 		<div  style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
 		<div id="comment_write">
 			<form method=post action="comment.php">
-				<table>
+				<table style="width:80%; margin:30px auto;">
 					<tr>
-						<td> 내용 </td>
-						<td> <textarea name="content" rows="3" cols="50"></textarea>
+						<td style="width:20%;"> 내용 </td>
+						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="50"></textarea> </td>
+						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
 					</tr>
 					<tr>
 						<td> 비밀번호 </td>
-						<td> <input type=password name="password" size=20></td>
-						<td><input type=hidden name="studyname" value="<?=$title?>">
-						<td><input type=hidden name="host" value="<?=$host?>"">
-						<input type=submit value="저장"></td>
+						<td> <input style="width:100%;" type=password name="password" size=20>
+						<input type=hidden name="studyname" value="<?=$title?>">
+						<input type=hidden name="host" value="<?=$host?>""></td>
 					</tr>
 				</table>
 			</form>
@@ -463,7 +477,7 @@
 				if($k == $time)
 					break;
 				}
-				return conversion_day($day)."요일 : ".conversion_time($recommend)."~".conversion_time(($recommend+$time))."<br>";
+				return conversion_day($day)."요일 : ".conversion_time($recommend)."~".conversion_time($recommend+$time)."<br>";
 			}
 		 	else return conversion_day($day)."요일에는 가능한 예약시간이 없습니다.<br>";
 			

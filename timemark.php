@@ -14,6 +14,7 @@
 <meta charset utf="8">
 <!--font-awsome-css-->
      <link rel="stylesheet" href="css/font-awesome.min.css"> 
+     <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <!--custom css-->
@@ -43,7 +44,6 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" />
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
 <!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -83,15 +83,20 @@ td{height: 21px; width:51px;}
 						<h3>MENU</h3>
 						<div class="pro-menu">
 							<div class="logo">
-								<li><a class=" link link--yaku  active" href="main.html"><span>H</span><span>o</span><span>m</span><span>e</span></a></li>
-								<li><a class=" link link--yaku" href="about.html"><span>A</span><span>b</span><span>o</span><span>u</span><span>t</span></a></li>
-								<li><a class=" link link--yaku" href="short-codes.html"><span>S</span><span>e</span><span>r</span><span>v</span><span>i</span><span>c</span><span>e</span><span>s</span></a></li>
-								<li><a class=" link link--yaku" href="destination.html"><span>D</span><span>e</span><span>s</span><span>t</span><span>i</span><span>n</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span><span>s</span></a></li>
-								<li><a class=" link link--yaku" href="contact.html"><span>C</span><span>o</span><span>n</span><span>t</span><span>a</span><span>c</span><span>t</span></a></li>
+								<li><a class=" link link--yaku active" href="main.html">Home</a></li>
+								<li>----------------</li>
+								<li><a class=" link link--yaku" href="timemark.html">내 시간표 관리</a></li>
+								<!-- <li><a class=" link link--yaku" href="edittimetable.php">내 시간표 편집</a></li> -->
+								<li><a class=" link link--yaku" href="destination.html">내 정보 관리</a></li>
+								<li><a class=" link link--yaku" href="mystudy.html">내 스터디 관리</a></li>
+								<li>----------------</li>
+								<li><a class=" link link--yaku" href="contact.html">전체 스터디 검색</a></li>
+								<li><a class=" link link--yaku" href="contact.html">도움말 및 사용법</a></li>
+								<li>----------------</li>
 <?
 								if($_SESSION['name']){
 ?>
-								<li><a class=" link link--yaku" href="logout.php"><span>L</span><span>o</span><span>g</span><span>o</span><span>u</span><span>t</span></a></li>
+								<li><a class=" link link--yaku" href="logout.php">LOGOUT</a></li>
 <?
 								}
 ?>
@@ -104,13 +109,13 @@ td{height: 21px; width:51px;}
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left" style="margin-top:5px;">
+				<div class="profile-left" style="margin-top:15px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
-				<div class="Profile-right">
+				<div class="Profile-right" style="margin-top:10px;">			
 <?
 					if($_SESSION['name']){
 ?>
