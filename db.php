@@ -186,7 +186,7 @@
 		$row3 = mysql_fetch_array($result);
 ?>
 		<div style="font-size : 20px; padding-left : 10px;">
-			스터디원 : a<?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
+			스터디원 : <?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
 <?
 		if($_SESSION['id'] == $host)
 		{
@@ -259,6 +259,9 @@
 <?
 			}
 		}
+
+
+
 	}
 
 	function comment_write($_POST)
@@ -401,6 +404,8 @@
 
 	function show_studylist()
 	{
+		global $db;
+
 		if($db)
 		{
 			$query = "select * from studylist where id='".$_SESSION['id']."' or number ='".$number."'";
@@ -506,6 +511,96 @@
 		$result = mysql_query($sql);
 	}
 
+
+	
+	function member_add($_POST){
+		global $db;
+
+		$addmember=$_POST['addmember'];
+		$studyname=$_POST['studyname'];
+		$host=$_POST['host'];
+	
+		$sql = "insert into member_add (studyname,host,addmember) ";
+		$sql.= "values('".$studyname."','".$host."','".$addmember."');";
+
+		return mysql_query($sql);
+	}
+
+	function invitation_list($id){
+		$query = "select * from member_add A ";
+		$query.= "where A.addmember = '".$id."';";
+
+
+		$result = mysql_query($query);
+
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+?>
+				<div class="hotel-rooms">
+					<div class="hotel-left">
+						<p style="font-size:20px; color: black;"><span class="glyphicon glyphicon-inbox" aria-hidden="true">
+							
+						</span><span>< <?=$row['studyname']?> ></span>에서 가입을 요청합니다.</p> 
+					</div>
+					<div class="hotel-right text-right" style="height: 20px;">
+						<div style="float : right;">
+							<form action="invitation_confirm.php" method="GET">
+							   	<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="addmember" value="<?=$row['addmember']?>">
+								<input type="hidden" name="no" value="no">
+								<input type="submit" value="거절">
+							</form>
+						</div>
+						<div style="float : right;">
+							<form action="invitation_confirm.php" method="GET">
+								<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="addmember" value="<?=$row['addmember']?>">
+								<input type="hidden" name="no" value="yes">
+								<input type="submit" value="승낙">
+							</form>
+						</div>
+
+					</div>
+				</div>
+<?
+				
+			}
+
+		}
+	}
+
+	function invitation_confirm($_GET){
+		$studyname = $_GET['studyname'];
+		$host = $_GET['host'];
+		$addmember = $_GET['addmember'];
+		$no = $_GET['no'];
+
+		if ($no != 'no')
+		{
+			$query = "delete from member_add where studyname='".$studyname."'and addmember='".$addmember."'";
+			$result = mysql_query($query);
+
+			$query = "UPDATE studylist SET member3 = '".$addmember."' ";
+			$query.= "WHERE title = '".$studyname."' and host = '".$host."';";
+			$result = mysql_query($query);
+
+			return true;
+		}
+		else if($no == 'no')
+		{
+
+			$query = "delete from member_add where studyname='".$studyname."'and addmember='".$addmember."'";
+			$result = mysql_query($query);
+			return false;
+		}
+
+	}
+
+
 	function timemark($id){
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
@@ -516,6 +611,7 @@
 			{	
 				//열 개수 
 				$num = mysql_num_rows($results);
+
 				 for($i=0;$i<$num;$i++){
 					$row = mysql_fetch_row($results);
 					$j = $row[0];
@@ -577,4 +673,32 @@
 	}
 
 }
+
+	function study_search()
+   {
+
+      $query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
+      $result = mysql_query($query);
+
+      if($result)
+       {
+         for($i=0;$i<mysql_num_rows($result);$i++){
+               $row = mysql_fetch_array($result); 
+?>
+            <div class="hotel-rooms">
+               <div class="hotel-left">
+                  <p style="color:#333 !important">스터디이름 : <?=$row['title']?></p>
+                  <p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
+               </div>
+               <div class="hotel-right text-right">
+                     <a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
+               </div>
+            </div>
+<?
+            
+         }
+
+      }
+   }
+
 ?>
