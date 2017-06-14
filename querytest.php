@@ -30,7 +30,6 @@
 				$('.menu-link').bigSlide();
 				});
      </script>
-
      <!-- metro ui 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <link href="css/metro.css" rel="stylesheet">

@@ -40,6 +40,7 @@
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" />
+
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
 <!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -64,7 +65,8 @@
 		</script>
 <!--//pop-up-box -->
 <style type="text/css">
-* {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
+@import url('https://cdn.rawgit.com/singihae/Webfonts/master/style.css');
+body {font-family:'BM JUA','배달의민족 주아',sans-serif !important;}
 td{height: 21px; width:51px;}
 </style>
     </head>
@@ -149,12 +151,14 @@ td{height: 21px; width:51px;}
 									<select name="starttime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
 									<!-- style="width:88px;height:35px;" -->
 										<?
+											$k=1;
 											for($i=10;$i<21;$i++){
 												for($j=0; $j<=30;$j+=30){
 													if(strlen($j)==1){
 														$j="0".$j;
 													}
-												?><option value=""><? echo $i.":".$j ?></option>
+												?><option value="<?=$k?>"><? echo $i.":".$j;
+												$k++; ?></option>
 												<?
 												}
 											}
@@ -164,12 +168,14 @@ td{height: 21px; width:51px;}
 								<td style="height:60px; line-height: 60px;">
 									<select name="endtime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
 										<?
+											$k=1;
 											for($i=10;$i<21;$i++){
 												for($j=0; $j<=30;$j+=30){
 													if(strlen($j)==1){
 														$j="0".$j;
 													}
-												?><option value=""><? echo $i.":".$j ?></option>
+												?><option value="<?=$k?>"><? echo $i.":".$j;
+												$k++; ?></option>
 												<?
 												}
 											}
@@ -179,9 +185,9 @@ td{height: 21px; width:51px;}
 								</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>규모: </td>
-								<td colspan=2><input type="radio" name="소형"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name=""> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-								<input type="radio" name=""> 대형</td>
+								<td colspan=2><input type="radio" name="size" value="small"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="size"> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<input type="radio" name="size"> 대형</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>옵션: </td>
