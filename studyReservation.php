@@ -128,9 +128,11 @@ td{height: 21px; width:51px;}
 				</div>
 				<div class="clearfix"></div>
 			</div> 
+
 <!-- banner -->
-  				 <div class="select-reservation" style="margin-top: 40px; margin-bottom: 50px;">
-						<h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1>
+				<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 내 스터디 </div>
+  				 <div class="select-reservation" style="margin-top: 20px; margin-bottom: 50px;">
+						<!-- <h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1> -->
 						<form action="" method="post" >
 						<table style="width:80%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
