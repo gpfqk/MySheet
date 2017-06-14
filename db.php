@@ -515,18 +515,64 @@
 			if (mysql_num_rows($results))
 			{	
 				$num = mysql_num_rows($results);
-				
-				$row = mysql_fetch_row($results);
-				$i = $row[0];
-				$row = mysql_fetch_row($results);
-				
-				$j = $row[0];
+				 for($i=0;$i<$num;$i++){
+					$row = mysql_fetch_row($results);
+					$j = $row[0];
+					${"jj".$i} = explode(",", $j);
+					for($g=0;$g<count(${"jj".$i});$g++){
 
+					}
+					if($jj0[0]="tue")
+						$bgcolor = "blue";
+					}
 			}
-			echo $num;
-			echo $i;	
-			echo $j;
+					//echo count($jj0);
+					echo $jj0[0].$jj0[1];
+					echo $jj1[0].$jj1[1];
+
+					?>
+							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+								<tr>
+									<td></td>
+									<td>일</td>
+									<td>월</td>
+									<td>화</td>
+									<td>수</td>
+									<td>목</td>
+									<td>금</td>
+									<td>토</td>
+								</tr>
+								<?
+									$k=1;
+								 	for($i=10;$i<23;$i++){
+								 ?>
+								 <tr style="border-bottom:hidden;" >	
+								 	<td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
+									<td id=<?="sun".$k; $k++; ?>></td>
+									<td id=<?="mon".$k;?>></td>
+									<td id=<?="tue".$k;?>></td>
+									<td id=<?="wen".$k;?>></td>
+									<td id=<?="thr".$k;?>></td>
+									<td id=<?="fri".$k;?>></td>
+									<td id=<?="sat".$k;?>></td>	
+								</tr>
+								<tr >	
+									<td id=<?="sun".$k?>></td>
+									<td id=<?="mon".$k?>></td>
+									<td id=<?="tue".$k?><?
+										if("tue".$k=$jj0[0].$jj0[1]){
+									?> bgcolor="<?=$bgcolor?>"
+									}?>></td>
+									<td id=<?="wen".$k;?>></td>
+									<td id=<?="thr".$k;?>></td>
+									<td id=<?="fri".$k;?>></td>
+									<td id=<?="sat".$k;?>></td>	
+								</tr>
+								<?
+								$k++;
+								}?>
+							</table>
 			
-		
+		<?
 	}
 ?>
