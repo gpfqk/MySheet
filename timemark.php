@@ -200,47 +200,10 @@ td{height: 21px; width:51px;}
    <div class="details-grids">
 				<div class="details-shade">
 						<div class="details-right">
-						<h1><? timemark($id); ?></h1>
-						<button style="width: 50px;height: 50px;" value="편집" onClick="location.href='/edittimetable.php'"></button>
+						<h1>시간표 조회</h1>
+						<button style="width: 50px;height: 25px;" value="편집" onClick="location.href='/edittimetable.php'"></button>
 						<div>
-							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
-								<tr>
-									<td></td>
-									<td>일</td>
-									<td>월</td>
-									<td>화</td>
-									<td>수</td>
-									<td>목</td>
-									<td>금</td>
-									<td>토</td>
-								</tr>
-								<?
-									$k=1;
-								 	for($i=10;$i<23;$i++){
-								 ?>
-								 <tr style="border-bottom:hidden;" >	
-								 	<td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
-									<td id=<?="sun".$k; $k++; ?>></td>
-									<td id=<?="mon".$k;?>></td>
-									<td id=<?"tue".$k;?>></td>
-									<td id=<?"wen".$k;?>></td>
-									<td id=<?"thr".$k;?>></td>
-									<td id=<?"fri".$k;?>></td>
-									<td id=<?"sat".$k;?>></td>	
-								</tr>
-								<tr >	
-									<td id=<?="sun".$k?>></td>
-									<td id=<?="mon".$k;?>></td>
-									<td id=<?"tue".$k;?>></td>
-									<td id=<?"wen".$k;?>></td>
-									<td id=<?"thr".$k;?>></td>
-									<td id=<?"fri".$k;?>></td>
-									<td id=<?"sat".$k;?>></td>	
-								</tr>
-								<?
-								$k++;
-								}?>
-							</table>
+						<? timemark($id); ?>
 						</div>
 					</div>	
 				</div>
