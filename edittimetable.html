@@ -1,8 +1,4 @@
-<?  if (!isset($_SESSION)) { session_start(); } 
-	include("db.php");
-	ensure_logged_in();
-
-?>
+<? if (!isset($_SESSION)) { session_start(); } ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,6 +40,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
 <!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -69,6 +66,7 @@
 <!--//pop-up-box -->
 <style type="text/css">
 * {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
+td{height: 21px; width:51px;}
 </style>
     </head>
 <body>
@@ -139,57 +137,139 @@
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left">
+				<div class="profile-left" style="margin-top:5px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
 				<div class="Profile-right">
-					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
-						<i class="fa fa-user"><?=$_SESSION['name']?></i> 
-					</div>
-					<!-- modal -->
+<?
+					if($_SESSION['name']){
+?>
+
+						<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
+							<i class="fa fa-user"></i> <?=$_SESSION['name']?>
+						</div>
+
+<?
+					}
+					else{
+?>
+						<a href="#small-dialog" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
+<?
+					}
+?>
+						<!-- modal -->
 					<div id="small-dialog" class="mfp-hide">
-						<div class="member-add-modal"> 	
+						<div class="login-modal"> 	
 							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 스터디원 초대 </h1>
+							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 로그인 </h1>
 							</div>
 							<div class="login-form">
-								<form action="member_add.php" method="POST">
-									<p>스터디원 아이디</p>
-									<input type="text" name="addmember" required=""/>
-									<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
-									<input type="hidden" name="host" value="<?=$_GET['host']?>" />
+								<form action="login.php" method="post">
+									<p>아이디</p>
+									<input type="text" name="id" required=""/>
+									<p>비밀번호</p>
+									<input type="password" name="password" required=""/>
 									<br><br><br>	 
-									<input type="submit" value="초대 요청 전송">
+<!-- 									<div class="wthree-text"> 
+										<ul> 
+											<li>
+												<input type="checkbox" id="brand" value="">
+												<label for="brand"><span></span> Remember me ?</label>  
+											</li>
+										</ul>
+										<div class="clear"> </div>
+									</div>  -->
+									<input type="submit" value="LOGIN">
 								</form>
 								<br>
+								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
 							</div> 
 						</div>
 					</div>
-					<!-- //modal -->
+					<!-- //modal --> 
+					<!-- modal-two -->
+					<div id="small-dialog1" class="mfp-hide">
+						<div class="login-modal">  
+							<div class="booking-info">
+							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 회원가입 </h1>
+							</div>
+							<div class="login-form signup-form">
+								<form action="join.php" method="post">
+									<p>아이디 </p>
+									<input type="text" name="id"  required="true"/>
+									<p>비밀번호</p>
+									<input type="password" name="password" placeholder="" required="true"/>	
+									<p>이름 </p>
+									<input type="text" name="name"  required="true"/>
+									<p>소속학과 </p>
+									<input type="text" name="major"  required="true"/>
+									<p>학번 </p>
+									<input type="text" name="number"  required="true"/>
+									<p>연락처 </p>
+									<input type="text" name="phone1"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone2"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone3"  required="true" length="5" style="width:30% !important;"/>
+									<div class="wthree-text"> 
+										<input type="checkbox" id="brand1" value="">
+										<label for="brand1"><span></span>I accept the terms of use</label> 
+									</div>
+									<input type="submit" value="Sign Up">		
+								</form> 
+							</div> 
+						</div>
+					</div>
+					<!-- //modal-two --> 
+					
 				</div>
 				<div class="clearfix"></div>
 			</div> 
-		</div>
-		<div class="w3agile single-hotel">
-		  	<div style="height:50px; line-height:45px; background:#ddd; margin:0 auto; margin-bottom:20px; border-style:double; border-color:gray; width:40%; font-size:30px; text-align:center;"> <?=$_GET['title']?> </div>
-		  <!--/rooms-->
-		  	<!--/room1-->
-<?
-		    studymain($_GET);
-?>
-		</div>
+<!-- banner -->
+   <div class="details-grids">
+				<div class="details-shade">
+						<div class="details-right">
+						<h1>시간표 편집</h1>
+						<div>
+							<button type="button">일정 추가</button>
+						</div>
+					</div>	
+				</div>
 			
-		<div class="w3agile agileinfo_copy_right">
-			<div class="agileinfo_copy_right_right" style="color:white;">
-				ⓒ 2017. 내자리야 all rights reserved.
+		<!--/footer-->
+    <div class="w3agile footer">
+			<div class="col-md-3 w3agile_footer_grid">
+				
 			</div>
 		</div>
+</div>
+		<div class="w3agile agileinfo_copy_right">
+			<div class="agileinfo_copy_right_right">
+				<ul class="social">
+					<li><a class="social-linkedin" href="#">
+						<i></i>
+						<div class="tooltip"><span>Facebook</span></div>
+						</a></li>
+					<li><a class="social-twitter" href="#">
+						<i></i>
+						<div class="tooltip"><span>Twitter</span></div>
+						</a></li>
+					<li><a class="social-google" href="#">
+						<i></i>
+						<div class="tooltip"><span>Google+</span></div>
+						</a></li>
+					<li><a class="social-facebook" href="#">
+						<i></i>
+						<div class="tooltip"><span>Pinterest</span></div>
+						</a></li>
+					<li><a class="social-instagram" href="#">
+						<i></i>
+						<div class="tooltip"><span>Instagram</span></div>
+						</a></li>
+				</ul>
+			</div>
+			<div class="clearfix"> </div>
+	</div>
 	<!--/footer-->
-
-	
 </div>
 </div>
 <script src="js/jquery.nicescroll.js"></script>
