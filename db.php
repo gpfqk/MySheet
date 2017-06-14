@@ -217,17 +217,17 @@
 		<div  style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
 		<div id="comment_write">
 			<form method=post action="comment.php">
-				<table>
+				<table style="width:80%; margin:30px auto;">
 					<tr>
-						<td> 내용 </td>
-						<td> <textarea name="content" rows="3" cols="50"></textarea>
+						<td style="width:20%;"> 내용 </td>
+						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="50"></textarea> </td>
+						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
 					</tr>
 					<tr>
 						<td> 비밀번호 </td>
-						<td> <input type=password name="password" size=20></td>
-						<td><input type=hidden name="studyname" value="<?=$title?>">
-						<td><input type=hidden name="host" value="<?=$host?>"">
-						<input type=submit value="저장"></td>
+						<td> <input style="width:100%;" type=password name="password" size=20>
+						<input type=hidden name="studyname" value="<?=$title?>">
+						<input type=hidden name="host" value="<?=$host?>""></td>
 					</tr>
 				</table>
 			</form>
@@ -482,7 +482,7 @@
 				if($k == $time)
 					break;
 				}
-				return conversion_day($day)."요일 : ".conversion_time($recommend)."~".conversion_time(($recommend+$time))."<br>";
+				return conversion_day($day)."요일 : ".conversion_time($recommend)."~".conversion_time($recommend+$time)."<br>";
 			}
 		 	else return conversion_day($day)."요일에는 가능한 예약시간이 없습니다.<br>";
 			
@@ -501,6 +501,7 @@
 		//작업중
 	}
 
+	//시간표 등록
 	function edittimetable($id,$sd_name,$sd_time){
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
@@ -508,7 +509,6 @@
 		$sql = "insert into schedule (id,sd_name,sd_time)";
 		$sql.= "values('".$id."','".$sd_name."','".$sd_time."')";
 		$result = mysql_query($sql);
-		
 	}
 
 	
@@ -529,6 +529,34 @@
 		$query = "select * from member_add A ";
 		$query.= "where A.addmember = '".$id."';";
 
+
+	function timemark($id){
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+	
+			$query = "select sd_time from schedule where id='".$id."'";
+			$results = mysql_query($query);
+			if (mysql_num_rows($results))
+			{	
+				$num = mysql_num_rows($results);
+				
+				$row = mysql_fetch_row($results);
+				$i = $row[0];
+				$row = mysql_fetch_row($results);
+				
+				$j = $row[0];
+
+			}
+			echo $num;
+			echo $i;	
+			echo $j;
+	}
+
+	function study_search()
+	{
+
+		$query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
+
 		$result = mysql_query($query);
 
 		if($result)
@@ -538,6 +566,7 @@
 ?>
 				<div class="hotel-rooms">
 					<div class="hotel-left">
+
 						<p style="font-size:20px; color: black;"><span class="glyphicon glyphicon-inbox" aria-hidden="true">
 							
 						</span><span>< <?=$row['studyname']?> ></span>에서 가입을 요청합니다.</p> 
@@ -561,7 +590,13 @@
 								<input type="submit" value="승낙">
 							</form>
 						</div>
-						
+
+						<p style="color:#333 !important">스터디이름 : <?=$row['title']?></p>
+						<p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
+					</div>
+					<div class="hotel-right text-right">
+							<a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
+
 					</div>
 				</div>
 <?
@@ -570,6 +605,7 @@
 
 		}
 	}
+
 
 	function invitation_confirm($_GET){
 		$studyname = $_GET['studyname'];
@@ -597,4 +633,5 @@
 		}
 
 	}
+
 ?>

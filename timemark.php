@@ -1,4 +1,8 @@
-<? if (!isset($_SESSION)) { session_start(); } ?>
+<? 
+	if (!isset($_SESSION)) { session_start(); } 
+	include("db.php");
+   	$id = $_SESSION["id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,7 @@
 <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta charset utf="8">
 <!--font-awsome-css-->
-     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css"> 
      <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -40,7 +44,6 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
 <!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -87,7 +90,7 @@ td{height: 21px; width:51px;}
 								<li><a class=" link link--yaku" href="destination.html">내 정보 관리</a></li>
 								<li><a class=" link link--yaku" href="mystudy.html">내 스터디 관리</a></li>
 								<li>----------------</li>
-								<li><a class=" link link--yaku" href="studysearch.html">스터디 가입</a></li>
+								<li><a class=" link link--yaku" href="contact.html">전체 스터디 검색</a></li>
 								<li><a class=" link link--yaku" href="contact.html">도움말 및 사용법</a></li>
 								<li>----------------</li>
 <?
@@ -106,14 +109,13 @@ td{height: 21px; width:51px;}
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="menu-notify">
 				<div class="profile-left" style="margin-top:15px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
-				<div class="Profile-right" style="margin-top:10px;">
+				<div class="Profile-right" style="margin-top:10px;">			
 <?
 					if($_SESSION['name']){
 ?>
@@ -197,13 +199,51 @@ td{height: 21px; width:51px;}
 <!-- banner -->
    <div class="details-grids">
 				<div class="details-shade">
-					<div class="details-right">
-						<h1>선택예약</h1>
-							
+						<div class="details-right">
+						<h1><? timemark($id); ?></h1>
+						<button style="width: 50px;height: 50px;" value="편집" onClick="location.href='/edittimetable.php'"></button>
+						<div>
+							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+								<tr>
+									<td></td>
+									<td>일</td>
+									<td>월</td>
+									<td>화</td>
+									<td>수</td>
+									<td>목</td>
+									<td>금</td>
+									<td>토</td>
+								</tr>
+								<?
+									$k=1;
+								 	for($i=10;$i<23;$i++){
+								 ?>
+								 <tr style="border-bottom:hidden;" >	
+								 	<td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
+									<td id=<?="sun".$k; $k++; ?>></td>
+									<td id=<?="mon".$k;?>></td>
+									<td id=<?"tue".$k;?>></td>
+									<td id=<?"wen".$k;?>></td>
+									<td id=<?"thr".$k;?>></td>
+									<td id=<?"fri".$k;?>></td>
+									<td id=<?"sat".$k;?>></td>	
+								</tr>
+								<tr >	
+									<td id=<?="sun".$k?>></td>
+									<td id=<?="mon".$k;?>></td>
+									<td id=<?"tue".$k;?>></td>
+									<td id=<?"wen".$k;?>></td>
+									<td id=<?"thr".$k;?>></td>
+									<td id=<?"fri".$k;?>></td>
+									<td id=<?"sat".$k;?>></td>	
+								</tr>
+								<?
+								$k++;
+								}?>
+							</table>
+						</div>
 					</div>	
 				</div>
-			
-</div>
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">
@@ -228,7 +268,6 @@ td{height: 21px; width:51px;}
 						<div class="tooltip"><span>Instagram</span></div>
 						</a></li>
 				</ul>
-				<a href="studyReservation.php"><img src="images/plus.png" style="position: absolute;right: 10px;bottom: 10px;"></a>
 			</div>
 			<div class="clearfix"> </div>
 	</div>
