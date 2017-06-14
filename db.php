@@ -482,6 +482,7 @@
 		//작업중
 	}
 
+	//시간표 등록
 	function edittimetable($id,$sd_name,$sd_time){
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
@@ -489,6 +490,27 @@
 		$sql = "insert into schedule (id,sd_name,sd_time)";
 		$sql.= "values('".$id."','".$sd_name."','".$sd_time."')";
 		$result = mysql_query($sql);
+	}
+
+	function timemark($id){
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+	
+			$query = "select sd_time from schedule where id='".$id."'";
+			$results = mysql_query($query);
+			if (mysql_num_rows($results))
+			{	
+				$num = mysql_num_rows($results);
+				$row = mysql_fetch_row($results);
+				$i = $row[0];
+				$row = mysql_fetch_row($results);
+				
+				$j = $row[0];
+
+			}
+			echo $i;	
+			echo $j;
+			echo $num;
 		
 	}
 ?>

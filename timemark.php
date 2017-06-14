@@ -1,4 +1,8 @@
-<? if (!isset($_SESSION)) { session_start(); } ?>
+<? 
+	if (!isset($_SESSION)) { session_start(); } 
+	include("db.php");
+   	$id = $_SESSION["id"];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,42 +81,6 @@ td{height: 21px; width:51px;}
 				<div class="profile-menu text-center">
 					<img class="border-effect" src="images/mysheet.png" alt=" ">
 						<h3>MENU</h3>
-						<!-- 앱바시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-
-						<!-- <link href="http://cdn.metroui.org.ua/css/metro.min.css" rel="stylesheet">
-						<link href="http://cdn.metroui.org.ua/css/metro.min.css" rel="stylesheet">
-						<link href="http://cdn.metroui.org.ua/css/metro-schemes.min.css" rel="stylesheet">
-						<link href="http://cdn.metroui.org.ua/css/metro-responsive.min.css" rel="stylesheet">
-						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-						<script src="http://cdn.metroui.org.ua/js/metro.min.js"></script> -->
-
-							<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<div class="app-bar darcula" data-role="appbar">
-							    <a class="app-bar-element" href="javascript:void(0);">Home</a>
-							    <span class="app-bar-divider"></span>
-							    <ul class="app-bar-menu">
-							        <li data-flexorderorigin="0" data-flexorder="1"><a href="javascript:void(0);">Home</a></li>
-							        <li data-flexorderorigin="1" data-flexorder="2">
-							            <a href="javascript:void(0);" class="dropdown-toggle">Products</a>
-							            <ul class="d-menu" data-role="dropdown">
-							                <li><a href="javascript:void(0);">Windows 10</a></li>
-							                <li><a href="javascript:void(0);">Spartan</a></li>
-							                <li><a href="javascript:void(0);">Outlook</a></li>
-							                <li><a href="javascript:void(0);">Office 2015</a></li>
-							                <li class="divider"></li>
-							                <li><a href="" class="dropdown-toggle">Other Products</a>
-							                    <ul class="d-menu" data-role="dropdown">
-							                        <li><a href="javascript:void(0);">Internet Explorer 10</a></li>
-							                        <li><a href="javascript:void(0);">Skype</a></li>
-							                        <li><a href="javascript:void(0);">Surface</a></li>
-							                    </ul>
-							                </li>
-							            </ul>
-							        </li>
-							        <li data-flexorderorigin="2" data-flexorder="3"><a href="javascript:void(0);">Support</a></li>
-							        <li data-flexorderorigin="3" data-flexorder="4"><a href="javascript:void(0);">Help</a></li>
-							    </ul>
-							<div class="app-bar-pullbutton automatic" style="display: none;"></div><div class="clearfix" style="width: 0;"></div><nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" style="display: none;"><ul class="app-bar-pullmenubar hidden app-bar-menu"></ul></nav></div> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-							<!-- 앱바끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 						<div class="pro-menu">
 							<div class="logo">
 								<li><a class=" link link--yaku  active" href="main.html"><span>H</span><span>o</span><span>m</span><span>e</span></a></li>
@@ -227,7 +195,7 @@ td{height: 21px; width:51px;}
    <div class="details-grids">
 				<div class="details-shade">
 						<div class="details-right">
-						<h1>시간표 조회</h1>
+						<h1><? timemark($id); ?></h1>
 						<div>
 							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
 								<tr>
@@ -240,262 +208,36 @@ td{height: 21px; width:51px;}
 									<td>금</td>
 									<td>토</td>
 								</tr>
-								<tr>
-									<td>9시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+								<?
+									$k=1;
+								 	for($i=10;$i<23;$i++){
+								 ?>
+								 <tr style="border-bottom:hidden;" >	
+								 	<td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
+									<td id=<?="sun".$k; $k++; ?>></td>
+									<td id=<?="mon".$k;?>></td>
+									<td id=<?"tue".$k;?>></td>
+									<td id=<?"wen".$k;?>></td>
+									<td id=<?"thr".$k;?>></td>
+									<td id=<?"fri".$k;?>></td>
+									<td id=<?"sat".$k;?>></td>	
 								</tr>
-								<tr>
-									<td>10시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+								<tr >	
+									<td id=<?="sun".$k?>></td>
+									<td id=<?="mon".$k;?>></td>
+									<td id=<?"tue".$k;?>></td>
+									<td id=<?"wen".$k;?>></td>
+									<td id=<?"thr".$k;?>></td>
+									<td id=<?"fri".$k;?>></td>
+									<td id=<?"sat".$k;?>></td>	
 								</tr>
-								<tr>
-									<td>11시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>12시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>1시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>2시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>3시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>4시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>5시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>6시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>7시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>8시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>9시</td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
+								<?
+								$k++;
+								}?>
 							</table>
 						</div>
 					</div>	
-<!-- 						<div class="banner_search">
-								<form action="#" method="post">
-									<input type="search" name="search" value="Where to go ?" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Where to go ?';}" required="">
-									<input type="submit" value=" ">
-								</form>
-						</div>  -->
-
-				
 				</div>
-			
-   <!-- //banner -->
-   <!--/welcome-->
-<!-- 		        <div class="w3agile welcome"> 
-					<h3 class="w3ls-title">Welcome !</h3> 
-					<div class="b-bottom">
-			<div class="col-md-6 banner_bottom_left">
-				<h3>occaecat cupidatat proident</h3>
-				<p><i>Ut enim ad minima veniam</i> Quis nostrum exercitationem ullam corporis suscipit 
-					laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure 
-					reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, 
-					vel illum qui dolorem eum fugiat quo voluptas nulla pariatur.</p>
-				<div class="wthree_more wthree_more1">
-					<a href="#" class="button--wayra button--border-thick button--text-upper button--size-s">Read More</a>
-				</div>
-			</div>
-			<div class="col-md-6 banner_bottom_right">
-				<div class="wthree_banner_bottom_right_grids">
-					<div class="col-md-6 banner_bottom_right_grid">
-						<div class="view view-tenth">
-						<img src="images/4.jpg" class="img-responsive" alt="">
-							
-							<div class="mask">
-							    <a href="flight.html">
-									  <div class="agile_text_box">
-											<i class="fa fa-plane" aria-hidden="true"></i>
-											<h3>Lorem ipsum</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-									  </div>
-								 </a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 banner_bottom_right_grid">
-						<div class="view view-tenth">
-						<img src="images/5.jpg" class="img-responsive" alt="">
-							
-							<div class="mask">
-							   <a href="train.html">
-									<div class="agile_text_box">
-										<i class="fa fa-train" aria-hidden="true"></i>
-										<h3>Train</h3>
-										<p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-									</div>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				<div class="wthree_banner_bottom_right_grids">
-					<div class="col-md-6 banner_bottom_right_grid">
-						<div class="view view-tenth">
-						<img src="images/6.jpg" class="img-responsive" alt="">
-							
-							<div class="mask">
-							  <a href="bus.html">
-								<div class="agile_text_box">
-									<i class="fa fa-bus" aria-hidden="true"></i>
-									<h3>Bus</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-								</div>
-							   </a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6 banner_bottom_right_grid">
-						<div class="view view-tenth">
-							<img src="images/7.jpg" class="img-responsive" alt="">
-							<div class="mask">
-							<a href="hotel.html">
-							  <div class="agile_text_box">
-								<i class="fa fa-bed" aria-hidden="true"></i>
-								<h3>Hotels</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adip.</p>
-							   </div>
-							   </a>
-							</div>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>	
-				</div> -->
-		<!--//welcome-->
-		<!--/footer-->
-    <div class="w3agile footer">
-			<div class="col-md-3 w3agile_footer_grid">
-				
-			</div>
-			<!-- <div class="col-md-4 w3agile_footer_grid">
-				<h3>Twitter Posts</h3>
-				<ul class="w3agile_footer_grid_list">
-					<li>Ut aut reiciendis voluptatibus maiores alias, ut aut reiciendis.
-						<span><i class="fa fa-twitter" aria-hidden="true"></i> 02 days ago</span></li>
-					<li>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis 
-						voluptatibus.<span><i class="fa fa-twitter" aria-hidden="true"></i> 03 days ago</span></li>
-				</ul>
-			</div> -->
-		<!-- 	<div class="col-md-3 w3agile_footer_grid">
-				<h3>Newsletter</h3>
-				<p>Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus.</p>
-				<ul class="social">
-					<form action="#" method="post">			 
-					  <input type="text" name="Email" placeholder="Enter Email..." required="">
-
-					 <input type="submit" value="Submit">
-					 <div class="clearfix"></div>
-				 </form>
-				</ul>
-			</div> -->
-		</div>
-</div>
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">
