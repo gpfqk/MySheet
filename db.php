@@ -526,7 +526,6 @@
 						$bgcolor = "blue";
 					}
 			}
-<<<<<<< HEAD
 					//echo count($jj0);
 					echo $jj0[0].$jj0[1];
 					echo $jj1[0].$jj1[1];
@@ -560,10 +559,7 @@
 								<tr >	
 									<td id=<?="sun".$k?>></td>
 									<td id=<?="mon".$k?>></td>
-									<td id=<?="tue".$k?><?
-										if("tue".$k=$jj0[0].$jj0[1]){
-									?> bgcolor="<?=$bgcolor?>"
-									}?>></td>
+									<td id=<?="tue".$k;?>></td>
 									<td id=<?="wen".$k;?>></td>
 									<td id=<?="thr".$k;?>></td>
 									<td id=<?="fri".$k;?>></td>
@@ -575,38 +571,5 @@
 							</table>
 			
 		<?
-=======
-			echo $num;
-			echo $i;	
-			echo $j;
->>>>>>> 4895f7b5b5cb25ed52a324ed1024784ad6a78510
 	}
-
-	function study_search()
-	{
-
-		$query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
-		$result = mysql_query($query);
-
-		if($result)
-	    {
-			for($i=0;$i<mysql_num_rows($result);$i++){
-		      	$row = mysql_fetch_array($result); 
-?>
-				<div class="hotel-rooms">
-					<div class="hotel-left">
-						<p style="color:#333 !important">스터디이름 : <?=$row['title']?></p>
-						<p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
-					</div>
-					<div class="hotel-right text-right">
-							<a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
-					</div>
-				</div>
-<?
-				
-			}
-
-		}
-	}
-
 ?>
