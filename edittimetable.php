@@ -228,20 +228,75 @@ td{height: 21px; width:51px;}
    <div class="details-grids">
 				<div class="details-shade">
 						<div class="details-right">
-						<h1>시간표 편집</h1>
+						<h1>시간표 등록</h1>
 						<div>
-							<button type="button">일정 추가</button>
+						<form method="post" action="edit.php">
+							<table style="width:80%; margin:0 auto; font-size:17px;">
+							<tr style="height:60px; line-height: 60px;">
+								<td>일정:</td>
+								<td colspan="2"><input type="text" name="sd_name"></td>
+							</tr>
+							<tr style="height:60px; line-height: 60px;">
+								<td>요일:</td>
+								<td colspan=2>
+									<select name="dayoftheweek" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
+										<option value="mon">월요일</option>
+										<option value="tue">화요일</option>
+										<option value="wen">수요일</option>
+										<option value="thr">목요일</option>
+										<option value="fir">금요일</option>
+										<option value="sat">토요일</option>
+										<option value="sun">일요일</option>	
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>시간:</td>
+								<td style="height:60px;">
+									<select name="starttime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
+									<!-- style="width:88px;height:35px;" -->
+										<?
+											$k=1;
+											for($i=10;$i<21;$i++){
+												for($j=0; $j<=30;$j+=30){
+													if(strlen($j)==1){
+														$j="0".$j;
+													}
+												?><option value="<?=$k?>"><? echo $i.":".$j;
+												$k++; ?></option>
+												<?
+												}
+											}
+										?>
+									</select> <div style="line-height: 60px">&nbsp;~ </div>
+								</td>
+								<td style="height:60px; line-height: 60px;">
+									<select name="endtime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
+										<?
+											$k=1;
+											for($i=10;$i<21;$i++){
+												for($j=0; $j<=30;$j+=30){
+													if(strlen($j)==1){
+														$j="0".$j;
+													}
+												?><option value="<?=$k?>"><? echo $i.":".$j;
+												$k++; ?></option>
+												<?
+												}
+											}
+										?>
+									</select>
+									</td>
+									</tr>
+								</table>
+								<input type="submit"></input>
+						</form>
 						</div>
 					</div>	
 				</div>
 			
 		<!--/footer-->
-    <div class="w3agile footer">
-			<div class="col-md-3 w3agile_footer_grid">
-				
-			</div>
-		</div>
-</div>
+  
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">

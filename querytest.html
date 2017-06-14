@@ -152,53 +152,30 @@
 				<div class="clearfix"></div>
 			</div> 
 		</div>
-		<div class="w3agile single-hotel">
-		  	<div style="height:50px; line-height:45px; background:#ddd; margin:0 auto; margin-bottom:20px; border-style:double; border-color:gray; width:40%; font-size:30px; text-align:center;"> 추천예약 </div>
 		  <!--/rooms-->
 		  	<!--/room1-->
-
-	  	<div class="recommendform">
+		  	<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 추천 예약 </div>
+	  	<div class="recommendform" style="width:40%; margin:50px auto;">
 			<form action="querytest.php" method="GET">
 				<p>스터디명</p>
 				<input type="text" name="title" required=""/>
-				<p>시간</p>
-				<input type="text" name="time" required=""/>
+				<br><br>
+				<div class="input-group">
+				시간
+				  <input type="text" class="form-control" placeholder="스터디 진행 시간" aria-describedby="basic-addon2">
+				</div>
 				<br><br><br>
-				<input type="submit" value="검색">
+				<button type="submit" class="btn btn-default">검색</button>
 			</form>
 		</div>
 
 		<h4>333<?=$_SESSION['querytest']?></h4>
 
 		<div class="w3agile agileinfo_copy_right">
-			<div class="agileinfo_copy_right_right">
-				<ul class="social">
-					<li><a class="social-linkedin" href="#">
-						<i></i>
-						<div class="tooltip"><span>Facebook</span></div>
-						</a></li>
-					<li><a class="social-twitter" href="#">
-						<i></i>
-						<div class="tooltip"><span>Twitter</span></div>
-						</a></li>
-					<li><a class="social-google" href="#">
-						<i></i>
-						<div class="tooltip"><span>Google+</span></div>
-						</a></li>
-					<li><a class="social-facebook" href="#">
-						<i></i>
-						<div class="tooltip"><span>Pinterest</span></div>
-						</a></li>
-					<li><a class="social-instagram" href="#">
-						<i></i>
-						<div class="tooltip"><span>Instagram</span></div>
-						</a></li>
-				</ul>
+			<div class="agileinfo_copy_right_right" style="color:white;">
+				ⓒ 2017. 내자리야 all rights reserved.
 			</div>
 		</div>
-	<!--/footer-->
-	
-</div>
 </div>
 <script src="js/jquery.nicescroll.js"></script>
 <script src="js/scripts.js"></script>

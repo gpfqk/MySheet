@@ -130,9 +130,11 @@ td{height: 21px; width:51px;}
 				</div>
 				<div class="clearfix"></div>
 			</div> 
+
 <!-- banner -->
-  				 <div class="select-reservation" style="margin-top: 40px; margin-bottom: 50px;">
-						<h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1>
+				<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 내 스터디 </div>
+  				 <div class="select-reservation" style="margin-top: 20px; margin-bottom: 50px;">
+						<!-- <h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1> -->
 						<form action="" method="post" >
 						<table style="width:80%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
@@ -149,12 +151,14 @@ td{height: 21px; width:51px;}
 									<select name="starttime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
 									<!-- style="width:88px;height:35px;" -->
 										<?
+											$k=1;
 											for($i=10;$i<21;$i++){
 												for($j=0; $j<=30;$j+=30){
 													if(strlen($j)==1){
 														$j="0".$j;
 													}
-												?><option value=""><? echo $i.":".$j ?></option>
+												?><option value="<?=$k?>"><? echo $i.":".$j;
+												$k++; ?></option>
 												<?
 												}
 											}
@@ -164,12 +168,14 @@ td{height: 21px; width:51px;}
 								<td style="height:60px; line-height: 60px;">
 									<select name="endtime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
 										<?
+											$k=1;
 											for($i=10;$i<21;$i++){
 												for($j=0; $j<=30;$j+=30){
 													if(strlen($j)==1){
 														$j="0".$j;
 													}
-												?><option value=""><? echo $i.":".$j ?></option>
+												?><option value="<?=$k?>"><? echo $i.":".$j;
+												$k++; ?></option>
 												<?
 												}
 											}
@@ -179,9 +185,9 @@ td{height: 21px; width:51px;}
 								</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>규모: </td>
-								<td colspan=2><input type="radio" name="소형"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name=""> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-								<input type="radio" name=""> 대형</td>
+								<td colspan=2><input type="radio" name="size" value="small"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="size"> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<input type="radio" name="size"> 대형</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>옵션: </td>

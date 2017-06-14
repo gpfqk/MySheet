@@ -485,15 +485,24 @@
 		else return "최초 query없음";
 	}
 
-	function study_reservation($study,$day,$starttime,$endtime,$whiteboard,$projecter,$size,$repeat){
+	function study_reservation($host,$study,$day,$starttime,$endtime,$whiteboard,$projecter,$size,$repeat){
 
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
 	
-		$sql = "insert into reservationlist (id,password,name,major,number,phone)";
-		$sql.= "values('".$study."','".$password."','".$name."','".$major."','".$number."','".$phone."')";
+		$sql = "insert into reservationlist (host,title,start,end,room,size,projecter,whiteboard,repeat,week,day)";
+		//$sql.= "values('"$"'.'".$study."','".$starttime."','".$endtime."','".$size."','".$projecter."','".$phone."')";
+		$result = mysql_query($sql);
+		//작업중
+	}
+
+	function edittimetable($id,$sd_name,$sd_time){
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+	
+		$sql = "insert into schedule (id,sd_name,sd_time)";
+		$sql.= "values('".$id."','".$sd_name."','".$sd_time."')";
 		$result = mysql_query($sql);
 		
 	}
-
 ?>
