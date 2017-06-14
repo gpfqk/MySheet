@@ -477,7 +477,7 @@
 				if($k == $time)
 					break;
 				}
-				return conversion_day($day)."요일 : ".conversion_time($recommend)."~".conversion_time(($recommend+$time))."<br>";
+				return conversion_day($day)."요일 : ".conversion_time($recommend)."~".conversion_time($recommend+$time)."<br>";
 			}
 		 	else return conversion_day($day)."요일에는 가능한 예약시간이 없습니다.<br>";
 			

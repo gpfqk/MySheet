@@ -103,13 +103,13 @@ td{height: 21px; width:51px;}
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left" style="margin-top:5px;">
+				<div class="profile-left" style="margin-top:15px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
-				<div class="Profile-right">
+				<div class="Profile-right" style="margin-top:10px;">
 <?
 					if($_SESSION['name']){
 ?>

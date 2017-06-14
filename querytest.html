@@ -30,7 +30,7 @@
      </script>
 
      <!-- metro ui 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+     <!-- <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <link href="css/metro.css" rel="stylesheet">
         <link href="css/metro-icons.css" rel="stylesheet">
         <link href="css/metro-responsive.css" rel="stylesheet">
@@ -41,7 +41,7 @@
         <script src="js/docs.js"></script>
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
         <script src="js/ga.js"></script>
-        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
     
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
@@ -138,13 +138,13 @@
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left">
+				<div class="profile-left" style="margin-top:15px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
-				<div class="Profile-right">
+				<div class="Profile-right" style="margin-top:10px;">
 					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
 						<i class="fa fa-user"></i> <?=$_SESSION['name']?>
 					</div>
@@ -158,14 +158,12 @@
 	  	<div class="recommendform" style="width:40%; margin:50px auto;">
 			<form action="querytest.php" method="GET">
 				<p>스터디명</p>
-				<input type="text" name="title" required=""/>
+				<input type="text" name="title" class="form-control" placeholder="예약할 스터디 이름"/>
 				<br><br>
-				<div class="input-group">
-				시간
-				  <input type="text" class="form-control" placeholder="스터디 진행 시간" aria-describedby="basic-addon2">
-				</div>
+				<p>시간</p>
+				<input type="text" name="time" class="form-control" placeholder="스터디 진행 시간">
 				<br><br><br>
-				<button type="submit" class="btn btn-default">검색</button>
+				<button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:100; height:50px; color:white;" class="btn btn-default">검색</button>
 			</form>
 		</div>
 
