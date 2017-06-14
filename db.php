@@ -186,7 +186,21 @@
 		$row3 = mysql_fetch_array($result);
 ?>
 		<div style="font-size : 20px; padding-left : 10px;">
-			스터디원 : <?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
+			스터디원 : a<?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
+<?
+		if($_SESSION['id'] == $host)
+		{
+?>
+			<center>
+				<div>
+					<a href="#small-dialog" class="sign-in popup-top-anim">초대</a>
+					<a href="">추방</a>
+				</div>
+			</center>
+<?
+		}
+?>
+			
 		</div>
 
 		<script>
