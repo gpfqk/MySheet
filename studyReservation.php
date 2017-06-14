@@ -10,6 +10,7 @@
 <meta charset utf="8">
 <!--font-awsome-css-->
      <link rel="stylesheet" href="css/font-awesome.min.css"> 
+     <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <!--custom css-->
@@ -39,7 +40,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" />
+
 
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
@@ -65,8 +66,7 @@
 		</script>
 <!--//pop-up-box -->
 <style type="text/css">
-@import url('https://cdn.rawgit.com/singihae/Webfonts/master/style.css');
-body {font-family:'BM JUA','배달의민족 주아',sans-serif !important;}
+* {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
 td{height: 21px; width:51px;}
 </style>
     </head>

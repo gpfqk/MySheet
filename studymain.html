@@ -13,6 +13,7 @@
 <meta charset utf="8">
 <!--font-awsome-css-->
      <link rel="stylesheet" href="css/font-awesome.min.css"> 
+     <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <!--custom css-->
@@ -42,7 +43,6 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
         <script src="js/ga.js"></script>
         <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <link href="https://cdn.rawgit.com/singihae/Webfonts/master/style.css" rel="stylesheet" type="text/css" />
     <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <!-- web-fonts -->  
 <!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
@@ -148,6 +148,24 @@
 					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
 						<i class="fa fa-user"><?=$_SESSION['name']?></i> 
 					</div>
+					<!-- modal -->
+					<div id="small-dialog" class="mfp-hide">
+						<div class="member-add-modal"> 	
+							<div class="booking-info">
+							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 스터디원 초대 </h1>
+							</div>
+							<div class="login-form">
+								<form action="login.php" method="post">
+									<p>아이디</p>
+									<input type="text" name="id" required=""/>
+									<br><br><br>	 
+									<input type="submit" value="LOGIN">
+								</form>
+								<br>
+							</div> 
+						</div>
+					</div>
+					<!-- //modal -->
 				</div>
 				<div class="clearfix"></div>
 			</div> 
@@ -167,6 +185,7 @@
 			</div>
 		</div>
 	<!--/footer-->
+
 	
 </div>
 </div>
