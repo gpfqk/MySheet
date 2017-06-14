@@ -511,6 +511,7 @@
 		$result = mysql_query($sql);
 	}
 
+
 	
 	function member_add($_POST){
 		global $db;
@@ -530,33 +531,6 @@
 		$query.= "where A.addmember = '".$id."';";
 
 
-	function timemark($id){
-		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-		$db = mysql_select_db("mysheet", $connect);
-	
-			$query = "select sd_time from schedule where id='".$id."'";
-			$results = mysql_query($query);
-			if (mysql_num_rows($results))
-			{	
-				$num = mysql_num_rows($results);
-				
-				$row = mysql_fetch_row($results);
-				$i = $row[0];
-				$row = mysql_fetch_row($results);
-				
-				$j = $row[0];
-
-			}
-			echo $num;
-			echo $i;	
-			echo $j;
-	}
-
-	function study_search()
-	{
-
-		$query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
-
 		$result = mysql_query($query);
 
 		if($result)
@@ -566,7 +540,6 @@
 ?>
 				<div class="hotel-rooms">
 					<div class="hotel-left">
-
 						<p style="font-size:20px; color: black;"><span class="glyphicon glyphicon-inbox" aria-hidden="true">
 							
 						</span><span>< <?=$row['studyname']?> ></span>에서 가입을 요청합니다.</p> 
@@ -591,12 +564,6 @@
 							</form>
 						</div>
 
-						<p style="color:#333 !important">스터디이름 : <?=$row['title']?></p>
-						<p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
-					</div>
-					<div class="hotel-right text-right">
-							<a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
-
 					</div>
 				</div>
 <?
@@ -605,7 +572,6 @@
 
 		}
 	}
-
 
 	function invitation_confirm($_GET){
 		$studyname = $_GET['studyname'];
@@ -633,5 +599,56 @@
 		}
 
 	}
+
+
+	function timemark($id){
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+	
+			$query = "select sd_time from schedule where id='".$id."'";
+			$results = mysql_query($query);
+			if (mysql_num_rows($results))
+			{	
+				$num = mysql_num_rows($results);
+				
+				$row = mysql_fetch_row($results);
+				$i = $row[0];
+				$row = mysql_fetch_row($results);
+				
+				$j = $row[0];
+
+			}
+			echo $num;
+			echo $i;	
+			echo $j;
+	}
+
+	function study_search()
+   {
+
+      $query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
+      $result = mysql_query($query);
+
+      if($result)
+       {
+         for($i=0;$i<mysql_num_rows($result);$i++){
+               $row = mysql_fetch_array($result); 
+?>
+            <div class="hotel-rooms">
+               <div class="hotel-left">
+                  <p style="color:#333 !important">스터디이름 : <?=$row['title']?></p>
+                  <p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
+               </div>
+               <div class="hotel-right text-right">
+                     <a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
+               </div>
+            </div>
+<?
+            
+         }
+
+      }
+   }
+
 
 ?>
