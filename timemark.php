@@ -201,6 +201,7 @@ td{height: 21px; width:51px;}
 				<div class="details-shade">
 						<div class="details-right">
 						<h1><? timemark($id); ?></h1>
+						<button style="width: 50px;height: 50px;" value="편집" onClick="location.href='/edittimetable.php'"></button>
 						<div>
 							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
 								<tr>

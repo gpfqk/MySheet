@@ -515,6 +515,7 @@
 			if (mysql_num_rows($results))
 			{	
 				$num = mysql_num_rows($results);
+				
 				$row = mysql_fetch_row($results);
 				$i = $row[0];
 				$row = mysql_fetch_row($results);
@@ -522,9 +523,9 @@
 				$j = $row[0];
 
 			}
+			echo $num;
 			echo $i;	
 			echo $j;
-			echo $num;
 	}
 
 	function study_search()
