@@ -514,21 +514,24 @@
 			$results = mysql_query($query);
 			if (mysql_num_rows($results))
 			{	
+				//열 개수 
 				$num = mysql_num_rows($results);
 				 for($i=0;$i<$num;$i++){
 					$row = mysql_fetch_row($results);
 					$j = $row[0];
 					${"jj".$i} = explode(",", $j);
-					for($g=0;$g<count(${"jj".$i});$g++){
-
-					}
-					if($jj0[0]="tue")
-						$bgcolor = "blue";
+					for($g=0;$g<count(${"jj".$i})-1;$g++){
+						$cellcolor = ${"jj".$i}[0].${"jj".$i}[$g+1]; // td의 id 추출 
+						?><style type="text/css">
+							#<?=$cellcolor?>{background-color: white;}
+						</style>
+						<?
+					
 					}
 			}
 					//echo count($jj0);
-					echo $jj0[0].$jj0[1];
-					echo $jj1[0].$jj1[1];
+					//echo $jj0[0].$jj0[1];
+					//echo $jj1[0].$jj1[1];
 
 					?>
 							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
@@ -548,13 +551,13 @@
 								 ?>
 								 <tr style="border-bottom:hidden;" >	
 								 	<td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
-									<td id=<?="sun".$k; $k++; ?>></td>
+									<td id=<?="sun".$k;?>></td>
 									<td id=<?="mon".$k;?>></td>
 									<td id=<?="tue".$k;?>></td>
 									<td id=<?="wen".$k;?>></td>
 									<td id=<?="thr".$k;?>></td>
 									<td id=<?="fri".$k;?>></td>
-									<td id=<?="sat".$k;?>></td>	
+									<td id=<?="sat".$k; $k++;?>></td>	
 								</tr>
 								<tr >	
 									<td id=<?="sun".$k?>></td>
@@ -572,4 +575,6 @@
 			
 		<?
 	}
+
+}
 ?>
