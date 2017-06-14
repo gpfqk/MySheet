@@ -89,7 +89,7 @@ td{height: 21px; width:51px;}
 								<li><a class=" link link--yaku" href="destination.html">내 정보 관리</a></li>
 								<li><a class=" link link--yaku" href="mystudy.html">내 스터디 관리</a></li>
 								<li>----------------</li>
-								<li><a class=" link link--yaku" href="contact.html">전체 스터디 검색</a></li>
+								<li><a class=" link link--yaku" href="studysearch.html">스터디 가입</a></li>
 								<li><a class=" link link--yaku" href="contact.html">도움말 및 사용법</a></li>
 								<li>----------------</li>
 <?
