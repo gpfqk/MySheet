@@ -893,7 +893,7 @@ function timemark_new($id,$str)
 		global $db;
 
 		$query = "select title from studylist where host = '".$_SESSION['id']."'";
-     	$result = mysql_query($query);
+     		$result = mysql_query($query);
 
 		if($result)
 		{
@@ -904,5 +904,47 @@ function timemark_new($id,$str)
 <?										
 			}
 		}
+	}
+	function dateschedule($ddate){
+		$day = $ddate;
+		$query = "select room,start,end from reservationlist where day_d = '".$day."'";
+		for($k=0; $k<count($arr); $k++)
+	{
+		if( $arr[$k] < 10 )
+			$query.=" and ( sd_time like '%,".$arr[$k].",%' or sd_time like '".$arr[$k].",%') ";
+	 	else 
+	 		$query.=" and sd_time like '%".$arr[$k]."%' ";
+	}
+     		$result = mysql_query($query);
+?>
+                     <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+                        <tr>
+                           <td></td>
+                           <td>새 604</td>
+                           <td>새 501</td>
+                           <td>새 403</td>
+                        </tr>
+                        <?
+                           $k=1;
+                            for($i=10;$i<23;$i++){
+                         ?>
+                         <tr style="border-bottom:1px;" >   
+                            <td rowspan=2 style="border-bottom:1px black solid" ><?=$i."시";?></td>
+                            <td id=<?='새604'.$k;?> style="border-bottom:hidden;"></td>
+                            <td id=<?="새501".$k;?> style="border-bottom:hidden" ></td>
+                            <td id=<?="새403".$k;?> style="border-bottom:hidden"></td>
+                           <? $k++;?>
+                           </tr>
+                        <tr >   
+                           <td id=<?="새604".$k?>></td>
+                           <td id=<?="새501".$k?>></td>
+                           <td id=<?="새403".$k;?>></td>
+                           
+                           </tr>
+                        <?
+                        $k++;
+                        }?>
+                     </table>
+                     <?
 	}
 ?>
