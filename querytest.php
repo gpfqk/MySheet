@@ -112,92 +112,162 @@
 	  	<div class="recommendform">
 	  	<div class="hotel-rooms">
 			<div class="hotel-left">
-				<p><? echo query_test($title, $time, 'mon'); ?></p> 
+				<p>
+<? 
+					$result_array = explode(',', query_test($title, $time, 'mon'));
+					if(query_test($title, $time, 'mon'))
+					{
+					echo conversion_day($result_array[0])."요일 : ".conversion_time($result_array[1])."~".conversion_time($result_array[1]+$time)."<br>";
+					}
+					else
+						echo "월요일에는 가능한 예약 시간이 없습니다.";
+?>
+				</p> 
 			</div>
 			<div class="hotel-right text-right">
 <?
 	if( strpos( query_test($title, $time, 'mon'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='#'>예약하기</a>";
+		echo "<a href='result.html'>예약하기</a>";
 ?>	
 			</div>
 		</div>
 		<div class="hotel-rooms">
 			<div class="hotel-left">
-				<p><? echo query_test($title, $time, 'tue'); ?></p> 
+				<p>
+<? 
+					$result_array = explode(',', query_test($title, $time, 'tue'));
+					if(query_test($title, $time, 'tue'))
+					{
+					echo conversion_day($result_array[0])."요일 : ".conversion_time($result_array[1])."~".conversion_time($result_array[1]+$time)."<br>";
+					}
+					else
+						echo "화요일에는 가능한 예약 시간이 없습니다.";
+?>
+				</p> 
 			</div>
 			<div class="hotel-right text-right">
 <?
 	if( strpos( query_test($title, $time, 'tue'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='#'>예약하기</a>";
+		echo "<a href='result.html'>예약하기</a>";
 ?>	
 			</div>
 		</div>
 		<div class="hotel-rooms">
 			<div class="hotel-left">
-				<p><? echo query_test($title, $time, 'wed'); ?></p> 
+				<p>
+<? 
+					$result_array = explode(',', query_test($title, $time, 'wed'));
+					if(query_test($title, $time, 'wed'))
+					{
+					echo conversion_day($result_array[0])."요일 : ".conversion_time($result_array[1])."~".conversion_time($result_array[1]+$time)."<br>";
+					}
+					else
+						echo "수요일에는 가능한 예약 시간이 없습니다.";
+?>
+				</p> 
 			</div>
 			<div class="hotel-right text-right">
 <?
 	if( strpos( query_test($title, $time, 'wed'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='#'>예약하기</a>";
+		echo "<a href='result.html'>예약하기</a>";
 ?>	
 			</div>
 		</div>
 		<div class="hotel-rooms">
 			<div class="hotel-left">
-				<p><? echo query_test($title, $time, 'thu'); ?></p> 
+				<p>
+<? 
+					$result_array = explode(',', query_test($title, $time, 'thu'));
+					if(query_test($title, $time, 'thu'))
+					{
+					echo conversion_day($result_array[0])."요일 : ".conversion_time($result_array[1])."~".conversion_time($result_array[1]+$time)."<br>";
+					}
+					else
+						echo "목요일에는 가능한 예약 시간이 없습니다.";
+?>
+				</p> 
 			</div>
 			<div class="hotel-right text-right">
 <?
 	if( strpos( query_test($title, $time, 'thu'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='#'>예약하기</a>";
+		echo "<a href='result.html'>예약하기</a>";
 ?>	
 			</div>
 		</div>
 		<div class="hotel-rooms">
 			<div class="hotel-left">
-				<p><? echo query_test($title, $time, 'fri'); ?></p> 
+				<p>
+<? 
+					$result_array = explode(',', query_test($title, $time, 'fri'));
+					if(query_test($title, $time, 'fri'))
+					{
+					echo conversion_day($result_array[0])."요일 : ".conversion_time($result_array[1])."~".conversion_time($result_array[1]+$time)."<br>";
+					}
+					else
+						echo "금요일에는 가능한 예약 시간이 없습니다.";
+?>
+				</p> 
 			</div>
 			<div class="hotel-right text-right">
 <?
 	if( strpos( query_test($title, $time, 'fri'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='#'>예약하기</a>";
+		echo "<a href='result.html'>예약하기</a>";
 ?>	
 			</div>
 		</div>
 		<div class="hotel-rooms">
 			<div class="hotel-left">
-				<p><? echo query_test($title, $time, 'sat'); ?></p> 
+				<p>
+<? 
+					$result_array = explode(',', query_test($title, $time, 'sat'));
+					if(query_test($title, $time, 'sat'))
+					{
+					echo conversion_day($result_array[0])."요일 : ".conversion_time($result_array[1])."~".conversion_time($result_array[1]+$time)."<br>";
+					}
+					else
+						echo "토요일에는 가능한 예약 시간이 없습니다.";
+?>
+				</p> 
 			</div>
 			<div class="hotel-right text-right">
 <?
 	if( strpos( query_test($title, $time, 'sat'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='#'>예약하기</a>";
+		echo "<a href='result.html'>예약하기</a>";
 ?>	
 			</div>
 		</div>
 		<div class="hotel-rooms">
 			<div class="hotel-left">
-				<p><? echo query_test($title, $time, 'sun'); ?></p> 
+				<p>
+<? 
+					$result_array = explode(',', query_test($title, $time, 'sun'));
+					if(query_test($title, $time, 'sun'))
+					{
+					echo conversion_day($result_array[0])."요일 : ".conversion_time($result_array[1])."~".conversion_time($result_array[1]+$time)."<br>";
+					}
+					else
+						echo "일요일에는 가능한 예약 시간이 없습니다.";
+?>
+				</p> 
 			</div>
 			<div class="hotel-right text-right">
 <?
 	if( strpos( query_test($title, $time, 'sun'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='#'>예약하기</a>";
+		echo "<a href='result.html'>예약하기</a>";
 ?>	
 			</div>
 		</div>
