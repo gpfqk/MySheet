@@ -138,7 +138,7 @@
 				<div class="hotel-rooms">
 					<div class="hotel-left">
 						<div style="font-size : 20px">
-							[<?=$row['day']?>] <?=conversion_time($row['start'])?> ~ <?=conversion_time($row['end'])?>
+							[<?=$row['day_d']?>] <?=conversion_time($row['start'])?> ~ <?=conversion_time($row['end'])?>
 						</div> 
 						<div style="font-size : 20px">
 							<?=$row['room']?>
@@ -197,10 +197,16 @@
 		if($_SESSION['id'] == $host)
 		{
 ?>
+<style>
+a {text-decoration: none; color:white;}
+a:visited {text-decoration: none; color:white;}
+</style>
 			<center>
-				<div>
-					<a href="#small-dialog" class="sign-in popup-top-anim">초대</a>
-					<a href="#small-dialog2" class="sign-in popup-top-anim">추방</a>
+				<div style="margin: 20px auto;">
+					<a href="#small-dialog" visited=none; class="sign-in popup-top-anim">
+					<div style="width:80px; background-color: black; color:white; float:left;">초대</div></a>
+					<a href="#small-dialog2" visited=none; class="sign-in popup-top-anim">
+					<div style="width:80px; background-color: black; color:white; float:right;">추방</a>
 				</div>
 			</center>
 <?
@@ -220,17 +226,19 @@
 		<br><br>
 
 
-		<center><div><h3>스터디 게시판</h3></div></center>
-		<div style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
+		<div style="margin:20px auto; width:100%; font-size:25px; text-align:center; color:white; background-color:#2ad2c9;"> 스터디 게시판 </div>
+
+		<div style="display: block; height: 30px;"><button style="float : right; background-color: #043d67; border-radius: 10px; width:70px; height:30px; color:white; font-size:15px;" id="comment_write_button" class="btn btn-default">글 작성</button></div>
 		<div id="comment_write">
 			<form method=post action="comment.php">
 				<table style="width:80%; margin:30px auto;">
 					<tr>
 						<td style="width:20%;"> 내용 </td>
-						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="50"></textarea> </td>
+						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="55" class="form-control" placeholder="스터디원들에게 한마디를 남겨보세요."></textarea> </td>
 						<input type=hidden name="studyname" value="<?=$title?>">
                 		<input type=hidden name="host" value="<?=$host?>"">
-						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
+						<td rowspan="2"><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:55px; margin-left:15px; height:30px; color:white; font-size:15px;" class="btn btn-default">저장</button>
+				<br></td>
 					</tr>
 				</table>
 			</form>
@@ -493,15 +501,18 @@
 		else return "최초 query없음";
 	}
 
-	function study_reservation($host,$study,$day,$starttime,$endtime,$whiteboard,$projecter,$size,$repeat){
+	function study_reservation($id,$study,$starttime,$endtime,$size,$projector,$whiteboard,$repeat,$yoil,$day){
 
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
 	
-		$sql = "insert into reservationlist (host,title,start,end,room,size,projecter,whiteboard,repeat,week,day)";
-		//$sql.= "values('"$"'.'".$study."','".$starttime."','".$endtime."','".$size."','".$projecter."','".$phone."')";
+		$sql = "insert into reservationlist (host,title,start,end,size,projector,whiteboard,repeat_d,week_d,day_d)";
+		$sql.= "values('".$id."','".$study."',".$starttime.",".$endtime.",'".$size."','".$projector."','".$whiteboard."','".$repeat."','".$yoil."','".$day."')";
 		$result = mysql_query($sql);
 		//작업중
+
+		// echo $sql;
+		// echo $result;
 	}
 
 	//시간표 등록

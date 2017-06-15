@@ -89,104 +89,31 @@ td{height: 21px; width:51px;}
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left" style="margin-top:5px;">
+				<div class="profile-left" style="margin-top:15px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
-				<div class="Profile-right">
-<?
-					if($_SESSION['name']){
-?>
-
-						<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
-							<i class="fa fa-user"></i> <?=$_SESSION['name']?>
-						</div>
-
-<?
-					}
-					else{
-?>
-						<a href="#small-dialog" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
-<?
-					}
-?>
-						<!-- modal -->
-					<div id="small-dialog" class="mfp-hide">
-						<div class="login-modal"> 	
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 로그인 </h1>
-							</div>
-							<div class="login-form">
-								<form action="login.php" method="post">
-									<p>아이디</p>
-									<input type="text" name="id" required=""/>
-									<p>비밀번호</p>
-									<input type="password" name="password" required=""/>
-									<br><br><br>	 
-<!-- 									<div class="wthree-text"> 
-										<ul> 
-											<li>
-												<input type="checkbox" id="brand" value="">
-												<label for="brand"><span></span> Remember me ?</label>  
-											</li>
-										</ul>
-										<div class="clear"> </div>
-									</div>  -->
-									<input type="submit" value="LOGIN">
-								</form>
-								<br>
-								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
-							</div> 
-						</div>
+				<div class="Profile-right" style="margin-top:10px;">
+					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
+						<i class="fa fa-user"></i> <?=$_SESSION['name']?>
 					</div>
-					<!-- //modal --> 
-					<!-- modal-two -->
-					<div id="small-dialog1" class="mfp-hide">
-						<div class="login-modal">  
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 회원가입 </h1>
-							</div>
-							<div class="login-form signup-form">
-								<form action="join.php" method="post">
-									<p>아이디 </p>
-									<input type="text" name="id"  required="true"/>
-									<p>비밀번호</p>
-									<input type="password" name="password" placeholder="" required="true"/>	
-									<p>이름 </p>
-									<input type="text" name="name"  required="true"/>
-									<p>소속학과 </p>
-									<input type="text" name="major"  required="true"/>
-									<p>학번 </p>
-									<input type="text" name="number"  required="true"/>
-									<p>연락처 </p>
-									<input type="text" name="phone1"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone2"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone3"  required="true" length="5" style="width:30% !important;"/>
-									<div class="wthree-text"> 
-										<input type="checkbox" id="brand1" value="">
-										<label for="brand1"><span></span>I accept the terms of use</label> 
-									</div>
-									<input type="submit" value="Sign Up">		
-								</form> 
-							</div> 
-						</div>
-					</div>
-					<!-- //modal-two --> 
-					
 				</div>
 				<div class="clearfix"></div>
 			</div> 
+		</div>
 <!-- banner -->
 <div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 시간표 등록 </div>
 				<div class="createscheduleform" style="width:90%; margin:50px auto;">
 					<form method="post" action="edit.php">
 						<table style="font-size:17px; margin:0 auto;">
 						<tr style="height:80px; line-height: 80px;">
-							<td style="width:20px;">일정: </td>
+							<td style="width:20px;">일정 </td>
 							<td colspan="2"><input type="text" name="sd_name" class="form-control" placeholder="일정 이름"/></td>
 						</tr>
 						<tr style="height:80px; line-height: 60px;">
-							<td>요일:</td>
+							<td>요일</td>
 							<td colspan=2>
 								<select name="dayoftheweek" style="width:100%; height:40px; margin-top:10px;line-height:18px;">	
 									<option value="mon">월요일</option>
@@ -200,7 +127,7 @@ td{height: 21px; width:51px;}
 							</td>
 						</tr>
 						<tr>
-							<td>시간:</td>
+							<td>시간</td>
 							<td style="height:80px; width:60px;">
 								<select name="starttime" style="width:100px; height:40px; margin-top:10px; line-height:18px;">	
 								<!-- style="width:88px;height:35px;" -->

@@ -198,16 +198,14 @@ td{height: 21px; width:51px;}
 				<div class="clearfix"></div>
 			</div> 
 <!-- banner -->
-   <div class="details-grids">
-				<div class="details-shade">
+				<div class="view_schedule">
 						<div class="details-right">
-						<h1>시간표 조회</h1>
-						<button style="width: 50px;height: 25px;" value="편집" onClick="location.href='/edittimetable.php'"></button>
+						<h1 style="color:black">시간표 조회</h1>
+						<button style="width: 50px;height: 25px;" value="편집" onClick="location.href='./edittimetable.php'"></button>
 						<div>
 						<? timemark($id); ?>
 						</div>
 					</div>	
-				</div>
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
 				<ul class="social">
