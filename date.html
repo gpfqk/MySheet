@@ -1,10 +1,6 @@
 <? if (!isset($_SESSION)) { session_start(); } 
 	include("db.php");
-<<<<<<< HEAD
-?>
-=======
 	ensure_logged_in();?>
->>>>>>> 4c51be642d9a88a59dae9bf00be7232a6b2a1cdf
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -113,7 +109,6 @@ td{height: 21px; width:51px;}
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="menu-notify">
 				<div class="profile-left" style="margin-top:15px;">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
@@ -121,86 +116,13 @@ td{height: 21px; width:51px;}
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
 				<div class="Profile-right" style="margin-top:10px;">
-<?
-					if($_SESSION['name']){
-?>
-
-						<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
-							<i class="fa fa-user"></i> <?=$_SESSION['name']?>
-						</div>
-
-<?
-					}
-					else{
-?>
-						<a href="#small-dialog" class="sign-in popup-top-anim"> <i class="fa fa-user"></i></a>
-<?
-					}
-?>
-						<!-- modal -->
-					<div id="small-dialog" class="mfp-hide">
-						<div class="login-modal"> 	
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 로그인 </h1>
-							</div>
-							<div class="login-form">
-								<form action="login.php" method="post">
-									<p>아이디</p>
-									<input type="text" name="id" required=""/>
-									<p>비밀번호</p>
-									<input type="password" name="password" required=""/>
-									<br><br><br>	 
-<!-- 									<div class="wthree-text"> 
-										<ul> 
-											<li>
-												<input type="checkbox" id="brand" value="">
-												<label for="brand"><span></span> Remember me ?</label>  
-											</li>
-										</ul>
-										<div class="clear"> </div>
-									</div>  -->
-									<input type="submit" value="LOGIN">
-								</form>
-								<br>
-								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
-							</div> 
-						</div>
+					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
+						<i class="fa fa-user"></i> <?=$_SESSION['name']?>
 					</div>
-					<!-- //modal --> 
-					<!-- modal-two -->
-					<div id="small-dialog1" class="mfp-hide">
-						<div class="login-modal">  
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 회원가입 </h1>
-							</div>
-							<div class="login-form signup-form">
-								<form action="join.php" method="post">
-									<p>아이디 </p>
-									<input type="text" name="id"  required="true"/>
-									<p>비밀번호</p>
-									<input type="password" name="password" placeholder="" required="true"/>	
-									<p>이름 </p>
-									<input type="text" name="name"  required="true"/>
-									<p>소속학과 </p>
-									<input type="text" name="major"  required="true"/>
-									<p>학번 </p>
-									<input type="text" name="number"  required="true"/>
-									<p>연락처 </p>
-									<input type="text" name="phone1"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone2"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone3"  required="true" length="5" style="width:30% !important;"/>
-									<div class="wthree-text"> 
-										<input type="checkbox" id="brand1" value="">
-										<label for="brand1"><span></span>I accept the terms of use</label> 
-									</div>
-									<input type="submit" value="Sign Up">		
-								</form> 
-							</div> 
-						</div>
-					</div>
-					<!-- //modal-two --> 
-					
 				</div>
 				<div class="clearfix"></div>
 			</div> 
+		</div>
 <!-- banner -->
    <div class="details-grids">
 	<div class="details-aa">
@@ -217,33 +139,10 @@ td{height: 21px; width:51px;}
 	</div>	
 </div>
 		<div class="w3agile agileinfo_copy_right">
-			<div class="agileinfo_copy_right_right">
-				<ul class="social">
-					<li><a class="social-linkedin" href="#">
-						<i></i>
-						<div class="tooltip"><span>Facebook</span></div>
-						</a></li>
-					<li><a class="social-twitter" href="#">
-						<i></i>
-						<div class="tooltip"><span>Twitter</span></div>
-						</a></li>
-					<li><a class="social-google" href="#">
-						<i></i>
-						<div class="tooltip"><span>Google+</span></div>
-						</a></li>
-					<li><a class="social-facebook" href="#">
-						<i></i>
-						<div class="tooltip"><span>Pinterest</span></div>
-						</a></li>
-					<li><a class="social-instagram" href="#">
-						<i></i>
-						<div class="tooltip"><span>Instagram</span></div>
-						</a></li>
-				</ul>
-				<a href="studyReservation.php?date=<?=$ddate?>"><img src="images/plus.png" style="position: absolute;right: 10px;bottom: 10px;"></a>
+			<div class="agileinfo_copy_right_right" style="color:white;">
+				ⓒ 2017. 내자리야 all rights reserved.
 			</div>
-			<div class="clearfix"> </div>
-	</div>
+		</div>
 	<!--/footer-->
 </div>
 </div>
