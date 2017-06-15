@@ -84,8 +84,7 @@
 		$query.= "and (host = '".$_SESSION['id']."' or member1 = '".$_SESSION['id']."' or member2 = '".$_SESSION['id']."' or member3 = '".$_SESSION['id']."');";
 		$result = mysql_query($query);
 
-		if($result)
-	    {
+		if($result){
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
 ?>
@@ -213,21 +212,18 @@
 		</script>
 		<br><br>
 
+
 		<center><div><h3>스터디 게시판</h3></div></center>
-		<div  style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
+		<div style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
 		<div id="comment_write">
 			<form method=post action="comment.php">
 				<table style="width:80%; margin:30px auto;">
 					<tr>
 						<td style="width:20%;"> 내용 </td>
 						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="50"></textarea> </td>
-						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
-					</tr>
-					<tr>
-						<td> 비밀번호 </td>
-						<td> <input style="width:100%;" type=password name="password" size=20>
 						<input type=hidden name="studyname" value="<?=$title?>">
-						<input type=hidden name="host" value="<?=$host?>""></td>
+                		<input type=hidden name="host" value="<?=$host?>"">
+						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
 					</tr>
 				</table>
 			</form>
@@ -236,7 +232,7 @@
 <?
 
 		$query = "select * from comment ";
-		$query.= "where studyname = '".$title."' ";
+		$query.= "where studyname = '".$title."'";
 		$query.= "order by time desc;";
 		$result = mysql_query($query);
 		if($result)
@@ -246,12 +242,12 @@
 		      	$row = mysql_fetch_array($result); 
 ?>
 				<div>
-				    <table>
+				    <table style="width:100%;">
 						<tr>
-							<td><?=$row['content']?></td>
+							<td style="font-size:20px;"><?=$row['content']?></td>
 						<tr>
-						<tr align="right">
-							<td align="right"><?=$row['name']?>(<?=$row['writer']?>) <?=$row['time']?></td>
+						<tr>
+							<td><?=$row['name']?>(<?=$row['writer']?>) <div style="float:right;"><?=$row['time']?></div></td>
 						</tr>
 					</table>
 				</div>	
@@ -268,8 +264,8 @@
 	{
 		global $db;
 		if($db){
-			$sql = "insert into comment (writer,name,studyname,content,password) ";
-			$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."','".$_POST['password']."')";
+			$sql = "insert into comment (writer,name,studyname,content) ";
+			$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."')";
 			$result = mysql_query($sql);
 			if($result)
 				return true;
@@ -513,6 +509,23 @@
 
 
 	
+
+			// $query = "select sd_time from schedule where id='".$id."'";
+			// $results = mysql_query($query);
+			// if (mysql_num_rows($results))
+			// {	
+			// 	$num = mysql_num_rows($results);
+			// 	$row = mysql_fetch_row($results);
+			// 	$i = $row[0];
+			// 	$row = mysql_fetch_row($results);
+				
+			// 	$j = $row[0];
+
+			// }
+			// echo $i;	
+			// echo $j;
+			// echo $num;
+
 	function member_add($_POST){
 		global $db;
 
@@ -601,76 +614,74 @@
 	}
 
 
-	function timemark($id){
-		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-		$db = mysql_select_db("mysheet", $connect);
-	
-			$query = "select sd_time from schedule where id='".$id."'";
-			$results = mysql_query($query);
-			if (mysql_num_rows($results))
-			{	
-				//열 개수 
-				$num = mysql_num_rows($results);
+   function timemark($id){
+      $connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+      $db = mysql_select_db("mysheet", $connect);
+   
+         $query = "select sd_time from schedule where id='".$id."'";
+         $results = mysql_query($query);
+         if (mysql_num_rows($results))
+         {   
+            $num = mysql_num_rows($results);
+             for($i=0;$i<$num;$i++){
+               $row = mysql_fetch_row($results);
+               $j = $row[0];
+               ${"jj".$i} = explode(",", $j);
+               for($g=0;$g<count(${"jj".$i})-1;$g++){
+                  $cellcolor = ${"jj".$i}[0].${"jj".$i}[$g+1]; // td의 id 추출 
+                  ?><style type="text/css">
+                     #<?=$cellcolor?>{background-color: white;}
+                  </style>
+                  <?
+               
+               }
+         }
+               //echo count($jj0);
+               //echo $jj0[0].$jj0[1];
+               //echo $jj1[0].$jj1[1];
 
-				 for($i=0;$i<$num;$i++){
-					$row = mysql_fetch_row($results);
-					$j = $row[0];
-					${"jj".$i} = explode(",", $j);
-					for($g=0;$g<count(${"jj".$i})-1;$g++){
-						$cellcolor = ${"jj".$i}[0].${"jj".$i}[$g+1]; // td의 id 추출 
-						?><style type="text/css">
-							#<?=$cellcolor?>{background-color: white;}
-						</style>
-						<?
-					
-					}
-			}
-					//echo count($jj0);
-					//echo $jj0[0].$jj0[1];
-					//echo $jj1[0].$jj1[1];
-
-					?>
-							<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
-								<tr>
-									<td></td>
-									<td>일</td>
-									<td>월</td>
-									<td>화</td>
-									<td>수</td>
-									<td>목</td>
-									<td>금</td>
-									<td>토</td>
-								</tr>
-								<?
-									$k=1;
-								 	for($i=10;$i<23;$i++){
-								 ?>
-								 <tr style="border-bottom:hidden;" >	
-								 	<td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
-									<td id=<?="sun".$k;?>></td>
-									<td id=<?="mon".$k;?>></td>
-									<td id=<?="tue".$k;?>></td>
-									<td id=<?="wen".$k;?>></td>
-									<td id=<?="thr".$k;?>></td>
-									<td id=<?="fri".$k;?>></td>
-									<td id=<?="sat".$k; $k++;?>></td>	
-								</tr>
-								<tr >	
-									<td id=<?="sun".$k?>></td>
-									<td id=<?="mon".$k?>></td>
-									<td id=<?="tue".$k;?>></td>
-									<td id=<?="wen".$k;?>></td>
-									<td id=<?="thr".$k;?>></td>
-									<td id=<?="fri".$k;?>></td>
-									<td id=<?="sat".$k;?>></td>	
-								</tr>
-								<?
-								$k++;
-								}?>
-							</table>
-			
-		<?
-	}
+               ?>
+                     <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+                        <tr>
+                           <td></td>
+                           <td>일</td>
+                           <td>월</td>
+                           <td>화</td>
+                           <td>수</td>
+                           <td>목</td>
+                           <td>금</td>
+                           <td>토</td>
+                        </tr>
+                        <?
+                           $k=1;
+                            for($i=10;$i<23;$i++){
+                         ?>
+                         <tr style="border-bottom:hidden;" >   
+                            <td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
+                           <td id=<?="sun".$k;?>></td>
+                           <td id=<?="mon".$k;?>></td>
+                           <td id=<?="tue".$k;?>></td>
+                           <td id=<?="wen".$k;?>></td>
+                           <td id=<?="thr".$k;?>></td>
+                           <td id=<?="fri".$k;?>></td>
+                           <td id=<?="sat".$k; $k++;?>></td>   
+                        </tr>
+                        <tr >   
+                           <td id=<?="sun".$k?>></td>
+                           <td id=<?="mon".$k?>></td>
+                           <td id=<?="tue".$k;?>></td>
+                           <td id=<?="wen".$k;?>></td>
+                           <td id=<?="thr".$k;?>></td>
+                           <td id=<?="fri".$k;?>></td>
+                           <td id=<?="sat".$k;?>></td>   
+                        </tr>
+                        <?
+                        $k++;
+                        }?>
+                     </table>
+         
+      <?
+   }
 
 }
 
