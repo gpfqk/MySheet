@@ -84,8 +84,7 @@
 		$query.= "and (host = '".$_SESSION['id']."' or member1 = '".$_SESSION['id']."' or member2 = '".$_SESSION['id']."' or member3 = '".$_SESSION['id']."');";
 		$result = mysql_query($query);
 
-		if($result)
-	    {
+		if($result){
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
 ?>
@@ -186,7 +185,7 @@
 		$row3 = mysql_fetch_array($result);
 ?>
 		<div style="font-size : 20px; padding-left : 10px;">
-			스터디원 : a<?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
+			스터디원 : <?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
 <?
 		if($_SESSION['id'] == $host)
 		{
@@ -213,21 +212,18 @@
 		</script>
 		<br><br>
 
+
 		<center><div><h3>스터디 게시판</h3></div></center>
-		<div  style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
+		<div style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
 		<div id="comment_write">
 			<form method=post action="comment.php">
 				<table style="width:80%; margin:30px auto;">
 					<tr>
 						<td style="width:20%;"> 내용 </td>
 						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="50"></textarea> </td>
-						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
-					</tr>
-					<tr>
-						<td> 비밀번호 </td>
-						<td> <input style="width:100%;" type=password name="password" size=20>
 						<input type=hidden name="studyname" value="<?=$title?>">
-						<input type=hidden name="host" value="<?=$host?>""></td>
+                		<input type=hidden name="host" value="<?=$host?>"">
+						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
 					</tr>
 				</table>
 			</form>
@@ -236,7 +232,7 @@
 <?
 
 		$query = "select * from comment ";
-		$query.= "where studyname = '".$title."' ";
+		$query.= "where studyname = '".$title."'";
 		$query.= "order by time desc;";
 		$result = mysql_query($query);
 		if($result)
@@ -246,12 +242,12 @@
 		      	$row = mysql_fetch_array($result); 
 ?>
 				<div>
-				    <table>
+				    <table style="width:100%;">
 						<tr>
-							<td><?=$row['content']?></td>
+							<td style="font-size:20px;"><?=$row['content']?></td>
 						<tr>
-						<tr align="right">
-							<td align="right"><?=$row['name']?>(<?=$row['writer']?>) <?=$row['time']?></td>
+						<tr>
+							<td><?=$row['name']?>(<?=$row['writer']?>) <div style="float:right;"><?=$row['time']?></div></td>
 						</tr>
 					</table>
 				</div>	
@@ -265,8 +261,8 @@
 	{
 		global $db;
 		if($db){
-			$sql = "insert into comment (writer,name,studyname,content,password) ";
-			$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."','".$_POST['password']."')";
+			$sql = "insert into comment (writer,name,studyname,content) ";
+			$sql.= "values('".$_SESSION['id']."','".$_SESSION['name']."','".$_POST['studyname']."','".$_POST['content']."')";
 			$result = mysql_query($sql);
 			if($result)
 				return true;
@@ -515,7 +511,6 @@
 			if (mysql_num_rows($results))
 			{	
 				$num = mysql_num_rows($results);
-				
 				$row = mysql_fetch_row($results);
 				$i = $row[0];
 				$row = mysql_fetch_row($results);
@@ -523,9 +518,9 @@
 				$j = $row[0];
 
 			}
-			echo $num;
 			echo $i;	
 			echo $j;
+			echo $num;
 	}
 
 	function study_search()
