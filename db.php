@@ -255,6 +255,9 @@
 <?
 			}
 		}
+
+
+
 	}
 
 	function comment_write($_POST)
@@ -397,6 +400,8 @@
 
 	function show_studylist()
 	{
+		global $db;
+
 		if($db)
 		{
 			$query = "select * from studylist where id='".$_SESSION['id']."' or number ='".$number."'";
@@ -502,31 +507,43 @@
 		$result = mysql_query($sql);
 	}
 
-	function timemark($id){
-		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
-		$db = mysql_select_db("mysheet", $connect);
-	
-			$query = "select sd_time from schedule where id='".$id."'";
-			$results = mysql_query($query);
-			if (mysql_num_rows($results))
-			{	
-				$num = mysql_num_rows($results);
-				$row = mysql_fetch_row($results);
-				$i = $row[0];
-				$row = mysql_fetch_row($results);
-				
-				$j = $row[0];
 
-			}
-			echo $i;	
-			echo $j;
-			echo $num;
+	
+
+			// $query = "select sd_time from schedule where id='".$id."'";
+			// $results = mysql_query($query);
+			// if (mysql_num_rows($results))
+			// {	
+			// 	$num = mysql_num_rows($results);
+			// 	$row = mysql_fetch_row($results);
+			// 	$i = $row[0];
+			// 	$row = mysql_fetch_row($results);
+				
+			// 	$j = $row[0];
+
+			// }
+			// echo $i;	
+			// echo $j;
+			// echo $num;
+
+	function member_add($_POST){
+		global $db;
+
+		$addmember=$_POST['addmember'];
+		$studyname=$_POST['studyname'];
+		$host=$_POST['host'];
+	
+		$sql = "insert into member_add (studyname,host,addmember) ";
+		$sql.= "values('".$studyname."','".$host."','".$addmember."');";
+
+		return mysql_query($sql);
 	}
 
-	function study_search()
-	{
+	function invitation_list($id){
+		$query = "select * from member_add A ";
+		$query.= "where A.addmember = '".$id."';";
 
-		$query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
+
 		$result = mysql_query($query);
 
 		if($result)
@@ -536,11 +553,30 @@
 ?>
 				<div class="hotel-rooms">
 					<div class="hotel-left">
-						<p style="color:#333 !important">스터디이름 : <?=$row['title']?></p>
-						<p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
+						<p style="font-size:20px; color: black;"><span class="glyphicon glyphicon-inbox" aria-hidden="true">
+							
+						</span><span>< <?=$row['studyname']?> ></span>에서 가입을 요청합니다.</p> 
 					</div>
-					<div class="hotel-right text-right">
-							<a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
+					<div class="hotel-right text-right" style="height: 20px;">
+						<div style="float : right;">
+							<form action="invitation_confirm.php" method="GET">
+							   	<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="addmember" value="<?=$row['addmember']?>">
+								<input type="hidden" name="no" value="no">
+								<input type="submit" value="거절">
+							</form>
+						</div>
+						<div style="float : right;">
+							<form action="invitation_confirm.php" method="GET">
+								<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="addmember" value="<?=$row['addmember']?>">
+								<input type="hidden" name="no" value="yes">
+								<input type="submit" value="승낙">
+							</form>
+						</div>
+
 					</div>
 				</div>
 <?
@@ -549,5 +585,128 @@
 
 		}
 	}
+
+	function invitation_confirm($_GET){
+		$studyname = $_GET['studyname'];
+		$host = $_GET['host'];
+		$addmember = $_GET['addmember'];
+		$no = $_GET['no'];
+
+		if ($no != 'no')
+		{
+			$query = "delete from member_add where studyname='".$studyname."'and addmember='".$addmember."'";
+			$result = mysql_query($query);
+
+			$query = "UPDATE studylist SET member3 = '".$addmember."' ";
+			$query.= "WHERE title = '".$studyname."' and host = '".$host."';";
+			$result = mysql_query($query);
+
+			return true;
+		}
+		else if($no == 'no')
+		{
+
+			$query = "delete from member_add where studyname='".$studyname."'and addmember='".$addmember."'";
+			$result = mysql_query($query);
+			return false;
+		}
+
+	}
+
+
+	function timemark($id){
+      $connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+      $db = mysql_select_db("mysheet", $connect);
+   
+         $query = "select sd_time from schedule where id='".$id."'";
+         $results = mysql_query($query);
+         if (mysql_num_rows($results))
+         {   
+            $num = mysql_num_rows($results);
+
+             for($i=0;$i<$num;$i++){
+               $row = mysql_fetch_row($results);
+               $j = $row[0];
+               ${"jj".$i} = explode(",", $j);
+               for($g=0;$g<count(${"jj".$i});$g++){
+
+               }
+               if($jj0[0]="tue")
+                  $bgcolor = "blue";
+               }
+         }
+               //echo count($jj0);
+               echo $jj0[0].$jj0[1];
+               echo $jj1[0].$jj1[1];
+
+               ?>
+                     <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+                        <tr>
+                           <td></td>
+                           <td>일</td>
+                           <td>월</td>
+                           <td>화</td>
+                           <td>수</td>
+                           <td>목</td>
+                           <td>금</td>
+                           <td>토</td>
+                        </tr>
+                        <?
+                           $k=1;
+                            for($i=10;$i<23;$i++){
+                         ?>
+                         <tr style="border-bottom:hidden;" >   
+                            <td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
+                           <td id=<?="sun".$k; $k++; ?>></td>
+                           <td id=<?="mon".$k;?>></td>
+                           <td id=<?="tue".$k;?>></td>
+                           <td id=<?="wen".$k;?>></td>
+                           <td id=<?="thr".$k;?>></td>
+                           <td id=<?="fri".$k;?>></td>
+                           <td id=<?="sat".$k;?>></td>   
+                        </tr>
+                        <tr >   
+                           <td id=<?="sun".$k?>></td>
+                           <td id=<?="mon".$k?>></td>
+                           <td id=<?="tue".$k;?>></td>
+                           <td id=<?="wen".$k;?>></td>
+                           <td id=<?="thr".$k;?>></td>
+                           <td id=<?="fri".$k;?>></td>
+                           <td id=<?="sat".$k;?>></td>   
+                        </tr>
+                        <?
+                        $k++;
+                        }?>
+                     </table>
+         
+      <?
+   }
+
+	function study_search()
+   {
+
+      $query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
+      $result = mysql_query($query);
+
+      if($result)
+       {
+         for($i=0;$i<mysql_num_rows($result);$i++){
+               $row = mysql_fetch_array($result); 
+?>
+            <div class="hotel-rooms">
+               <div class="hotel-left">
+                  <p style="color:#333 !important">스터디이름 : <?=$row['title']?></p>
+                  <p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
+               </div>
+               <div class="hotel-right text-right">
+                     <a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
+               </div>
+            </div>
+<?
+            
+         }
+
+      }
+   }
 
 ?>

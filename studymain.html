@@ -1,6 +1,7 @@
 <?  if (!isset($_SESSION)) { session_start(); } 
 	include("db.php");
 	ensure_logged_in();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +48,7 @@
 		</script>
 <!--//pop-up-box -->
 <style type="text/css">
-* {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
+* {font-family:'BM HANNA','배달의민족 한나', sans-serif ;}
 </style>
     </head>
 <body>
@@ -103,11 +104,13 @@
 							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 스터디원 초대 </h1>
 							</div>
 							<div class="login-form">
-								<form action="login.php" method="post">
-									<p>아이디</p>
-									<input type="text" name="id" required=""/>
+								<form action="member_add.php" method="POST">
+									<p>스터디원 아이디</p>
+									<input type="text" name="addmember" required=""/>
+									<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
+									<input type="hidden" name="host" value="<?=$_GET['host']?>" />
 									<br><br><br>	 
-									<input type="submit" value="LOGIN">
+									<input type="submit" value="초대 요청 전송">
 								</form>
 								<br>
 							</div> 

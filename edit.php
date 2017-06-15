@@ -1,5 +1,5 @@
 <?
-ini_set('memory_limit','192M');
+//ini_set('memory_limit','192M');
    if(!isset($_SESSION)){session_start();}
    include("db.php");
    ensure_logged_in();
