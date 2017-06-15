@@ -486,15 +486,18 @@
 		else return "최초 query없음";
 	}
 
-	function study_reservation($host,$study,$day,$starttime,$endtime,$whiteboard,$projecter,$size,$repeat){
+	function study_reservation($id,$study,$starttime,$endtime,$size,$projector,$whiteboard,$repeat,$yoil,$day){
 
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
 	
-		$sql = "insert into reservationlist (host,title,start,end,room,size,projecter,whiteboard,repeat,week,day)";
-		//$sql.= "values('"$"'.'".$study."','".$starttime."','".$endtime."','".$size."','".$projecter."','".$phone."')";
+		$sql = "insert into reservationlist (host,title,start,end,size,projector,whiteboard,repeat_d,week_d,day_d)";
+		$sql.= "values('".$id."','".$study."',".$starttime.",".$endtime.",'".$size."','".$projector."','".$whiteboard."','".$repeat."','".$yoil."','".$day."')";
 		$result = mysql_query($sql);
 		//작업중
+
+		// echo $sql;
+		// echo $result;
 	}
 
 	//시간표 등록
