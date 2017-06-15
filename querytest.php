@@ -14,8 +14,8 @@
 <meta name="keywords" content="Travel Hunt App Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android  Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta charset utf="8">
-<!--font-awsome-css-->
-     <link rel="stylesheet" href="css/font-awesome.min.css"> 
+<link rel="stylesheet" href="css/font-awesome.min.css"> 
+     <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 <!--custom css-->
