@@ -49,11 +49,14 @@
 	// echo $repeat;
 	// echo $yoil;  
 	// echo $day;
+	$dateform = explode('-',$day);
+    $ddate = $dateform[1]."/".$dateform[2]."/".$dateform[0];
 	study_reservation($id,$study,$starttime,$endtime,$size,$projector,$whiteboard,$repeat,$yoil,$day);
 
 ?>
 
 <script>
-      alert("등록 되었습니다.");
-      document.location.href="studyReservation.php";
+      // alert("등록 되었습니다.");
+      
+      document.location.href="date.html?date=<?=$ddate?>";
 </script>

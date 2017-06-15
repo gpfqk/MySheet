@@ -143,7 +143,7 @@ td{height: 21px; width:51px;}
 					<style>
 						td {font-size:12px;}
 					</style>
-					         <tr style="" >   
+					         <tr style="border-bottom:1px;" >   
 					            <td style="background-color:#043d67; color:white;" rowspan=2><?=$i."시";?></td>
 					           <td ><?=timemark_new($id, "sun,".$k)?></td>
 					           <td ><?=timemark_new($id, "mon,".$k)?></td>

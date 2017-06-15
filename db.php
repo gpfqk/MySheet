@@ -499,9 +499,14 @@
 
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 		$db = mysql_select_db("mysheet", $connect);
-	
-		$sql = "insert into reservationlist (host,title,start,end,size,projector,whiteboard,repeat_d,week_d,day_d)";
-		$sql.= "values('".$id."','".$study."',".$starttime.",".$endtime.",'".$size."','".$projector."','".$whiteboard."','".$repeat."','".$yoil."','".$day."')";
+		if($size == 'small')
+			$room = "새403";
+		else if($size == 'medium' || $projector == 1)
+			$room = "새604";
+		else
+			$room = "새501";
+		$sql = "insert into reservationlist (host,title,start,end,room,size,projector,whiteboard,repeat_d,week_d,day_d)";
+		$sql.= "values('".$id."','".$study."',".$starttime.",".$endtime.",'".$room."','".$size."','".$projector."','".$whiteboard."','".$repeat."','".$yoil."','".$day."')";
 		$result = mysql_query($sql);
 		//작업중
 
@@ -916,25 +921,25 @@ function timemark_new($id,$str)
 			if($row[1]=="새604")
 			{
 				for($i=0;$i<$row[3]-$row[2]+1;$i++){
-					$result  = $row[1].($row[2] + $i);?></br><?;
+					$result  = $row[1].($row[2] + $i);?><?;
 					if($tdid==$result)
 						return $row[0];
 				}
 			}else if($row[1]=="새501")
 			{
 				for($i=0;$i<$row[3]-$row[2]+1;$i++){
-					$result  = $row[1].($row[2] + $i);?></br><?;
+					$result  = $row[1].($row[2] + $i);?><?;
 					if($tdid==$result)
 						return $row[0];
 				}
 			}else if($row[1]=="새403")
 			{
 				for($i=0;$i<$row[3]-$row[2]+1;$i++){
-					$result  = $row[1].($row[2] + $i);?></br><?;
+					$result  = $row[1].($row[2] + $i);?><?;
 					if($tdid==$result)
 						return $row[0];
 				}
 			}
 		}
-          	}
+    }
 ?>
