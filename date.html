@@ -1,5 +1,6 @@
 <? if (!isset($_SESSION)) { session_start(); } 
 	include("db.php");
+
 	ensure_logged_in();?>
 <!DOCTYPE html>
 <html lang="en">
@@ -134,7 +135,36 @@ td{height: 21px; width:51px;}
 					
 			?>
 			</h1>
-		 	<? dateschedule($ddate); ?>
+		 	
+		 	      <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+                        <tr>
+                           <td style="width:7%; font-size:8px !important"></td>>
+                           <td>새 604</td>
+                           <td>새 501</td>
+                           <td>새 403</td>
+                        </tr>
+                        <?
+                           $k=1;
+                            for($i=10;$i<23;$i++){
+                         ?>
+                         <tr style="border-bottom:1px;" >   
+                            <td rowspan=2 style="background-color:#043d67; color:white" ><?=$i."시";?></td>
+                            <td id=<?=$a = '새604'.$k;?> style="border-bottom:hidden;"> <? echo dateschedule($ddate,$a); ?> </td>
+                            <td id=<?=$a = '새501'.$k;?> style="border-bottom:hidden;"> <? echo dateschedule($ddate,$a); ?> </td>
+                            <td id=<?=$a = '새403'.$k;?> style="border-bottom:hidden;"> <? echo dateschedule($ddate,$a); ?> </td>
+
+                           <? $k++;?>
+                           </tr>
+                        <tr >   
+                           <td id=<?=$a="새604".$k?>><? echo dateschedule($ddate,$a); ?></td>
+                           <td id=<?=$a="새501".$k?>><? echo dateschedule($ddate,$a); ?></td>
+                           <td id=<?=$a="새403".$k;?>><? echo dateschedule($ddate,$a); ?></td>
+                           
+                           </tr>
+                        <?
+                        $k++;
+                        }?>
+                     </table>
 		</div>	
 	</div>	
 </div>
