@@ -83,6 +83,11 @@
 		$query.= "and (host = '".$_SESSION['id']."' or member1 = '".$_SESSION['id']."' or member2 = '".$_SESSION['id']."' or member3 = '".$_SESSION['id']."');";
 		$result = mysql_query($query);
 
+		$query = "select * from reservationlist ";
+		$query.= "where num = 7;";
+		$result1 = mysql_query($query);
+		$row1 = mysql_fetch_array($result1);
+
 		if($result){
 			for($i=0;$i<mysql_num_rows($result);$i++){
 		      	$row = mysql_fetch_array($result); 
@@ -100,7 +105,18 @@
 					</div>
 					<div class="hotel-right text-right">
 <?
-						if($row['reservation'] != NULL ){
+						if($row1['completion'] == 1 && $row['title'] == '알고리즘스터디'){
+?>
+							<a href="#" style = "text-decoration: none;"><h4>예약있음</h4></a>
+<?
+						}
+						else if($row1['completion'] != 1 && $row['title'] == '알고리즘스터디')
+						{
+?>
+							<a href="#" style = "text-decoration: none;"><h4 style="color : black">예약없음</h4></a>
+<?							
+						}
+						else if($row['reservation'] != NULL){
 ?>
 							<a href="#" style = "text-decoration: none;"><h4>예약있음</h4></a>
 <?
