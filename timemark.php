@@ -30,26 +30,6 @@
 				$('.menu-link').bigSlide();
 				});
      </script>
-
-     <!-- metro ui 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link href="css/metro.css" rel="stylesheet">
-        <link href="css/metro-icons.css" rel="stylesheet">
-        <link href="css/metro-responsive.css" rel="stylesheet">
-        <link href="css/metro-schemes.css" rel="stylesheet">
-
-        <script src="https://pagead2.googlesyndication.com/pub-config/r20160913/ca-pub-1632668592742327.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="js/jquery-2.1.3.min.js"></script>
-        <script src="js/metro.js"></script>
-        <script src="js/docs.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
-        <script src="js/ga.js"></script>
-        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- web-fonts -->  
-<!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
-<!-- //web-fonts -->
-<!-- pop-up-box -->
 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 	    <script>
 			$(document).ready(function() {
@@ -138,15 +118,16 @@ td{height: 21px; width:51px;}
 			</div> 
 		</div>
 <!-- banner -->
-<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 시간표 조회  </div>
+<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 시간표 
+		<button onClick="location.href='./edittimetable.php'" style="background-color: #2ad2c9; border-radius: 10px; width:50px; height:30px; color:white; font-size:15px;" class="btn btn-default">추가</button>
+</div>
 				<div class="view_schedule">
 						<div class="details-right">
-						<button style="width: 50px;height: 25px;" onClick="location.href='./edittimetable.php'">편집</button>
+						
 						<div>
-						<!-- <? timemark_new($id); ?> -->
-						<table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
-					        <tr>
-					           <td></td>
+						<table border="1" style="color:black; background-color: white; height: 100%; width: 100%;">
+					        <tr style="background-color:#043d67; color:white;">
+					           <td style="width:7%; font-size:8px !important"></td>
 					           <td>일</td>
 					           <td>월</td>
 					           <td>화</td>
@@ -159,27 +140,30 @@ td{height: 21px; width:51px;}
 					           $k=1;
 					            for($i=10;$i<23;$i++){
 					?>
-					         <tr style="border-bottom:hidden;" >   
-					            <td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
-					           <td id=<?="sun".$k;?>><?=timemark_new($id, "sun,".$k)?></td>
-					           <td id=<?="mon".$k;?>><?=timemark_new($id, "mon,".$k)?></td>
-					           <td id=<?="tue".$k;?>><?=timemark_new($id, "tue,".$k)?></td>
-					           <td id=<?="wen".$k;?>><?=timemark_new($id, "wed,".$k)?></td>
-					           <td id=<?="thr".$k;?>><?=timemark_new($id, "thu,".$k)?></td>
-					           <td id=<?="fri".$k;?>><?=timemark_new($id, "fri,".$k)?></td>
-					           <td id=<?="sat".$k;?>><?=timemark_new($id, "sat,".$k)?></td>   
+					<style>
+						td {font-size:12px;}
+					</style>
+					         <tr style="" >   
+					            <td style="background-color:#043d67; color:white;" rowspan=2><?=$i."시";?></td>
+					           <td ><?=timemark_new($id, "sun,".$k)?></td>
+					           <td ><?=timemark_new($id, "mon,".$k)?></td>
+					           <td ><?=timemark_new($id, "tue,".$k)?></td>
+					           <td ><?=timemark_new($id, "wed,".$k)?></td>
+					           <td ><?=timemark_new($id, "thu,".$k)?></td>
+					           <td ><?=timemark_new($id, "fri,".$k)?></td>
+					           <td ><?=timemark_new($id, "sat,".$k)?></td>   
 					        </tr>
 					        <?
 					       		$k++;
 					        ?>
 					        <tr >   
-					           <td id=<?="sun".($k)?>></td>
-					           <td id=<?="mon".($k)?>></td>
-					           <td id=<?="tue".($k);?>></td>
-					           <td id=<?="wen".($k);?>></td>
-					           <td id=<?="thr".($k);?>></td>
-					           <td id=<?="fri".($k);?>></td>
-					           <td id=<?="sat".($k);?>></td>   
+					           <td ><?=timemark_new($id, "sun,".$k)?></td>
+					           <td ><?=timemark_new($id, "mon,".$k)?></td>
+					           <td ><?=timemark_new($id, "tue,".$k)?></td>
+					           <td ><?=timemark_new($id, "wed,".$k)?></td>
+					           <td ><?=timemark_new($id, "thu,".$k)?></td>
+					           <td ><?=timemark_new($id, "fri,".$k)?></td>
+					           <td ><?=timemark_new($id, "sat,".$k)?></td>   
 					        </tr>
 					        <?
 					       		$k++;
