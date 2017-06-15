@@ -636,29 +636,32 @@ a:visited {text-decoration: none; color:white;}
       $connect = mysql_connect("203.252.182.152", "all", "apmsetup");
       $db = mysql_select_db("mysheet", $connect);
    
-         $query = "select sd_time from schedule where id='".$id."'";
+         $query = "select sd_name, sd_time from schedule where id='".$id."'";
          $results = mysql_query($query);
          if (mysql_num_rows($results))
          {   
             $num = mysql_num_rows($results);
              for($i=0;$i<$num;$i++){
-               $row = mysql_fetch_row($results);
-               $j = $row[0];
+               $row = mysql_fetch_array($results);
+               $j = $row['sd_time'];
+               $kj[$i] = $row['sd_name'];
                ${"jj".$i} = explode(",", $j);
-               for($g=0;$g<count(${"jj".$i})-1;$g++){
-                  $cellcolor = ${"jj".$i}[0].${"jj".$i}[$g+1]; // td의 id 추출 
-                  ?><style type="text/css">
-                     #<?=$cellcolor?>{background-color: white;}
-                  </style>
-                  <?
-               
+               for($g=0; $g<count(${"jj".$i})-1; $g++){
+                	$cellcolor = ${"jj".$i}[0].${"jj".$i}[$g+1]; // td의 id 추출 
+                	echo $cellcolor.$kj[$i]."<br>";
+?>
+	                  <style type="text/css">
+	                     #<?=$cellcolor?> {background-color: green;}
+	                  </style>
+<?			
                }
          }
+         for($i=0; $i<count($kj);$i++)
+         	echo "과목:".$kj[$i]."<br>";
                //echo count($jj0);
                //echo $jj0[0].$jj0[1];
                //echo $jj1[0].$jj1[1];
-
-               ?>
+?>
                      <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
                         <tr>
                            <td></td>
@@ -670,10 +673,10 @@ a:visited {text-decoration: none; color:white;}
                            <td>금</td>
                            <td>토</td>
                         </tr>
-                        <?
+<?
                            $k=1;
                             for($i=10;$i<23;$i++){
-                         ?>
+?>
                          <tr style="border-bottom:hidden;" >   
                             <td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
                            <td id=<?="sun".$k;?>></td>
@@ -694,7 +697,7 @@ a:visited {text-decoration: none; color:white;}
                            <td id=<?="sat".$k;?>></td>   
                         </tr>
                         <?
-                        $k++;
+                       		$k++;
                         }?>
                      </table>
          
@@ -753,4 +756,29 @@ a:visited {text-decoration: none; color:white;}
 
 	}
 
+function timemark_new($id,$str)
+{
+
+	$arr = explode(",", $str);
+	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+  	$db = mysql_select_db("mysheet", $connect);
+	$query = "select sd_name from schedule where id='".$id."' ";
+	for($k=0; $k<count($arr); $k++)
+	{
+		$query.=" and sd_time like '%".$arr[$k]."%' ";
+	}
+	$query.=";";
+	echo $query;
+	$results = mysql_query($query);
+	if($results)
+	{
+		for($i=0;$i<mysql_num_rows($result);$i++){
+			$row = mysql_fetch_array($result); 
+			$schedule_id = $row['sd_name'];
+		}
+		return $schedule_id;
+	}
+	else
+		return "f";
+}
 ?>
