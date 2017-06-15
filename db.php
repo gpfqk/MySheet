@@ -898,46 +898,42 @@ function timemark_new($id,$str)
 			}
 		}
 	}
-	function dateschedule($ddate){
+	function dateschedule($ddate,$tdid){
 		$day = $ddate;
-		$query = "select room,start,end from reservationlist where day_d = '".$day."'";
-		for($k=0; $k<count($arr); $k++)
-	{
-		if( $arr[$k] < 10 )
-			$query.=" and ( sd_time like '%,".$arr[$k].",%' or sd_time like '".$arr[$k].",%') ";
-	 	else 
-	 		$query.=" and sd_time like '%".$arr[$k]."%' ";
-	}
-     		$result = mysql_query($query);
-?>
-                     <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
-                        <tr>
-                           <td></td>
-                           <td>새 604</td>
-                           <td>새 501</td>
-                           <td>새 403</td>
-                        </tr>
-                        <?
-                           $k=1;
-                            for($i=10;$i<23;$i++){
-                         ?>
-                         <tr style="border-bottom:1px;" >   
-                            <td rowspan=2 style="border-bottom:1px black solid" ><?=$i."시";?></td>
-                            <td id=<?='새604'.$k;?> style="border-bottom:hidden;"></td>
-                            <td id=<?="새501".$k;?> style="border-bottom:hidden" ></td>
-                            <td id=<?="새403".$k;?> style="border-bottom:hidden"></td>
-                           <? $k++;?>
-                           </tr>
-                        <tr >   
-                           <td id=<?="새604".$k?>></td>
-                           <td id=<?="새501".$k?>></td>
-                           <td id=<?="새403".$k;?>></td>
-                           
-                           </tr>
-                        <?
-                        $k++;
-                        }?>
-                     </table>
-                     <?
-	}
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+  		$db = mysql_select_db("mysheet", $connect);
+		$query = "select title,room,start,end from reservationlist where day_d = '".$day."'";
+		$rows = mysql_query($query);
+		$num = mysql_num_rows($rows);
+       
+		for($k=0; $k<$num; $k++){
+			$row = mysql_fetch_row($rows);
+			// echo $row[0]; //title
+			// echo $row[1]; //room
+			// echo $row[2]; //start
+			// echo $row[3]; //end
+			if($row[1]=="새604")
+			{
+				for($i=0;$i<$row[3]-$row[2]+1;$i++){
+					$result  = $row[1].($row[2] + $i);?></br><?;
+					if($tdid==$result)
+						return $row[0];
+				}
+			}else if($row[1]=="새501")
+			{
+				for($i=0;$i<$row[3]-$row[2]+1;$i++){
+					$result  = $row[1].($row[2] + $i);?></br><?;
+					if($tdid==$result)
+						return $row[0];
+				}
+			}else if($row[1]=="새403")
+			{
+				for($i=0;$i<$row[3]-$row[2]+1;$i++){
+					$result  = $row[1].($row[2] + $i);?></br><?;
+					if($tdid==$result)
+						return $row[0];
+				}
+			}
+		}
+          	}
 ?>
