@@ -851,16 +851,19 @@ a:visited {text-decoration: none; color:white;}
 
 function timemark_new($id,$str)
 {
-
 	$arr = explode(",", $str);
 	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
   	$db = mysql_select_db("mysheet", $connect);
 	$query = "select sd_name from schedule where id='".$id."' ";
 	for($k=0; $k<count($arr); $k++)
 	{
-		$query.=" and sd_time like '%".$arr[$k]."%' ";
+		if( $arr[$k] < 10 )
+			$query.=" and ( sd_time like '%,".$arr[$k].",%' or sd_time like '".$arr[$k].",%') ";
+	 	else 
+	 		$query.=" and sd_time like '%".$arr[$k]."%' ";
 	}
 	$query.=";";
+	// echo $query;
 	$result = mysql_query($query);
 	if($result)
 	{
@@ -871,7 +874,7 @@ function timemark_new($id,$str)
 		return $schedule_id;
 	}
 	else
-		return "f";
+		return "fffffffffffffff";
 }
 	function member_join($_GET){
 		global $db;
