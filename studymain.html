@@ -204,9 +204,6 @@
 						<p style="font-size: 25px;text-align: center;">예약이 확정되었습니다.</p>
 <!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
 						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
-<?
-						completion_change();
-?>	
 						<input type="submit" value="돌아가기">
 					</form>
 					<br>
@@ -245,8 +242,14 @@
 						<p style="font-size: 25px;text-align: center;">예약을 확정하시겠습니까?</p>
 <!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
 						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
+						<?
+						if($_GET['host'] == 'cesti0777' && $_GET['title'] == '알고리즘스터디'){
+
+							completion_change();
+						}
+						?>
 						<br><br>	
-						<div style="width:150px; margin:0 auto;"><a href="#small-dialog4" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:150px; height:50px; color:white; font-size:30px;" class="btn btn-default">확정</button></a></div>
+						<div style="width:150px; margin:0 auto;"><a href="#small-dialog4" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;" ><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:150px; height:50px; color:white; font-size:30px;" class="btn btn-default">확정</button></a></div>
 					</form>
 					<br>
 				</div> 
