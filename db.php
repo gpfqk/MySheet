@@ -138,7 +138,7 @@
 				<div class="hotel-rooms">
 					<div class="hotel-left">
 						<div style="font-size : 20px">
-							[<?=$row['day']?>] <?=conversion_time($row['start'])?> ~ <?=conversion_time($row['end'])?>
+							[<?=$row['day_d']?>] <?=conversion_time($row['start'])?> ~ <?=conversion_time($row['end'])?>
 						</div> 
 						<div style="font-size : 20px">
 							<?=$row['room']?>
@@ -197,10 +197,16 @@
 		if($_SESSION['id'] == $host)
 		{
 ?>
+<style>
+a {text-decoration: none; color:white;}
+a:visited {text-decoration: none; color:white;}
+</style>
 			<center>
-				<div>
-					<a href="#small-dialog" class="sign-in popup-top-anim">초대</a>
-					<a href="#small-dialog2" class="sign-in popup-top-anim">추방</a>
+				<div style="margin: 20px auto;">
+					<a href="#small-dialog" visited=none; class="sign-in popup-top-anim">
+					<div style="width:80px; background-color: black; color:white; float:left;">초대</div></a>
+					<a href="#small-dialog2" visited=none; class="sign-in popup-top-anim">
+					<div style="width:80px; background-color: black; color:white; float:right;">추방</a>
 				</div>
 			</center>
 <?
@@ -220,17 +226,19 @@
 		<br><br>
 
 
-		<center><div><h3>스터디 게시판</h3></div></center>
-		<div style="display: block; height: 30px;"><button style="float : right;" id="comment_write_button">글 작성</button></div>
+		<div style="margin:20px auto; width:100%; font-size:25px; text-align:center; color:white; background-color:#2ad2c9;"> 스터디 게시판 </div>
+
+		<div style="display: block; height: 30px;"><button style="float : right; background-color: #043d67; border-radius: 10px; width:70px; height:30px; color:white; font-size:15px;" id="comment_write_button" class="btn btn-default">글 작성</button></div>
 		<div id="comment_write">
 			<form method=post action="comment.php">
 				<table style="width:80%; margin:30px auto;">
 					<tr>
 						<td style="width:20%;"> 내용 </td>
-						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="50"></textarea> </td>
+						<td style="width:60%;"> <textarea style="width:100%;" name="content" rows="3" cols="55" class="form-control" placeholder="스터디원들에게 한마디를 남겨보세요."></textarea> </td>
 						<input type=hidden name="studyname" value="<?=$title?>">
                 		<input type=hidden name="host" value="<?=$host?>"">
-						<td rowspan="2"><input style="margin-left:15px;" type=submit value="저장"></td>
+						<td rowspan="2"><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:55px; margin-left:15px; height:30px; color:white; font-size:15px;" class="btn btn-default">저장</button>
+				<br></td>
 					</tr>
 				</table>
 			</form>
@@ -553,7 +561,6 @@
 		$query = "select * from member_add A ";
 		$query.= "where A.addmember = '".$id."';";
 
-
 		$result = mysql_query($query);
 
 		if($result)
@@ -589,11 +596,55 @@
 
 					</div>
 				</div>
+<?	
+			}
+		}
+
+		$query = "select * from study_join A ";
+		$query.= "where A.host = '".$id."';";
+
+		$result = mysql_query($query);
+
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+?>
+				<div class="hotel-rooms">
+					<div class="hotel-left">
+						<p style="font-size:20px; color: black;"><span class="glyphicon glyphicon-inbox" aria-hidden="true">
+							
+						</span><span style = "color : red;">< <?=$row['joinmember']?> ></span >님께서 <span style = "color : red">< <?=$row['studyname']?> ></span>에 가입을 원합니다.</p> 
+					</div>
+					<div class="hotel-right text-right" style="height: 20px;">
+						<div style="float : right;">
+							<form action="join_confirm.php" method="GET">
+							   	<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="joinmember" value="<?=$row['joinmember']?>">
+								<input type="hidden" name="no" value="no">
+								<input type="submit" value="거절">
+							</form>
+						</div>
+						<div style="float : right;">
+							<form action="join_confirm.php" method="GET">
+								<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="joinmember" value="<?=$row['joinmember']?>">
+								<input type="hidden" name="no" value="yes">
+								<input type="submit" value="승낙">
+							</form>
+						</div>
+
+					</div>
+				</div>
 <?
 				
 			}
 
 		}
+
+
 	}
 
 	function invitation_confirm($_GET){
@@ -623,34 +674,64 @@
 
 	}
 
+	function join_confirm($_GET){
+		$studyname = $_GET['studyname'];
+		$host = $_GET['host'];
+		$joinmember = $_GET['joinmember'];
+		$no = $_GET['no'];
+
+		if ($no != 'no')
+		{
+			$query = "delete from study_join where studyname='".$studyname."'and joinmember='".$joinmember."'";
+			$result = mysql_query($query);
+
+			$query = "UPDATE studylist SET member3 = '".$joinmember."' ";
+			$query.= "WHERE title = '".$studyname."' and host = '".$host."';";
+			$result = mysql_query($query);
+
+			return true;
+		}
+		else if($no == 'no')
+		{
+
+			$query = "delete from study_join where studyname='".$studyname."'and joinmember='".$joinmember."'";
+			$result = mysql_query($query);
+			return false;
+		}
+
+	}
+
 
    function timemark($id){
       $connect = mysql_connect("203.252.182.152", "all", "apmsetup");
       $db = mysql_select_db("mysheet", $connect);
    
-         $query = "select sd_time from schedule where id='".$id."'";
+         $query = "select sd_name, sd_time from schedule where id='".$id."'";
          $results = mysql_query($query);
          if (mysql_num_rows($results))
          {   
             $num = mysql_num_rows($results);
              for($i=0;$i<$num;$i++){
-               $row = mysql_fetch_row($results);
-               $j = $row[0];
+               $row = mysql_fetch_array($results);
+               $j = $row['sd_time'];
+               $kj[$i] = $row['sd_name'];
                ${"jj".$i} = explode(",", $j);
-               for($g=0;$g<count(${"jj".$i})-1;$g++){
-                  $cellcolor = ${"jj".$i}[0].${"jj".$i}[$g+1]; // td의 id 추출 
-                  ?><style type="text/css">
-                     #<?=$cellcolor?>{background-color: white;}
-                  </style>
-                  <?
-               
+               for($g=0; $g<count(${"jj".$i})-1; $g++){
+                	$cellcolor = ${"jj".$i}[0].${"jj".$i}[$g+1]; // td의 id 추출 
+                	echo $cellcolor.$kj[$i]."<br>";
+?>
+	                  <style type="text/css">
+	                     #<?=$cellcolor?> {background-color: green;}
+	                  </style>
+<?			
                }
          }
+         for($i=0; $i<count($kj);$i++)
+         	echo "과목:".$kj[$i]."<br>";
                //echo count($jj0);
                //echo $jj0[0].$jj0[1];
                //echo $jj1[0].$jj1[1];
-
-               ?>
+?>
                      <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
                         <tr>
                            <td></td>
@@ -662,10 +743,10 @@
                            <td>금</td>
                            <td>토</td>
                         </tr>
-                        <?
+<?
                            $k=1;
                             for($i=10;$i<23;$i++){
-                         ?>
+?>
                          <tr style="border-bottom:hidden;" >   
                             <td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
                            <td id=<?="sun".$k;?>></td>
@@ -686,7 +767,7 @@
                            <td id=<?="sat".$k;?>></td>   
                         </tr>
                         <?
-                        $k++;
+                       		$k++;
                         }?>
                      </table>
          
@@ -698,7 +779,7 @@
 	function study_search()
    {
 
-      $query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
+      $query = "select * from studylist s, userinfo u where s.host = u.id;";
       $result = mysql_query($query);
 
       if($result)
@@ -712,7 +793,30 @@
                   <p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
                </div>
                <div class="hotel-right text-right">
-                     <a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
+
+<?
+					$query = "select * from study_join ";
+					$query.= "where joinmember = '".$_SESSION['id']."' ";
+					$query.= "and host = '".$row['host']."' ";
+					$query.= "and studyname = '".$row['title']."';";
+					$result2 = mysql_query($query);
+					if(mysql_num_rows($result2)){
+?>
+						<a href="#" style = "text-decoration: none;"><h4 style="color:navy !important;">가입 요청 중</h4></a>
+<?
+					}else{
+						if($_SESSION['id'] == $row['host'] || $_SESSION['id'] == $row['member1'] || $_SESSION['id'] == $row['member2'] || $_SESSION['id'] == $row['member3']){
+?>
+						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:gray !important;">가입 중</h4></a>
+<?
+						}
+						else{
+?>
+							<a href="study_join.php?studyname=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:navy !important;">가입하기</h4></a>
+<?
+						}
+					}
+?>       
                </div>
             </div>
 <?
@@ -745,4 +849,44 @@
 
 	}
 
+function timemark_new($id,$str)
+{
+	$arr = explode(",", $str);
+	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+  	$db = mysql_select_db("mysheet", $connect);
+	$query = "select sd_name from schedule where id='".$id."' ";
+	for($k=0; $k<count($arr); $k++)
+	{
+		if( $arr[$k] < 10 )
+			$query.=" and ( sd_time like '%,".$arr[$k].",%' or sd_time like '".$arr[$k].",%') ";
+	 	else 
+	 		$query.=" and sd_time like '%".$arr[$k]."%' ";
+	}
+	$query.=";";
+	// echo $query;
+	$result = mysql_query($query);
+	if($result)
+	{
+		for($i=0;$i<mysql_num_rows($result);$i++){
+			$row = mysql_fetch_array($result); 
+			$schedule_id = $row['sd_name'];
+		}
+		return $schedule_id;
+	}
+	else
+		return "fffffffffffffff";
+}
+	function member_join($_GET){
+		global $db;
+
+		$studyname = $_GET['studyname'];
+		$host = $_GET['host'];
+		$joinmember = $_SESSION['id'];
+
+		$sql = "insert into study_join (studyname,host,joinmember) ";
+		$sql.= "values('".$studyname."','".$host."','".$joinmember."');";
+
+		return mysql_query($sql);
+
+	}
 ?>

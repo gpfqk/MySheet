@@ -30,26 +30,6 @@
 				$('.menu-link').bigSlide();
 				});
      </script>
-
-     <!-- metro ui 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link href="css/metro.css" rel="stylesheet">
-        <link href="css/metro-icons.css" rel="stylesheet">
-        <link href="css/metro-responsive.css" rel="stylesheet">
-        <link href="css/metro-schemes.css" rel="stylesheet">
-
-        <script src="https://pagead2.googlesyndication.com/pub-config/r20160913/ca-pub-1632668592742327.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="js/jquery-2.1.3.min.js"></script>
-        <script src="js/metro.js"></script>
-        <script src="js/docs.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
-        <script src="js/ga.js"></script>
-        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- web-fonts -->  
-<!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
-<!-- //web-fonts -->
-<!-- pop-up-box -->
 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 	    <script>
 			$(document).ready(function() {
@@ -85,14 +65,15 @@ td{height: 21px; width:51px;}
 							<div class="logo">
 								<li><a class=" link link--yaku active" href="main.html">Home</a></li>
 								<li>----------------</li>
-								<li><a class=" link link--yaku" href="timemark.html">내 시간표 관리</a></li>
-								<!-- <li><a class=" link link--yaku" href="edittimetable.php">내 시간표 편집</a></li> -->
+								<li><a class=" link link--yaku" href="timemark.php">내 시간표 관리</a></li>
 								<li><a class=" link link--yaku" href="destination.html">내 정보 관리</a></li>
 								<li><a class=" link link--yaku" href="mystudy.html">내 스터디 관리</a></li>
 								<li>----------------</li>
-								<li><a class=" link link--yaku" href="contact.html">전체 스터디 검색</a></li>
+								<li><a class=" link link--yaku" href="studysearch.html">스터디 가입</a></li>
+								<li><a class=" link link--yaku" href="invitation.html">스터디 가입 관리</a></li>
 								<li><a class=" link link--yaku" href="contact.html">도움말 및 사용법</a></li>
 								<li>----------------</li>
+
 <?
 								if($_SESSION['name']){
 ?>
@@ -132,107 +113,69 @@ td{height: 21px; width:51px;}
 <?
 					}
 ?>
-						<!-- modal -->
-					<div id="small-dialog" class="mfp-hide">
-						<div class="login-modal"> 	
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 로그인 </h1>
-							</div>
-							<div class="login-form">
-								<form action="login.php" method="post">
-									<p>아이디</p>
-									<input type="text" name="id" required=""/>
-									<p>비밀번호</p>
-									<input type="password" name="password" required=""/>
-									<br><br><br>	 
-<!-- 									<div class="wthree-text"> 
-										<ul> 
-											<li>
-												<input type="checkbox" id="brand" value="">
-												<label for="brand"><span></span> Remember me ?</label>  
-											</li>
-										</ul>
-										<div class="clear"> </div>
-									</div>  -->
-									<input type="submit" value="LOGIN">
-								</form>
-								<br>
-								<p style="text-align: center;" > 가입된 계정이 없으신가요? <a href="#small-dialog1" class="sign-in popup-top-anim"> JOIN </a></p>
-							</div> 
-						</div>
-					</div>
-					<!-- //modal --> 
-					<!-- modal-two -->
-					<div id="small-dialog1" class="mfp-hide">
-						<div class="login-modal">  
-							<div class="booking-info">
-							   <h1  style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 회원가입 </h1>
-							</div>
-							<div class="login-form signup-form">
-								<form action="join.php" method="post">
-									<p>아이디 </p>
-									<input type="text" name="id"  required="true"/>
-									<p>비밀번호</p>
-									<input type="password" name="password" placeholder="" required="true"/>	
-									<p>이름 </p>
-									<input type="text" name="name"  required="true"/>
-									<p>소속학과 </p>
-									<input type="text" name="major"  required="true"/>
-									<p>학번 </p>
-									<input type="text" name="number"  required="true"/>
-									<p>연락처 </p>
-									<input type="text" name="phone1"  required="true" value="010" style="width:30% !important;"/> - <input type="text" name="phone2"  required="true" length="5" style="width:30% !important;"/> - <input type="text" name="phone3"  required="true" length="5" style="width:30% !important;"/>
-									<div class="wthree-text"> 
-										<input type="checkbox" id="brand1" value="">
-										<label for="brand1"><span></span>I accept the terms of use</label> 
-									</div>
-									<input type="submit" value="Sign Up">		
-								</form> 
-							</div> 
-						</div>
-					</div>
-					<!-- //modal-two --> 
-					
 				</div>
 				<div class="clearfix"></div>
 			</div> 
+		</div>
 <!-- banner -->
-   <div class="details-grids">
-				<div class="details-shade">
+<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;내 시간표 
+		<button onClick="location.href='./edittimetable.php'" style="background-color: #2ad2c9; border-radius: 10px; width:50px; height:30px; color:white; font-size:15px;" class="btn btn-default">추가</button>
+</div>
+				<div class="view_schedule">
 						<div class="details-right">
-						<h1>시간표 조회</h1>
-						<button style="width: 50px;height: 25px;" value="편집" onClick="location.href='./edittimetable.php'"></button>
+						
 						<div>
-						<? timemark($id); ?>
+						<table border="1" style="color:black; background-color: white; height: 100%; width: 100%;">
+					        <tr style="background-color:#043d67; color:white;">
+					           <td style="width:7%; font-size:8px !important"></td>
+					           <td>일</td>
+					           <td>월</td>
+					           <td>화</td>
+					           <td>수</td>
+					           <td>목</td>
+					           <td>금</td>
+					           <td>토</td>
+					        </tr>
+					<?
+					           $k=1;
+					            for($i=10;$i<23;$i++){
+					?>
+					<style>
+						td {font-size:12px;}
+					</style>
+					         <tr style="" >   
+					            <td style="background-color:#043d67; color:white;" rowspan=2><?=$i."시";?></td>
+					           <td ><?=timemark_new($id, "sun,".$k)?></td>
+					           <td ><?=timemark_new($id, "mon,".$k)?></td>
+					           <td ><?=timemark_new($id, "tue,".$k)?></td>
+					           <td ><?=timemark_new($id, "wed,".$k)?></td>
+					           <td ><?=timemark_new($id, "thu,".$k)?></td>
+					           <td ><?=timemark_new($id, "fri,".$k)?></td>
+					           <td ><?=timemark_new($id, "sat,".$k)?></td>   
+					        </tr>
+					        <?
+					       		$k++;
+					        ?>
+					        <tr >   
+					           <td ><?=timemark_new($id, "sun,".$k)?></td>
+					           <td ><?=timemark_new($id, "mon,".$k)?></td>
+					           <td ><?=timemark_new($id, "tue,".$k)?></td>
+					           <td ><?=timemark_new($id, "wed,".$k)?></td>
+					           <td ><?=timemark_new($id, "thu,".$k)?></td>
+					           <td ><?=timemark_new($id, "fri,".$k)?></td>
+					           <td ><?=timemark_new($id, "sat,".$k)?></td>   
+					        </tr>
+					        <?
+					       		$k++;
+					        }?>
+					     </table>
 						</div>
 					</div>	
-				</div>
 		<div class="w3agile agileinfo_copy_right">
-			<div class="agileinfo_copy_right_right">
-				<ul class="social">
-					<li><a class="social-linkedin" href="#">
-						<i></i>
-						<div class="tooltip"><span>Facebook</span></div>
-						</a></li>
-					<li><a class="social-twitter" href="#">
-						<i></i>
-						<div class="tooltip"><span>Twitter</span></div>
-						</a></li>
-					<li><a class="social-google" href="#">
-						<i></i>
-						<div class="tooltip"><span>Google+</span></div>
-						</a></li>
-					<li><a class="social-facebook" href="#">
-						<i></i>
-						<div class="tooltip"><span>Pinterest</span></div>
-						</a></li>
-					<li><a class="social-instagram" href="#">
-						<i></i>
-						<div class="tooltip"><span>Instagram</span></div>
-						</a></li>
-				</ul>
+			<div class="agileinfo_copy_right_right" style="color:white;">
+				ⓒ 2017. 내자리야 all rights reserved.
 			</div>
-			<div class="clearfix"> </div>
+		</div>
 	</div>
 	<!--/footer-->
 </div>
