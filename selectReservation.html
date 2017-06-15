@@ -1,3 +1,12 @@
+<? if (!isset($_SESSION)) { session_start(); } 
+	include("db.php");
+	ensure_logged_in();
+?>
+<script type="text/javascript">
+	function click(){
+	Location.href="date.html";
+}
+</script>
 
 <!DOCTYPE html>
 

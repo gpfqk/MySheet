@@ -120,7 +120,7 @@ td{height: 21px; width:51px;}
 									<option value="tue">화요일</option>
 									<option value="wen">수요일</option>
 									<option value="thr">목요일</option>
-									<option value="fir">금요일</option>
+									<option value="fri">금요일</option>
 									<option value="sat">토요일</option>
 									<option value="sun">일요일</option>	
 								</select>
