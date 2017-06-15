@@ -143,16 +143,23 @@
 							<?=$row['room']?>
 						</div> 
 					</div>
-					<div class="hotel-right text-right">
+					<div class="hotel-right text-right">						
 <?
 						if($row['completion'] == 1 ){
 ?>
 							<div><h4>예약완료</h4></div>
 <?
-						}else{
+						}
+						else if($row['host'] == 'cesti0777' && $row['title'] == "알고리즘스터디"){
 ?>
-							<div><h4 style="color : black">예약대기</h4></div>
+							<a href="#small-dialog6" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">예약대기</h4></div></a>
 <?
+						}
+						else{
+?>
+							<a href="#small-dialog3" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">예약대기</h4></div></a>
+<?
+
 						}
 ?>
 					</div>
@@ -433,6 +440,22 @@
 			}
 		}
 	}
+	function choochun($id,$study,$start,$end,$day){
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		$size = 'small';
+		if($size == 'small')
+      			$room = "새403";
+      		else if($size == 'medium' || $projector == 1)
+         			$room = "새604";
+      		else
+         			$room = "새501";
+		$sql = "insert into reservationlist (host,title,start,end,room,size,projector,whiteboard,repeat_d,completion,week_d,day_d)";
+		$sql.= "values('".$id."','".$study."',".$start.",".$end.",'".$room."','".'small'."',".'1'.",".'0'.",".'0'.",".'1'.",'".$day."','".'2017-06-15'."')";
+		$result = mysql_query($sql);
+		echo $sql;
+	}
+
 	function query_test($title, $time, $day)
 	{
 		global $db;
@@ -801,12 +824,12 @@
 					$result2 = mysql_query($query);
 					if(mysql_num_rows($result2)){
 ?>
-						<a href="#" style = "text-decoration: none;"><h4 style="color:navy !important;">가입 요청 중</h4></a>
+						<a href="#" style = "text-decoration: none;"><h4 style="color:navy !important;">가입 요청중</h4></a>
 <?
 					}else{
 						if($_SESSION['id'] == $row['host'] || $_SESSION['id'] == $row['member1'] || $_SESSION['id'] == $row['member2'] || $_SESSION['id'] == $row['member3']){
 ?>
-						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:gray !important;">가입 중</h4></a>
+						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:gray !important;">가입중</h4></a>
 <?
 						}
 						else{
@@ -904,6 +927,12 @@ function timemark_new($id,$str)
 			}
 		}
 	}
+	function completion_change(){
+		$query = "UPDATE reservationlist SET completion = 1 ";
+		$query.= "WHERE num = 7;";
+		$result = mysql_query($query);
+	}
+
 	function dateschedule($ddate,$tdid){
 		$day = $ddate;
 		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");

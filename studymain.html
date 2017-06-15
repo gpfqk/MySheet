@@ -150,29 +150,107 @@
 		</div>
 	<!--/footer-->
 	<!-- modal -->
-					<div id="small-dialog2" class="mfp-hide">
-						<div class="member-delete-modal"> 	
-							<div class="booking-info">
-							   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 스터디원 추방 </h1>
-							</div>
-							<div class="login-form">
-								<form action="member_delete.php" method="POST">
-									<p>추방할 스터디원 선택</p>
-									<select name="deletemember">
-										<option value="<?=$_SESSION['member1ID']?>" selected="selected"><?=$_SESSION['member1']?></option>
-										<option value="<?=$_SESSION['member2ID']?>"><?=$_SESSION['member2']?></option>
-										<option value="<?=$_SESSION['member3ID']?>"><?=$_SESSION['member3']?></option>
-									</select>
-									<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
-									<input type="hidden" name="host" value="<?=$_GET['host']?>" />
-									<br><br><br>	
-									<input type="submit" value="추방">
-								</form>
-								<br>
-							</div> 
-						</div>
-					</div>
-					<!-- //modal -->
+		<div id="small-dialog2" class="mfp-hide">
+			<div class="member-delete-modal"> 	
+				<div class="booking-info">
+				   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 스터디원 추방 </h1>
+				</div>
+				<div class="login-form">
+					<form action="member_delete.php" method="POST">
+						<p>추방할 스터디원 선택</p>
+						<select name="deletemember">
+							<option value="<?=$_SESSION['member1ID']?>" selected="selected"><?=$_SESSION['member1']?></option>
+							<option value="<?=$_SESSION['member2ID']?>"><?=$_SESSION['member2']?></option>
+							<option value="<?=$_SESSION['member3ID']?>"><?=$_SESSION['member3']?></option>
+						</select>
+						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
+						<input type="hidden" name="host" value="<?=$_GET['host']?>" />
+						<br><br><br>	
+						<input type="submit" value="추방">
+					</form>
+					<br>
+				</div> 
+			</div>
+		</div>
+		<!-- //modal -->
+		<div id="small-dialog3" class="mfp-hide">
+			<div class="member-delete-modal"> 	
+				<div class="booking-info">
+				   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 예약 확정 </h1>
+				</div>
+				<div class="login-form">
+					<form action="#small-dialog4" method="POST">
+						<p>예약을 확정하시겠습니까?</p>
+<!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
+						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
+						<br><br><br>	
+						<a href="#small-dialog5" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">확정</h4></div></a>
+					</form>
+					<br>
+				</div> 
+			</div>
+		</div>
+		<!-- //modal -->
+		<!-- //modal -->
+		<div id="small-dialog4" class="mfp-hide">
+			<div class="member-delete-modal"> 	
+				<div class="booking-info">
+				   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 예약 확정 </h1>
+				</div>
+				<div class="login-form">
+					<form action="studymain.html?title=<?=$_GET['title']?>&host=<?=$_GET['host']?>" method="POST">
+						<p>예약이 확정되었습니다.</p>
+<!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
+						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
+<?
+						completion_change();
+?>
+						<br><br><br>	
+						<input type="submit" value="돌아가기">
+					</form>
+					<br>
+				</div> 
+			</div>
+		</div>
+		<!-- //modal -->
+		<!-- //modal -->
+		<div id="small-dialog5" class="mfp-hide">
+			<div class="member-delete-modal"> 	
+				<div class="booking-info">
+				   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 예약 확정 </h1>
+				</div>
+				<div class="login-form">
+					<form action="studymain.html?title=<?=$_GET['title']?>&host=<?=$_GET['host']?>" method="POST">
+						<p>이미 예약된 내역이 있어</p>
+						<p>예약을 확정할 수 없습니다.</p>
+<!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
+						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->	
+						<input type="submit" value="돌아가기">
+					</form>
+					<br>
+				</div> 
+			</div>
+		</div>
+		<!-- //modal -->
+				<!-- //modal -->
+		<div id="small-dialog6" class="mfp-hide">
+			<div class="member-delete-modal"> 	
+				<div class="booking-info">
+				   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 예약 확정 </h1>
+				</div>
+				<div class="login-form">
+					<form action="#small-dialog4" method="POST">
+						<p>예약을 확정하시겠습니까?</p>
+<!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
+						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
+						<br><br><br>	
+						<a href="#small-dialog4" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">확정</h4></div></a>
+					</form>
+					<br>
+				</div> 
+			</div>
+		</div>
+		<!-- //modal -->
 	
 </div>
 </div>

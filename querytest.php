@@ -129,7 +129,7 @@
 	if( strpos( query_test($title, $time, 'mon'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='result.html'>예약하기</a>";
+		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
 ?>	
 			</div>
 		</div>
@@ -152,7 +152,8 @@
 	if( strpos( query_test($title, $time, 'tue'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='result.html'>예약하기</a>";
+		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+
 ?>	
 			</div>
 		</div>
@@ -174,8 +175,10 @@
 <?
 	if( strpos( query_test($title, $time, 'wed'),"없습니다") == true)
 		echo "";
-	else
-		echo "<a href='result.html'>예약하기</a>";
+	else{
+		$end = $result_array[1]+$time;
+		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+	}
 ?>	
 			</div>
 		</div>
@@ -198,7 +201,8 @@
 	if( strpos( query_test($title, $time, 'thu'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='result.html'>예약하기</a>";
+		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+
 ?>	
 			</div>
 		</div>
@@ -221,7 +225,8 @@
 	if( strpos( query_test($title, $time, 'fri'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='result.html'>예약하기</a>";
+		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+
 ?>	
 			</div>
 		</div>
@@ -244,7 +249,8 @@
 	if( strpos( query_test($title, $time, 'sat'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='result.html'>예약하기</a>";
+		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+
 ?>	
 			</div>
 		</div>
@@ -267,7 +273,8 @@
 	if( strpos( query_test($title, $time, 'sun'),"없습니다") == true)
 		echo "";
 	else
-		echo "<a href='result.html'>예약하기</a>";
+		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+
 ?>	
 			</div>
 		</div>
