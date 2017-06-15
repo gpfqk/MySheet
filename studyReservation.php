@@ -140,8 +140,8 @@ td{height: 21px; width:51px;}
 				<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 내 스터디 </div>
   				 <div class="select-reservation" style="margin-top: 20px; margin-bottom: 50px;">
 						<!-- <h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1> -->
-						<form action="" method="post" >
-						<table border=1 style="width:80%; margin:0 auto; font-size:17px;">
+						<form action="executeStudyReservation.php" method="post" >
+						<table style="width:80%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
 								<td>이름:</td>
 								<td colspan=2><input type="text" name="study" id="study" style="height:40px; width:90%;"></td>
@@ -191,19 +191,19 @@ td{height: 21px; width:51px;}
 							<tr style="height:60px; line-height: 60px;">
 								<td>규모: </td>
 								<td colspan=2><input type="radio" name="size" value="small"> 소형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="size"> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-								<input type="radio" name="size"> 대형</td>
+								<input type="radio" name="size" value="medium"> 중형 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+								<input type="radio" name="size" value="large"> 대형</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>옵션: </td>
-								<td colspan=2><input type="checkbox" name=""> 화이트보드 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="checkbox" name=""> 프로젝터</td>
+								<td colspan=2><input type="checkbox" name="white" value="1"> 화이트보드 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="checkbox" name="pro" value="1"> 프로젝터</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>반복: </td>
-								<td colspan=2><input type="radio" name="week"> 1주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="month"> 1달 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type="radio" name="norepeat"> 반복X</td>
+								<td colspan=2><input type="radio" name="repeat" value ="week"> 1주 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="repeat" value="month"> 1달 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="radio" name="repeat" value="norepeat"> 반복X</td>
 							</tr>
 							<tr><td></td><td></td><td></td></tr>
 							<tr>
