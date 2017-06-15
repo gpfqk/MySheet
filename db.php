@@ -143,16 +143,23 @@
 							<?=$row['room']?>
 						</div> 
 					</div>
-					<div class="hotel-right text-right">
+					<div class="hotel-right text-right">						
 <?
 						if($row['completion'] == 1 ){
 ?>
 							<div><h4>예약완료</h4></div>
 <?
-						}else{
+						}
+						else if($row['host'] == 'cesti0777' && $row['title'] == "알고리즘스터디"){
 ?>
-							<div><h4 style="color : black">예약대기</h4></div>
+							<a href="#small-dialog6" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">예약대기</h4></div></a>
 <?
+						}
+						else{
+?>
+							<a href="#small-dialog3" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">예약대기</h4></div></a>
+<?
+
 						}
 ?>
 					</div>
@@ -795,12 +802,12 @@
 					$result2 = mysql_query($query);
 					if(mysql_num_rows($result2)){
 ?>
-						<a href="#" style = "text-decoration: none;"><h4 style="color:navy !important;">가입 요청 중</h4></a>
+						<a href="#" style = "text-decoration: none;"><h4 style="color:navy !important;">가입 요청중</h4></a>
 <?
 					}else{
 						if($_SESSION['id'] == $row['host'] || $_SESSION['id'] == $row['member1'] || $_SESSION['id'] == $row['member2'] || $_SESSION['id'] == $row['member3']){
 ?>
-						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:gray !important;">가입 중</h4></a>
+						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:gray !important;">가입중</h4></a>
 <?
 						}
 						else{
@@ -939,5 +946,11 @@ function timemark_new($id,$str)
                         }?>
                      </table>
                      <?
+	}
+
+	function completion_change(){
+		$query = "UPDATE reservationlist SET completion = 1 ";
+		$query.= "WHERE num = 7;";
+		$result = mysql_query($query);
 	}
 ?>
