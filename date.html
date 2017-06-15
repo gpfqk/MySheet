@@ -1,4 +1,10 @@
-<? if (!isset($_SESSION)) { session_start(); } ?>
+<? if (!isset($_SESSION)) { session_start(); } 
+	include("db.php");
+<<<<<<< HEAD
+?>
+=======
+	ensure_logged_in();?>
+>>>>>>> 4c51be642d9a88a59dae9bf00be7232a6b2a1cdf
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -197,37 +203,16 @@ td{height: 21px; width:51px;}
 			</div> 
 <!-- banner -->
    <div class="details-grids">
-	<div class="details-shade">
+	<div class="details-aa">
 		<div class="details-right">
-			<h1><? echo $_GET[date]?></h1>
-		                 <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
-                        <tr>
-                           <td></td>
-                           <td>새 604</td>
-                           <td>새 501</td>
-                           <td>새 403</td>
-                        </tr>
-                        <?
-                           $k=1;
-                            for($i=10;$i<23;$i++){
-                         ?>
-                         <tr style="border-bottom:hidden;" >   
-                            <td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
-                            <td id=<?="sun".$k;?>></td>
-                            <td id=<?="mon".$k;?>></td>
-                            <td id=<?="tue".$k;?>></td>
-                           
-                           </tr>
-                        <tr >   
-                           <td id=<?="sun".$k?>></td>
-                           <td id=<?="mon".$k?>></td>
-                           <td id=<?="tue".$k;?>></td>
-                           
-                           </tr>
-                        <?
-                        $k++;
-                        }?>
-                     </table>
+			<h1><? $date = $_GET[date];
+				$dateform = explode('/',$date);
+				echo $dateform[2]."년".$dateform[0]."월".$dateform[1]."일";			
+				$ddate = $dateform[2]."-".$dateform[0]."-".$dateform[1];
+					
+			?>
+			</h1>
+		 	<? dateschedule($ddate); ?>
 		</div>	
 	</div>	
 </div>
@@ -255,7 +240,7 @@ td{height: 21px; width:51px;}
 						<div class="tooltip"><span>Instagram</span></div>
 						</a></li>
 				</ul>
-				<a href="studyReservation.php"><img src="images/plus.png" style="position: absolute;right: 10px;bottom: 10px;"></a>
+				<a href="studyReservation.php?date=<?=$ddate?>"><img src="images/plus.png" style="position: absolute;right: 10px;bottom: 10px;"></a>
 			</div>
 			<div class="clearfix"> </div>
 	</div>

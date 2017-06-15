@@ -1,6 +1,5 @@
 <? 
 	header("Content-type: text/html;charset=utf-8");
-
 	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 	$db = mysql_select_db("mysheet", $connect);
 	mysql_query("SET NAMES utf8");
@@ -90,7 +89,7 @@
 ?>
 				<div class="hotel-rooms">
 					<div class="hotel-left">
-						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style="font-size:20px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span><?=$row['title']?></a> 
+						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style="font-size:20px; text-decoration: none;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span><?=$row['title']?></a> 
 <?						if($row['host'] == $_SESSION['id']){
 ?>
 						<span class="glyphicon glyphicon-tower" style="color:#ffcc33; border-color:black; font-size:25px;" aria-hidden="false"></span>
@@ -103,11 +102,11 @@
 <?
 						if($row['reservation'] != NULL ){
 ?>
-							<a href="#"><h4>예약있음</h4></a>
+							<a href="#" style = "text-decoration: none;"><h4>예약있음</h4></a>
 <?
 						}else{
 ?>
-							<a href="#"><h4 style="color : black">예약없음</h4></a>
+							<a href="#" style = "text-decoration: none;"><h4 style="color : black">예약없음</h4></a>
 <?
 						}
 ?>
@@ -197,15 +196,11 @@
 		if($_SESSION['id'] == $host)
 		{
 ?>
-<style>
-a {text-decoration: none; color:white;}
-a:visited {text-decoration: none; color:white;}
-</style>
 			<center>
 				<div style="margin: 20px auto;">
-					<a href="#small-dialog" visited=none; class="sign-in popup-top-anim">
+					<a href="#small-dialog" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;">
 					<div style="width:80px; background-color: black; color:white; float:left;">초대</div></a>
-					<a href="#small-dialog2" visited=none; class="sign-in popup-top-anim">
+					<a href="#small-dialog2" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;">
 					<div style="width:80px; background-color: black; color:white; float:right;">추방</a>
 				</div>
 			</center>
@@ -380,8 +375,8 @@ a:visited {text-decoration: none; color:white;}
 			<tr>
 			<tr>
 				<td colspan=2>
-					<a href="pass_check.php?num=<?=$num?>"><input type=button value="삭제"></a>
-					<a href="board.html"><input type=button value="글목록"></a>
+					<a href="pass_check.php?num=<?=$num?>" style = "text-decoration: none;"><input type=button value="삭제"></a>
+					<a href="board.html" style = "text-decoration: none;"><input type=button value="글목록"></a>
 				</td>
 			</tr>	
 <?
@@ -891,7 +886,7 @@ function timemark_new($id,$str)
 		global $db;
 
 		$query = "select title from studylist where host = '".$_SESSION['id']."'";
-     	$result = mysql_query($query);
+     		$result = mysql_query($query);
 
 		if($result)
 		{
@@ -902,5 +897,47 @@ function timemark_new($id,$str)
 <?										
 			}
 		}
+	}
+	function dateschedule($ddate){
+		$day = $ddate;
+		$query = "select room,start,end from reservationlist where day_d = '".$day."'";
+		for($k=0; $k<count($arr); $k++)
+	{
+		if( $arr[$k] < 10 )
+			$query.=" and ( sd_time like '%,".$arr[$k].",%' or sd_time like '".$arr[$k].",%') ";
+	 	else 
+	 		$query.=" and sd_time like '%".$arr[$k]."%' ";
+	}
+     		$result = mysql_query($query);
+?>
+                     <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+                        <tr>
+                           <td></td>
+                           <td>새 604</td>
+                           <td>새 501</td>
+                           <td>새 403</td>
+                        </tr>
+                        <?
+                           $k=1;
+                            for($i=10;$i<23;$i++){
+                         ?>
+                         <tr style="border-bottom:1px;" >   
+                            <td rowspan=2 style="border-bottom:1px black solid" ><?=$i."시";?></td>
+                            <td id=<?='새604'.$k;?> style="border-bottom:hidden;"></td>
+                            <td id=<?="새501".$k;?> style="border-bottom:hidden" ></td>
+                            <td id=<?="새403".$k;?> style="border-bottom:hidden"></td>
+                           <? $k++;?>
+                           </tr>
+                        <tr >   
+                           <td id=<?="새604".$k?>></td>
+                           <td id=<?="새501".$k?>></td>
+                           <td id=<?="새403".$k;?>></td>
+                           
+                           </tr>
+                        <?
+                        $k++;
+                        }?>
+                     </table>
+                     <?
 	}
 ?>

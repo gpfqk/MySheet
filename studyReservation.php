@@ -1,5 +1,6 @@
 <? if (!isset($_SESSION)) { session_start(); } 
-include("db.php");
+	include("db.php");
+	ensure_logged_in();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -140,7 +141,7 @@ td{height: 21px; width:51px;}
 			</div> 
 
 <!-- banner -->
-				<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 내 스터디 </div>
+				<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 선택 예약 </div>
   				 <div class="select-reservation" style="margin-top: 20px; margin-bottom: 50px;">
 						<!-- <h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1> -->
 						<form action="executeStudyReservation.php" method="post" >
@@ -157,7 +158,8 @@ td{height: 21px; width:51px;}
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>날짜:</td>
-								<td colspan=2><input type="date" name="day" list="dayofweek" style="height:40px; width:90%;"></td>
+								<? $ddate = $_GET[date]?>
+								<td colspan=2><input type="text" name="day" list="dayofweek" style="height:40px; width:90%;" value="<?=$ddate?>"></td>
 							</tr>
 							<tr">
 								<td>시간:</td>
