@@ -433,6 +433,22 @@
 			}
 		}
 	}
+	function choochun($id,$study,$start,$end,$day){
+		$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
+		$db = mysql_select_db("mysheet", $connect);
+		$size = 'small';
+		if($size == 'small')
+      			$room = "새403";
+      		else if($size == 'medium' || $projector == 1)
+         			$room = "새604";
+      		else
+         			$room = "새501";
+		$sql = "insert into reservationlist (host,title,start,end,room,size,projector,whiteboard,repeat_d,completion,week_d,day_d)";
+		$sql.= "values('".$id."','".$study."',".$start.",".$end.",'".$room."','".'small'."',".'1'.",".'0'.",".'0'.",".'1'.",'".$day."','".'2017-06-15'."')";
+		$result = mysql_query($sql);
+		echo $sql;
+	}
+
 	function query_test($title, $time, $day)
 	{
 		global $db;
