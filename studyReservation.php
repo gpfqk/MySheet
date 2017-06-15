@@ -141,19 +141,19 @@ td{height: 21px; width:51px;}
   				 <div class="select-reservation" style="margin-top: 20px; margin-bottom: 50px;">
 						<!-- <h1 style="text-align: center; margin-bottom: 30px;">선택 예약</h1> -->
 						<form action="executeStudyReservation.php" method="post" >
-						<table style="width:80%; margin:0 auto; font-size:17px;">
+						<table style="width:90%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
 								<td>이름:</td>
 								<td colspan=2><input type="text" name="study" id="study" style="height:40px; width:90%;"></td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>날짜:</td>
-								<td colspan=2><input type="text" name="day" list="dayofweek" style="height:40px; width:90%;"></td>
+								<td colspan=2><input type="date" name="day" list="dayofweek" style="height:40px; width:90%;"></td>
 							</tr>
 							<tr">
 								<td>시간:</td>
 								<td style="height:60px;">
-									<select name="starttime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
+									<select name="starttime" style="width:90px; height:40px; margin-top:10px;line-height:18px;">	
 									<!-- style="width:88px;height:35px;" -->
 										<?
 											$k=1;
@@ -171,7 +171,7 @@ td{height: 21px; width:51px;}
 									</select> <div style="line-height: 60px">&nbsp;~ </div>
 								</td>
 								<td style="height:60px; line-height: 60px;">
-									<select name="endtime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
+									<select name="endtime" style="width:90px; height:40px; margin-top:10px;line-height:18px;">	
 										<?
 											$k=1;
 											for($i=10;$i<21;$i++){
