@@ -201,7 +201,7 @@ td{height: 21px; width:51px;}
 				<div class="details-shade">
 						<div class="details-right">
 						<h1>시간표 조회</h1>
-						<button style="width: 50px;height: 25px;" value="편집" onClick="location.href='/edittimetable.php'"></button>
+						<button style="width: 50px;height: 25px;" value="편집" onClick="location.href='./edittimetable.php'"></button>
 						<div>
 						<? timemark($id); ?>
 						</div>
