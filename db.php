@@ -184,6 +184,13 @@
 		$query.= "where id = '".$row['member3']."';";
 		$result = mysql_query($query);
 		$row3 = mysql_fetch_array($result);
+
+		$_SESSION['member1'] = $row1['name'];
+		$_SESSION['member1ID'] = $row['member1'];
+		$_SESSION['member2'] = $row2['name'];
+		$_SESSION['member2ID'] = $row['member2'];
+		$_SESSION['member3'] = $row3['name'];
+		$_SESSION['member3ID'] = $row['member3'];
 ?>
 		<div style="font-size : 20px; padding-left : 10px;">
 			스터디원 : <?=$row1['name']?> <?=$row2['name']?> <?=$row3['name']?>
@@ -194,7 +201,7 @@
 			<center>
 				<div>
 					<a href="#small-dialog" class="sign-in popup-top-anim">초대</a>
-					<a href="">추방</a>
+					<a href="#small-dialog2" class="sign-in popup-top-anim">추방</a>
 				</div>
 			</center>
 <?
@@ -695,5 +702,28 @@
 
       }
    }
+
+	function member_delete($_POST){
+		global $db;
+
+		$studyname = $_POST['studyname'];
+		$host = $_POST['host'];
+		$deletemember = $_POST['deletemember'];
+
+
+		$query = "UPDATE studylist SET member3 = NULL ";
+		$query.= "WHERE title = '".$studyname."' and host = '".$host."';";
+		$result = mysql_query($query);
+
+		if($result)
+		{
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+
+	}
 
 ?>
