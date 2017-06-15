@@ -180,11 +180,11 @@
 				</div>
 				<div class="login-form">
 					<form action="#small-dialog4" method="POST">
-						<p>예약을 확정하시겠습니까?</p>
+						<p style="font-size: 25px;text-align: center;">예약을 확정하시겠습니까?</p>
 <!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
 						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
-						<br><br><br>	
-						<a href="#small-dialog5" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">확정</h4></div></a>
+						<br><br>	
+						<div style="width:150px; margin:0 auto;"><a href="#small-dialog5" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:150px; height:50px; color:white; font-size:30px;" class="btn btn-default">확정</button></a></div>
 					</form>
 					<br>
 				</div> 
@@ -197,15 +197,16 @@
 				<div class="booking-info">
 				   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 예약 확정 </h1>
 				</div>
-				<div class="login-form">
+				<div class="login-form" style="margin:0 auto;">
 					<form action="studymain.html?title=<?=$_GET['title']?>&host=<?=$_GET['host']?>" method="POST">
-						<p>예약이 확정되었습니다.</p>
+						<br>
+						<div style="width:120px; margin:0 auto;"><img src="images/checked.png" width="120"></div>
+						<p style="font-size: 25px;text-align: center;">예약이 확정되었습니다.</p>
 <!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
 						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
 <?
 						completion_change();
-?>
-						<br><br><br>	
+?>	
 						<input type="submit" value="돌아가기">
 					</form>
 					<br>
@@ -219,10 +220,11 @@
 				<div class="booking-info">
 				   <h1 style="margin-bottom:30px;"><img src="images/mysheet.png" width="40px" height="40px" alt=" "> 예약 확정 </h1>
 				</div>
-				<div class="login-form">
+				<div class="login-form" style="margin:0 auto;">
 					<form action="studymain.html?title=<?=$_GET['title']?>&host=<?=$_GET['host']?>" method="POST">
-						<p>이미 예약된 내역이 있어</p>
-						<p>예약을 확정할 수 없습니다.</p>
+						<div style="width:120px; margin:0 auto;"><img src="images/file.png" width="120"></div>
+						<p style="font-size: 25px;text-align: center;">이미 예약된 내역이 있어<br>
+						예약을 확정할 수 없습니다.</p>
 <!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
 						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->	
 						<input type="submit" value="돌아가기">
@@ -240,11 +242,11 @@
 				</div>
 				<div class="login-form">
 					<form action="#small-dialog4" method="POST">
-						<p>예약을 확정하시겠습니까?</p>
+						<p style="font-size: 25px;text-align: center;">예약을 확정하시겠습니까?</p>
 <!-- 						<input type="hidden" name="studyname" value="<?=$_GET['title']?>" />
 						<input type="hidden" name="host" value="<?=$_GET['host']?>" /> -->
-						<br><br><br>	
-						<a href="#small-dialog4" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><div><h4 style="color : black">확정</h4></div></a>
+						<br><br>	
+						<div style="width:150px; margin:0 auto;"><a href="#small-dialog4" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;"><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:150px; height:50px; color:white; font-size:30px;" class="btn btn-default">확정</button></a></div>
 					</form>
 					<br>
 				</div> 
