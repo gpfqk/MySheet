@@ -1,4 +1,7 @@
-<? if (!isset($_SESSION)) { session_start(); } ?>
+<? if (!isset($_SESSION)) { session_start(); } 
+	include("db.php");
+	ensure_logged_in();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,27 +29,6 @@
 				$('.menu-link').bigSlide();
 				});
      </script>
-
-     <!-- metro ui 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-        <link href="css/metro.css" rel="stylesheet">
-        <link href="css/metro-icons.css" rel="stylesheet">
-        <link href="css/metro-responsive.css" rel="stylesheet">
-        <link href="css/metro-schemes.css" rel="stylesheet">
-
-        <script src="https://pagead2.googlesyndication.com/pub-config/r20160913/ca-pub-1632668592742327.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script src="js/jquery-2.1.3.min.js"></script>
-        <script src="js/metro.js"></script>
-        <script src="js/docs.js"></script>
-        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/google/code-prettify/master/loader/prettify.css">
-        <script src="js/ga.js"></script>
-        <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    
-    <!-- metro ui 끝!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<!-- web-fonts -->  
-<!--   <link href='//fonts.googleapis.com/css?family=Abril+Fatface' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'> -->
-<!-- //web-fonts -->
-<!-- pop-up-box -->
 <script src="js/jquery.magnific-popup.js" type="text/javascript"></script>
 	    <script>
 			$(document).ready(function() {
@@ -87,7 +69,6 @@ td{height: 21px; width:51px;}
 								<li><a class=" link link--yaku" href="mystudy.html">내 스터디 관리</a></li>
 								<li>----------------</li>
 								<li><a class=" link link--yaku" href="studysearch.html">스터디 가입</a></li>
-								<li><a class=" link link--yaku" href="invitation.html">스터디 초대 관리</a></li>
 								<li><a class=" link link--yaku" href="contact.html">도움말 및 사용법</a></li>
 								<li>----------------</li>
 <?
@@ -194,106 +175,85 @@ td{height: 21px; width:51px;}
 				<div class="clearfix"></div>
 			</div> 
 <!-- banner -->
-   <div class="details-grids">
-				<div class="details-shade">
-						<div class="details-right">
-						<h1>시간표 등록</h1>
-						<div>
-						<form method="post" action="edit.php">
-							<table style="width:80%; margin:0 auto; font-size:17px;">
-							<tr style="height:60px; line-height: 60px;">
-								<td>일정:</td>
-								<td colspan="2"><input type="text" name="sd_name"></td>
-							</tr>
-							<tr style="height:60px; line-height: 60px;">
-								<td>요일:</td>
-								<td colspan=2>
-									<select name="dayoftheweek" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
-										<option value="mon">월요일</option>
-										<option value="tue">화요일</option>
-										<option value="wen">수요일</option>
-										<option value="thr">목요일</option>
-										<option value="fir">금요일</option>
-										<option value="sat">토요일</option>
-										<option value="sun">일요일</option>	
-									</select>
-								</td>
-							</tr>
-							<tr>
-								<td>시간:</td>
-								<td style="height:60px;">
-									<select name="starttime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
-									<!-- style="width:88px;height:35px;" -->
-										<?
-											$k=1;
-											for($i=10;$i<21;$i++){
-												for($j=0; $j<=30;$j+=30){
-													if(strlen($j)==1){
-														$j="0".$j;
-													}
-												?><option value="<?=$k?>"><? echo $i.":".$j;
-												$k++; ?></option>
-												<?
+<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 시간표 등록 </div>
+				<div class="createscheduleform" style="width:90%; margin:50px auto;">
+					<form method="post" action="edit.php">
+						<table style="font-size:17px; margin:0 auto;">
+						<tr style="height:80px; line-height: 80px;">
+							<td style="width:20px;">일정: </td>
+							<td colspan="2"><input type="text" name="sd_name" class="form-control" placeholder="일정 이름"/></td>
+						</tr>
+						<tr style="height:80px; line-height: 60px;">
+							<td>요일:</td>
+							<td colspan=2>
+								<select name="dayoftheweek" style="width:100%; height:40px; margin-top:10px;line-height:18px;">	
+									<option value="mon">월요일</option>
+									<option value="tue">화요일</option>
+									<option value="wen">수요일</option>
+									<option value="thr">목요일</option>
+									<option value="fir">금요일</option>
+									<option value="sat">토요일</option>
+									<option value="sun">일요일</option>	
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>시간:</td>
+							<td style="height:80px; width:60px;">
+								<select name="starttime" style="width:100px; height:40px; margin-top:10px; line-height:18px;">	
+								<!-- style="width:88px;height:35px;" -->
+									<?
+										$k=1;
+										for($i=10;$i<21;$i++){
+											for($j=0; $j<=30;$j+=30){
+												if(strlen($j)==1){
+													$j="0".$j;
 												}
+											?><option value="<?=$k?>"><? echo $i.":".$j;
+											$k++; ?></option>
+											<?
 											}
-										?>
-									</select> <div style="line-height: 60px">&nbsp;~ </div>
-								</td>
-								<td style="height:60px; line-height: 60px;">
-									<select name="endtime" style="width:92px; height:40px; margin-top:10px;line-height:18px;">	
-										<?
-											$k=1;
-											for($i=10;$i<21;$i++){
-												for($j=0; $j<=30;$j+=30){
-													if(strlen($j)==1){
-														$j="0".$j;
-													}
-												?><option value="<?=$k?>"><? echo $i.":".$j;
-												$k++; ?></option>
-												<?
+										}
+									?>
+								</select> <div style="line-height: 60px">&nbsp;~ </div>
+							</td>
+							<td style="height:80px; line-height: 60px;">
+								<select name="endtime" style="width:100px; height:40px; margin-top:10px;line-height:18px;">	
+									<?
+										$k=1;
+										for($i=10;$i<21;$i++){
+											for($j=0; $j<=30;$j+=30){
+												if(strlen($j)==1){
+													$j="0".$j;
 												}
+											?><option value="<?=$k?>"><? echo $i.":".$j;
+											$k++; ?></option>
+											<?
 											}
-										?>
-									</select>
-									</td>
-									</tr>
-								</table>
-								<input type="submit"></input>
-						</form>
-						</div>
-					</div>	
+										}
+									?>
+								</select>
+								</td>
+								</tr>
+								<tr><td colspan=3></td></tr>
+								<tr><td colspan=3></td></tr>
+								<tr>
+								<td colspan=3><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:320px; height:50px; color:white; font-size:30px;" class="btn btn-default">등록</button>
+								</td>
+								</tr>
+							</table>
+							
+					</form>
 				</div>
-			
+			</div>
+			<br><br>
 		<!--/footer-->
   
 		<div class="w3agile agileinfo_copy_right">
-			<div class="agileinfo_copy_right_right">
-				<ul class="social">
-					<li><a class="social-linkedin" href="#">
-						<i></i>
-						<div class="tooltip"><span>Facebook</span></div>
-						</a></li>
-					<li><a class="social-twitter" href="#">
-						<i></i>
-						<div class="tooltip"><span>Twitter</span></div>
-						</a></li>
-					<li><a class="social-google" href="#">
-						<i></i>
-						<div class="tooltip"><span>Google+</span></div>
-						</a></li>
-					<li><a class="social-facebook" href="#">
-						<i></i>
-						<div class="tooltip"><span>Pinterest</span></div>
-						</a></li>
-					<li><a class="social-instagram" href="#">
-						<i></i>
-						<div class="tooltip"><span>Instagram</span></div>
-						</a></li>
-				</ul>
+			<div class="agileinfo_copy_right_right" style="color:white;">
+				ⓒ 2017. 내자리야 all rights reserved.
 			</div>
-			<div class="clearfix"> </div>
-	</div>
-	<!--/footer-->
+		</div>
 </div>
 </div>
 <script src="js/jquery.nicescroll.js"></script>
