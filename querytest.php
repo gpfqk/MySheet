@@ -103,21 +103,112 @@
 				<div class="clearfix"></div>
 			</div> 
 		</div>
-		<div class="w3agile single-hotel">
-		  	<div style="height:50px; line-height:45px; background:#ddd; margin:0 auto; margin-bottom:20px; border-style:double; border-color:gray; width:40%; font-size:30px; text-align:center;"> 추천예약 </div>
-		  <!--/rooms-->
-		  	<!--/room1-->
-
+		<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67; margin-bottom: 10px;"> 추천 예약 </div>
+<style>
+	.hotel-left p {font-size:15px; color:black;}
+	.hotel-right a {font-size:30px;}
+</style>
 	  	<div class="recommendform">
-			<? 
-			echo query_test($title, $time, 'mon');
-			echo query_test($title, $time, 'tue');
-			echo query_test($title, $time, 'wed');
-			echo query_test($title, $time, 'thu');
-			echo query_test($title, $time, 'fri');
-			echo query_test($title, $time, 'sat');
-			echo query_test($title, $time, 'sun');
-			?>
+	  	<div class="hotel-rooms">
+			<div class="hotel-left">
+				<p><? echo query_test($title, $time, 'mon'); ?></p> 
+			</div>
+			<div class="hotel-right text-right">
+<?
+	if( strpos( query_test($title, $time, 'mon'),"없습니다") == true)
+		echo "";
+	else
+		echo "<a href='#'>예약하기</a>";
+?>	
+			</div>
+		</div>
+		<div class="hotel-rooms">
+			<div class="hotel-left">
+				<p><? echo query_test($title, $time, 'tue'); ?></p> 
+			</div>
+			<div class="hotel-right text-right">
+<?
+	if( strpos( query_test($title, $time, 'tue'),"없습니다") == true)
+		echo "";
+	else
+		echo "<a href='#'>예약하기</a>";
+?>	
+			</div>
+		</div>
+		<div class="hotel-rooms">
+			<div class="hotel-left">
+				<p><? echo query_test($title, $time, 'wed'); ?></p> 
+			</div>
+			<div class="hotel-right text-right">
+<?
+	if( strpos( query_test($title, $time, 'wed'),"없습니다") == true)
+		echo "";
+	else
+		echo "<a href='#'>예약하기</a>";
+?>	
+			</div>
+		</div>
+		<div class="hotel-rooms">
+			<div class="hotel-left">
+				<p><? echo query_test($title, $time, 'thu'); ?></p> 
+			</div>
+			<div class="hotel-right text-right">
+<?
+	if( strpos( query_test($title, $time, 'thu'),"없습니다") == true)
+		echo "";
+	else
+		echo "<a href='#'>예약하기</a>";
+?>	
+			</div>
+		</div>
+		<div class="hotel-rooms">
+			<div class="hotel-left">
+				<p><? echo query_test($title, $time, 'fri'); ?></p> 
+			</div>
+			<div class="hotel-right text-right">
+<?
+	if( strpos( query_test($title, $time, 'fri'),"없습니다") == true)
+		echo "";
+	else
+		echo "<a href='#'>예약하기</a>";
+?>	
+			</div>
+		</div>
+		<div class="hotel-rooms">
+			<div class="hotel-left">
+				<p><? echo query_test($title, $time, 'sat'); ?></p> 
+			</div>
+			<div class="hotel-right text-right">
+<?
+	if( strpos( query_test($title, $time, 'sat'),"없습니다") == true)
+		echo "";
+	else
+		echo "<a href='#'>예약하기</a>";
+?>	
+			</div>
+		</div>
+		<div class="hotel-rooms">
+			<div class="hotel-left">
+				<p><? echo query_test($title, $time, 'sun'); ?></p> 
+			</div>
+			<div class="hotel-right text-right">
+<?
+	if( strpos( query_test($title, $time, 'sun'),"없습니다") == true)
+		echo "";
+	else
+		echo "<a href='#'>예약하기</a>";
+?>	
+			</div>
+		</div>
+<? 
+			// echo query_test($title, $time, 'mon');
+			// echo query_test($title, $time, 'tue');
+			// echo query_test($title, $time, 'wed');
+			// echo query_test($title, $time, 'thu');
+			// echo query_test($title, $time, 'fri');
+			// echo query_test($title, $time, 'sat');
+			// echo query_test($title, $time, 'sun');
+?>
 		</div>
 
 		<div class="w3agile agileinfo_copy_right">

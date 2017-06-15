@@ -123,7 +123,6 @@ td{height: 21px; width:51px;}
 </div>
 				<div class="view_schedule">
 						<div class="details-right">
-						
 						<div>
 						<table border="1" style="color:black; background-color: white; height: 100%; width: 100%;">
 					        <tr style="background-color:#043d67; color:white;">

@@ -456,9 +456,7 @@ a:visited {text-decoration: none; color:white;}
 			for($i=0; $i<count($arr); $i++){
 				$result_array[$i] = explode(',',$arr[$i]);
 			}
-
 /////////////////////여기까지 일정 스플릿해서 배열에 저장
-
 			$query = "select * from checklist where num not in (";
 			for($i=0;$i<count($result_array);$i++)
 			{
@@ -752,8 +750,8 @@ a:visited {text-decoration: none; color:white;}
                            <td id=<?="sun".$k;?>></td>
                            <td id=<?="mon".$k;?>></td>
                            <td id=<?="tue".$k;?>></td>
-                           <td id=<?="wen".$k;?>></td>
-                           <td id=<?="thr".$k;?>></td>
+                           <td id=<?="wed".$k;?>></td>
+                           <td id=<?="thu".$k;?>></td>
                            <td id=<?="fri".$k;?>></td>
                            <td id=<?="sat".$k; $k++;?>></td>   
                         </tr>
@@ -761,8 +759,8 @@ a:visited {text-decoration: none; color:white;}
                            <td id=<?="sun".$k?>></td>
                            <td id=<?="mon".$k?>></td>
                            <td id=<?="tue".$k;?>></td>
-                           <td id=<?="wen".$k;?>></td>
-                           <td id=<?="thr".$k;?>></td>
+                           <td id=<?="wed".$k;?>></td>
+                           <td id=<?="thu".$k;?>></td>
                            <td id=<?="fri".$k;?>></td>
                            <td id=<?="sat".$k;?>></td>   
                         </tr>
