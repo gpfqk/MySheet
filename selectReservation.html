@@ -1,3 +1,4 @@
+
 <? if (!isset($_SESSION)) { session_start(); } 
 	include("db.php");
 	ensure_logged_in();
@@ -122,8 +123,11 @@
 				$( "#datepicker,#datepicker1" ).datepicker();
 				});
 				$('#datepicker').datepicker({
+
     				onSelect: function(dateText, inst) { 
-     				   window.location = 'date.html';
+    				 var date = $(this).val();
+       				 var time = $('#time').val();		
+    				 window.location = 'date.html?date='+date;
  				   }
 				});
 			</script>						

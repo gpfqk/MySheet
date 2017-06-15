@@ -869,7 +869,7 @@ function timemark_new($id,$str)
 		return $schedule_id;
 	}
 	else
-		return "fffffffffffffff";
+		return "none";
 }
 	function member_join($_GET){
 		global $db;

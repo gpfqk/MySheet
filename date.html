@@ -199,13 +199,39 @@ td{height: 21px; width:51px;}
 			</div> 
 <!-- banner -->
    <div class="details-grids">
-				<div class="details-shade">
-					<div class="details-right">
-						<h1>선택예약</h1>
-							
-					</div>	
-				</div>
-			
+	<div class="details-shade">
+		<div class="details-right">
+			<h1><? echo $_GET[date]?></h1>
+		                 <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
+                        <tr>
+                           <td></td>
+                           <td>새 604</td>
+                           <td>새 501</td>
+                           <td>새 403</td>
+                        </tr>
+                        <?
+                           $k=1;
+                            for($i=10;$i<23;$i++){
+                         ?>
+                         <tr style="border-bottom:hidden;" >   
+                            <td rowspan=2 style="border-bottom:1px gray solid" ><?=$i."시";?></td>
+                            <td id=<?="sun".$k;?>></td>
+                            <td id=<?="mon".$k;?>></td>
+                            <td id=<?="tue".$k;?>></td>
+                           
+                           </tr>
+                        <tr >   
+                           <td id=<?="sun".$k?>></td>
+                           <td id=<?="mon".$k?>></td>
+                           <td id=<?="tue".$k;?>></td>
+                           
+                           </tr>
+                        <?
+                        $k++;
+                        }?>
+                     </table>
+		</div>	
+	</div>	
 </div>
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right">
