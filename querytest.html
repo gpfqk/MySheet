@@ -107,7 +107,11 @@
 	  	<div class="recommendform" style="width:40%; margin:50px auto;">
 			<form action="querytest.php" method="GET">
 				<p style="color:black !important;">스터디명</p>
-				<input type="text" name="title" class="form-control" placeholder="예약할 스터디 이름"/>
+				<select name="title" id="title" placeholder="예약할 스터디 이름" style="height:40px; width:90%; line-height: 15px;">
+<?
+					studyname_option();
+?>
+				</select>
 				<br><br><br>
 				<p style="color:black !important;">시간</p>
 				<input type="text" name="time" class="form-control" placeholder="스터디 진행 시간">

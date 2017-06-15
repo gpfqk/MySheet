@@ -1,12 +1,3 @@
-<? if (!isset($_SESSION)) { session_start(); } 
-	include("db.php");
-?>
-<script type="text/javascript">
-	function click(){
-	Location.href="date.html";
-	
-}
-</script>
 
 <!DOCTYPE html>
 
@@ -121,8 +112,11 @@
 				$( "#datepicker,#datepicker1" ).datepicker();
 				});
 				$('#datepicker').datepicker({
+
     				onSelect: function(dateText, inst) { 
-     				   window.location = 'date.html';
+    				 var date = $(this).val();
+       				 var time = $('#time').val();		
+    				 window.location = 'date.html?date='+date;
  				   }
 				});
 			</script>						
