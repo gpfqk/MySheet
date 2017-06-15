@@ -550,7 +550,6 @@
 		$query = "select * from member_add A ";
 		$query.= "where A.addmember = '".$id."';";
 
-
 		$result = mysql_query($query);
 
 		if($result)
@@ -586,11 +585,55 @@
 
 					</div>
 				</div>
+<?	
+			}
+		}
+
+		$query = "select * from study_join A ";
+		$query.= "where A.host = '".$id."';";
+
+		$result = mysql_query($query);
+
+		if($result)
+	    {
+			for($i=0;$i<mysql_num_rows($result);$i++){
+		      	$row = mysql_fetch_array($result); 
+?>
+				<div class="hotel-rooms">
+					<div class="hotel-left">
+						<p style="font-size:20px; color: black;"><span class="glyphicon glyphicon-inbox" aria-hidden="true">
+							
+						</span><span style = "color : red;">< <?=$row['joinmember']?> ></span >님께서 <span style = "color : red">< <?=$row['studyname']?> ></span>에 가입을 원합니다.</p> 
+					</div>
+					<div class="hotel-right text-right" style="height: 20px;">
+						<div style="float : right;">
+							<form action="join_confirm.php" method="GET">
+							   	<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="joinmember" value="<?=$row['joinmember']?>">
+								<input type="hidden" name="no" value="no">
+								<input type="submit" value="거절">
+							</form>
+						</div>
+						<div style="float : right;">
+							<form action="join_confirm.php" method="GET">
+								<input type="hidden" name="studyname" value="<?=$row['studyname']?>">
+								<input type="hidden" name="host" value="<?=$row['host']?>">
+								<input type="hidden" name="joinmember" value="<?=$row['joinmember']?>">
+								<input type="hidden" name="no" value="yes">
+								<input type="submit" value="승낙">
+							</form>
+						</div>
+
+					</div>
+				</div>
 <?
 				
 			}
 
 		}
+
+
 	}
 
 	function invitation_confirm($_GET){
@@ -614,6 +657,33 @@
 		{
 
 			$query = "delete from member_add where studyname='".$studyname."'and addmember='".$addmember."'";
+			$result = mysql_query($query);
+			return false;
+		}
+
+	}
+
+	function join_confirm($_GET){
+		$studyname = $_GET['studyname'];
+		$host = $_GET['host'];
+		$joinmember = $_GET['joinmember'];
+		$no = $_GET['no'];
+
+		if ($no != 'no')
+		{
+			$query = "delete from study_join where studyname='".$studyname."'and joinmember='".$joinmember."'";
+			$result = mysql_query($query);
+
+			$query = "UPDATE studylist SET member3 = '".$joinmember."' ";
+			$query.= "WHERE title = '".$studyname."' and host = '".$host."';";
+			$result = mysql_query($query);
+
+			return true;
+		}
+		else if($no == 'no')
+		{
+
+			$query = "delete from study_join where studyname='".$studyname."'and joinmember='".$joinmember."'";
 			$result = mysql_query($query);
 			return false;
 		}
@@ -695,7 +765,7 @@
 	function study_search()
    {
 
-      $query = "select u.name, s.title from studylist s, userinfo u where s.host = u.id;";
+      $query = "select * from studylist s, userinfo u where s.host = u.id;";
       $result = mysql_query($query);
 
       if($result)
@@ -709,7 +779,30 @@
                   <p style="color:#333 !important">스터디장 : <?=$row['name']?></p>
                </div>
                <div class="hotel-right text-right">
-                     <a href="#"><h4 style="color:navy !important;">가입하기</h4></a>
+
+<?
+					$query = "select * from study_join ";
+					$query.= "where joinmember = '".$_SESSION['id']."' ";
+					$query.= "and host = '".$row['host']."' ";
+					$query.= "and studyname = '".$row['title']."';";
+					$result2 = mysql_query($query);
+					if(mysql_num_rows($result2)){
+?>
+						<a href="#" style = "text-decoration: none;"><h4 style="color:navy !important;">가입 요청 중</h4></a>
+<?
+					}else{
+						if($_SESSION['id'] == $row['host'] || $_SESSION['id'] == $row['member1'] || $_SESSION['id'] == $row['member2'] || $_SESSION['id'] == $row['member3']){
+?>
+						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:gray !important;">가입 중</h4></a>
+<?
+						}
+						else{
+?>
+							<a href="study_join.php?studyname=<?=$row['title']?>&host=<?=$row['host']?>" style = "text-decoration: none;"><h4 style="color:navy !important;">가입하기</h4></a>
+<?
+						}
+					}
+?>       
                </div>
             </div>
 <?
@@ -739,6 +832,20 @@
 		{
 			return FALSE;
 		}
+
+	}
+
+	function member_join($_GET){
+		global $db;
+
+		$studyname = $_GET['studyname'];
+		$host = $_GET['host'];
+		$joinmember = $_SESSION['id'];
+
+		$sql = "insert into study_join (studyname,host,joinmember) ";
+		$sql.= "values('".$studyname."','".$host."','".$joinmember."');";
+
+		return mysql_query($sql);
 
 	}
 
