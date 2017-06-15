@@ -861,9 +861,8 @@ function timemark_new($id,$str)
 		$query.=" and sd_time like '%".$arr[$k]."%' ";
 	}
 	$query.=";";
-	echo $query;
-	$results = mysql_query($query);
-	if($results)
+	$result = mysql_query($query);
+	if($result)
 	{
 		for($i=0;$i<mysql_num_rows($result);$i++){
 			$row = mysql_fetch_array($result); 
@@ -886,5 +885,21 @@ function timemark_new($id,$str)
 
 		return mysql_query($sql);
 
+	}
+	function studyname_option(){
+		global $db;
+
+		$query = "select title from studylist where host = '".$_SESSION['id']."'";
+     	$result = mysql_query($query);
+
+		if($result)
+		{
+			for($i=0;$i<mysql_num_rows($result);$i++){
+				$row = mysql_fetch_array($result); 
+?>
+				<option value="<?=$row['title']?>"><?=$row['title']?></option>
+<?										
+			}
+		}
 	}
 ?>

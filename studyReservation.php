@@ -1,4 +1,6 @@
-<? if (!isset($_SESSION)) { session_start(); } ?>
+<? if (!isset($_SESSION)) { session_start(); } 
+include("db.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,7 +147,13 @@ td{height: 21px; width:51px;}
 						<table style="width:90%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
 								<td>이름:</td>
-								<td colspan=2><input type="text" name="study" id="study" style="height:40px; width:90%;"></td>
+								<td colspan=2>
+									<select name="study" id="study" style="height:40px; width:90%; line-height: 15px;">
+<?
+										studyname_option();
+?>
+									</select>
+								</td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>날짜:</td>
