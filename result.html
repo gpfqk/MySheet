@@ -1,11 +1,7 @@
-<? if (!isset($_SESSION)) { session_start(); } 
+<?  if (!isset($_SESSION)) { session_start(); } 
 	include("db.php");
-<<<<<<< HEAD
 	ensure_logged_in();
-	?>
-=======
-	ensure_logged_in();?>
->>>>>>> 1535804d74150467bb56979109d2baad176750be
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +12,7 @@
 <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <meta charset utf="8">
 <!--font-awsome-css-->
-     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/font-awesome.min.css"> 
      <link href="https://cdn.rawgit.com/YJSoft/Webfonts/0.1/BM_HANNA.css"  rel="stylesheet" type="text/css" />
 <!--bootstrap-->
 	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -35,7 +31,7 @@
      </script>
 
      <!-- metro ui 시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
-     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <!--  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
         <link href="css/metro.css" rel="stylesheet">
         <link href="css/metro-icons.css" rel="stylesheet">
         <link href="css/metro-responsive.css" rel="stylesheet">
@@ -73,7 +69,6 @@
 <!--//pop-up-box -->
 <style type="text/css">
 * {font-family:'BM HANNA','배달의민족 한나', sans-serif; }
-td{height: 21px; width:51px;}
 </style>
     </head>
 <body>
@@ -85,6 +80,42 @@ td{height: 21px; width:51px;}
 				<div class="profile-menu text-center">
 					<img class="border-effect" src="images/mysheet.png" alt=" ">
 						<h3>MENU</h3>
+						<!-- 앱바시작!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
+						<!-- <link href="http://cdn.metroui.org.ua/css/metro.min.css" rel="stylesheet">
+						<link href="http://cdn.metroui.org.ua/css/metro.min.css" rel="stylesheet">
+						<link href="http://cdn.metroui.org.ua/css/metro-schemes.min.css" rel="stylesheet">
+						<link href="http://cdn.metroui.org.ua/css/metro-responsive.min.css" rel="stylesheet">
+						<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+						<script src="http://cdn.metroui.org.ua/js/metro.min.js"></script> -->
+
+							<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<div class="app-bar darcula" data-role="appbar">
+							    <a class="app-bar-element" href="javascript:void(0);">Home</a>
+							    <span class="app-bar-divider"></span>
+							    <ul class="app-bar-menu">
+							        <li data-flexorderorigin="0" data-flexorder="1"><a href="javascript:void(0);">Home</a></li>
+							        <li data-flexorderorigin="1" data-flexorder="2">
+							            <a href="javascript:void(0);" class="dropdown-toggle">Products</a>
+							            <ul class="d-menu" data-role="dropdown">
+							                <li><a href="javascript:void(0);">Windows 10</a></li>
+							                <li><a href="javascript:void(0);">Spartan</a></li>
+							                <li><a href="javascript:void(0);">Outlook</a></li>
+							                <li><a href="javascript:void(0);">Office 2015</a></li>
+							                <li class="divider"></li>
+							                <li><a href="" class="dropdown-toggle">Other Products</a>
+							                    <ul class="d-menu" data-role="dropdown">
+							                        <li><a href="javascript:void(0);">Internet Explorer 10</a></li>
+							                        <li><a href="javascript:void(0);">Skype</a></li>
+							                        <li><a href="javascript:void(0);">Surface</a></li>
+							                    </ul>
+							                </li>
+							            </ul>
+							        </li>
+							        <li data-flexorderorigin="2" data-flexorder="3"><a href="javascript:void(0);">Support</a></li>
+							        <li data-flexorderorigin="3" data-flexorder="4"><a href="javascript:void(0);">Help</a></li>
+							    </ul>
+							<div class="app-bar-pullbutton automatic" style="display: none;"></div><div class="clearfix" style="width: 0;"></div><nav class="app-bar-pullmenu hidden flexstyle-app-bar-menu" style="display: none;"><ul class="app-bar-pullmenubar hidden app-bar-menu"></ul></nav></div> @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
+							<!-- 앱바끝!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 						<div class="pro-menu">
 							<div class="logo">
 								<li><a class=" link link--yaku active" href="main.html">Home</a></li>
@@ -114,13 +145,13 @@ td{height: 21px; width:51px;}
 		</div>
 		<div class="phone-box wrap push" id="home">
 			<div class="menu-notify">
-				<div class="profile-left" style="margin-top:15px;">
+				<div class="profile-left">
 					<a href="#menu" class="menu-link"><i class="fa fa-list-ul"></i></a>
 				</div>
 				<div class="Profile-mid">
 					<h5 class="pro-link"><a href="main.html">내자리야</a></h5>
 				</div>
-				<div class="Profile-right" style="margin-top:10px;">
+				<div class="Profile-right">
 					<div style="color:white; text-shadow: 1px 1px gray; font-size:20px;">
 						<i class="fa fa-user"></i> <?=$_SESSION['name']?>
 					</div>
@@ -128,56 +159,27 @@ td{height: 21px; width:51px;}
 				<div class="clearfix"></div>
 			</div> 
 		</div>
-<!-- banner -->
-   <div class="details-grids">
-	<div class="details-aa">
-		<div class="details-right">
-			<h1><? $date = $_GET[date];
-				$dateform = explode('/',$date);
-				echo $dateform[2]."년".$dateform[0]."월".$dateform[1]."일";			
-				$ddate = $dateform[2]."-".$dateform[0]."-".$dateform[1];
-					
-			?>
-			</h1>
-		 	
-		 	      <table border="1" style="border-collapse:collapse; height: 100%;width: 100%;">
-                        <tr>
-                           <td style="width:7%; font-size:8px !important"></td>>
-                           <td>새 604</td>
-                           <td>새 501</td>
-                           <td>새 403</td>
-                        </tr>
-                        <?
-                           $k=1;
-                            for($i=10;$i<23;$i++){
-                         ?>
-                         <tr style="border-bottom:1px;" >   
-                            <td rowspan=2 style="background-color:#043d67; color:white" ><?=$i."시";?></td>
-                            <td id=<?=$a = '새604'.$k;?> style="border-bottom:hidden;"> <? echo dateschedule($ddate,$a); ?> </td>
-                            <td id=<?=$a = '새501'.$k;?> style="border-bottom:hidden;"> <? echo dateschedule($ddate,$a); ?> </td>
-                            <td id=<?=$a = '새403'.$k;?> style="border-bottom:hidden;"> <? echo dateschedule($ddate,$a); ?> </td>
-
-                           <? $k++;?>
-                           </tr>
-                        <tr >   
-                           <td id=<?=$a="새604".$k?>><? echo dateschedule($ddate,$a); ?></td>
-                           <td id=<?=$a="새501".$k?>><? echo dateschedule($ddate,$a); ?></td>
-                           <td id=<?=$a="새403".$k;?>><? echo dateschedule($ddate,$a); ?></td>
-                           
-                           </tr>
-                        <?
-                        $k++;
-                        }?>
-                     </table>
-		</div>	
-	</div>	
-</div>
+			<div style="margin:0 auto; font-size:35px; text-align:center; color:white; background-color:#043d67;"> 예약 결과 </div>
+		<div class="w3agile single-hotel">
+		  
+		  <!--/rooms-->
+		  	<!--/room1-->
+		<div class="hotel-rooms">
+					<div class="hotel-left">
+						<p style="font-size:20px; color: black;">
+							<h2>예약이 완료되었습니다.</h2>
+						</p> 
+					</div>
+				</div>
+		</div>
+			
 		<div class="w3agile agileinfo_copy_right">
 			<div class="agileinfo_copy_right_right" style="color:white;">
 				ⓒ 2017. 내자리야 all rights reserved.
 			</div>
 		</div>
 	<!--/footer-->
+	
 </div>
 </div>
 <script src="js/jquery.nicescroll.js"></script>

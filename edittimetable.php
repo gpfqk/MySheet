@@ -118,8 +118,8 @@ td{height: 21px; width:51px;}
 								<select name="dayoftheweek" style="width:100%; height:40px; margin-top:10px;line-height:18px;">	
 									<option value="mon">월요일</option>
 									<option value="tue">화요일</option>
-									<option value="wen">수요일</option>
-									<option value="thr">목요일</option>
+									<option value="wed">수요일</option>
+									<option value="thu">목요일</option>
 									<option value="fri">금요일</option>
 									<option value="sat">토요일</option>
 									<option value="sun">일요일</option>	

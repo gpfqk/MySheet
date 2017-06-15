@@ -23,5 +23,5 @@
 ?>
 <script>
       alert("등록 되었습니다.");
-      document.location.href="edittimetable.php";
+      document.location.href="timemark.php";
 </script>
