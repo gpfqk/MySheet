@@ -17,14 +17,13 @@
 	echo $projecter;
 	echo $repeat;
 	echo $dayOfWeek;
+
+	if(date("w",strtotime($day))=="0"){
+		$yoil="일";
+	} 
+	else
+		$yoil="일말고";
+	echo $yoil;  
+	
 	
 ?>
-
-<script type="text/javascript">
-	function week(){
-		var week = ['일', '월', '화', '수', '목', '금', '토'];
-		var dayOfWeek = week[new Date('<?=$day?>').getDay()];
-		document.write(dayOfWeek);
-	}
-	week();
-</script>
