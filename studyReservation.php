@@ -144,11 +144,11 @@ td{height: 21px; width:51px;}
 						<table style="width:80%; margin:0 auto; font-size:17px;">
 							<tr style="height:60px; line-height: 60px;">
 								<td>이름:</td>
-								<td colspan=2><input type="text" name="study" id="study" style="height:40px;"></td>
+								<td colspan=2><input type="text" name="study" id="study" style="height:40px; width:90%;"></td>
 							</tr>
 							<tr style="height:60px; line-height: 60px;">
 								<td>날짜:</td>
-								<td colspan=2><input type="date" name="day" list="dayofweek" style="height:40px;"></td>
+								<td colspan=2><input type="text" name="day" list="dayofweek" style="height:40px; width:90%;"></td>
 							</tr>
 							<tr">
 								<td>시간:</td>
@@ -207,7 +207,7 @@ td{height: 21px; width:51px;}
 							</tr>
 							<tr><td></td><td></td><td></td></tr>
 							<tr>
-								<td colspan="3" align=center><input type="submit" name="" value="예약하기"></td>
+								<td colspan="3" align=center><button type="submit" style="background-color: #2ad2c9; border-radius: 10px; width:270px; height:50px; color:white; font-size:30px;" class="btn btn-default">검색</button></td>
 							</tr>
 						</table>
 						</form>			
