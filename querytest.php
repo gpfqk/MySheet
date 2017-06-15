@@ -126,10 +126,12 @@
 			</div>
 			<div class="hotel-right text-right">
 <?
-	if( strpos( query_test($title, $time, 'mon'),"없습니다") == true)
+	if(!query_test($title, $time, 'mon'))
 		echo "";
-	else
+	else{
+		$end = $result_array[1]+$time;
 		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+	}
 ?>	
 			</div>
 		</div>
@@ -149,11 +151,12 @@
 			</div>
 			<div class="hotel-right text-right">
 <?
-	if( strpos( query_test($title, $time, 'tue'),"없습니다") == true)
+	if(!query_test($title, $time, 'tue'))
 		echo "";
-	else
+	else{
+		$end = $result_array[1]+$time;
 		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
-
+}
 ?>	
 			</div>
 		</div>
@@ -173,7 +176,7 @@
 			</div>
 			<div class="hotel-right text-right">
 <?
-	if( strpos( query_test($title, $time, 'wed'),"없습니다") == true)
+	if(!query_test($title, $time, 'wed'))
 		echo "";
 	else{
 		$end = $result_array[1]+$time;
@@ -198,11 +201,12 @@
 			</div>
 			<div class="hotel-right text-right">
 <?
-	if( strpos( query_test($title, $time, 'thu'),"없습니다") == true)
+	if(!query_test($title, $time, 'thu'))
 		echo "";
-	else
+	else{
+		$end = $result_array[1]+$time;
 		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
-
+}
 ?>	
 			</div>
 		</div>
@@ -222,10 +226,12 @@
 			</div>
 			<div class="hotel-right text-right">
 <?
-	if( strpos( query_test($title, $time, 'fri'),"없습니다") == true)
+	if(!query_test($title, $time, 'fri'))
 		echo "";
-	else
+	else{
+		$end = $result_array[1]+$time;
 		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+	}
 
 ?>	
 			</div>
@@ -246,10 +252,12 @@
 			</div>
 			<div class="hotel-right text-right">
 <?
-	if( strpos( query_test($title, $time, 'sat'),"없습니다") == true)
+	if(!query_test($title, $time, 'sat'))
 		echo "";
-	else
+	else{
+		$end = $result_array[1]+$time;
 		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+	}
 
 ?>	
 			</div>
@@ -270,10 +278,12 @@
 			</div>
 			<div class="hotel-right text-right">
 <?
-	if( strpos( query_test($title, $time, 'sun'),"없습니다") == true)
+	if(!query_test($title, $time, 'sun'))
 		echo "";
-	else
+	else{
+		$end = $result_array[1]+$time;
 		echo "<a href=result.php?title=$_GET[title]&day=$result_array[0]&start=$result_array[1]&end=$end>예약하기</a>";
+	}
 
 ?>	
 			</div>
