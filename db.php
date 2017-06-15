@@ -1,6 +1,5 @@
 <? 
 	header("Content-type: text/html;charset=utf-8");
-
 	$connect = mysql_connect("203.252.182.152", "all", "apmsetup");
 	$db = mysql_select_db("mysheet", $connect);
 	mysql_query("SET NAMES utf8");
@@ -90,7 +89,7 @@
 ?>
 				<div class="hotel-rooms">
 					<div class="hotel-left">
-						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style="font-size:20px;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span><?=$row['title']?></a> 
+						<a href="studymain.html?title=<?=$row['title']?>&host=<?=$row['host']?>" style="font-size:20px; text-decoration: none;"><span class="glyphicon glyphicon-inbox" aria-hidden="true"></span><?=$row['title']?></a> 
 <?						if($row['host'] == $_SESSION['id']){
 ?>
 						<span class="glyphicon glyphicon-tower" style="color:#ffcc33; border-color:black; font-size:25px;" aria-hidden="false"></span>
@@ -103,11 +102,11 @@
 <?
 						if($row['reservation'] != NULL ){
 ?>
-							<a href="#"><h4>예약있음</h4></a>
+							<a href="#" style = "text-decoration: none;"><h4>예약있음</h4></a>
 <?
 						}else{
 ?>
-							<a href="#"><h4 style="color : black">예약없음</h4></a>
+							<a href="#" style = "text-decoration: none;"><h4 style="color : black">예약없음</h4></a>
 <?
 						}
 ?>
@@ -197,15 +196,11 @@
 		if($_SESSION['id'] == $host)
 		{
 ?>
-<style>
-a {text-decoration: none; color:white;}
-a:visited {text-decoration: none; color:white;}
-</style>
 			<center>
 				<div style="margin: 20px auto;">
-					<a href="#small-dialog" visited=none; class="sign-in popup-top-anim">
+					<a href="#small-dialog" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;">
 					<div style="width:80px; background-color: black; color:white; float:left;">초대</div></a>
-					<a href="#small-dialog2" visited=none; class="sign-in popup-top-anim">
+					<a href="#small-dialog2" visited=none; class="sign-in popup-top-anim" style = "text-decoration: none;">
 					<div style="width:80px; background-color: black; color:white; float:right;">추방</a>
 				</div>
 			</center>
@@ -380,8 +375,8 @@ a:visited {text-decoration: none; color:white;}
 			<tr>
 			<tr>
 				<td colspan=2>
-					<a href="pass_check.php?num=<?=$num?>"><input type=button value="삭제"></a>
-					<a href="board.html"><input type=button value="글목록"></a>
+					<a href="pass_check.php?num=<?=$num?>" style = "text-decoration: none;"><input type=button value="삭제"></a>
+					<a href="board.html" style = "text-decoration: none;"><input type=button value="글목록"></a>
 				</td>
 			</tr>	
 <?

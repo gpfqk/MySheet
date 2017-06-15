@@ -1,5 +1,6 @@
 <?	if (!isset($_SESSION)) 	{ session_start(); }
 	include("db.php");
+	ensure_logged_in();
 
 	$_SESSION['join_member']=0;
 

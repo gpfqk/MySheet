@@ -1,5 +1,6 @@
 <? if (!isset($_SESSION)) { session_start(); } 
-include("db.php");
+	include("db.php");
+	ensure_logged_in();
 ?>
 <!DOCTYPE html>
 <html lang="en">

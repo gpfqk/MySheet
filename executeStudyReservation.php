@@ -1,5 +1,6 @@
 <?	if (!isset($_SESSION)) 	{ session_start(); }
 	include("db.php");
+	ensure_logged_in();
 	$id = $_SESSION["id"];
 	$study=$_POST["study"];
 	$day=$_POST["day"];
